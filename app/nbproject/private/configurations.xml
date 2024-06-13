@@ -4,6 +4,8 @@
     <df root="." name="0">
       <df name="dist">
       </df>
+      <in>contenedor.cpp</in>
+      <in>contenedor.h</in>
       <in>main.cpp</in>
       <in>producto.cpp</in>
       <in>producto.h</in>

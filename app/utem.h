@@ -6,7 +6,10 @@
 #include <stdexcept>
 #include <string>
 #include <sstream>
+#include <vector>
 #include "year_month.h"
+#include "contenedor.h"
+#include "producto.h"
 
 namespace utem {
 
@@ -15,8 +18,11 @@ namespace utem {
      * @param str Texto a procesar
      * @return El objeto YearMonth del parseo
      */
-    YearMonth parse(const std::string& str);
+    YearMonth parseYearMonth(const std::string& str);
 
+    std::vector<std::string> split(const std::string &line, char delimiter);
+
+    Contenedor parseCsvLine(const std::string& str);
 };
 
 #endif /* UTEM_H */
