@@ -5,6 +5,8 @@
       <in>main.cpp</in>
       <in>producto.cpp</in>
       <in>producto.h</in>
+      <in>utem.cpp</in>
+      <in>utem.h</in>
       <in>year_month.cpp</in>
       <in>year_month.h</in>
     </df>
@@ -39,6 +41,12 @@
           <buildCommand>${MAKE} -f Makefile</buildCommand>
           <cleanCommand>${MAKE} -f Makefile clean</cleanCommand>
           <executablePath></executablePath>
+          <cTool>
+            <standard>10</standard>
+          </cTool>
+          <ccTool>
+            <standard>11</standard>
+          </ccTool>
         </makeTool>
         <preBuild>
           <preBuildCommandWorkingDir>.</preBuildCommandWorkingDir>
@@ -52,6 +60,10 @@
       <item path="producto.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="producto.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="utem.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="utem.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="year_month.cpp" ex="false" tool="1" flavor2="0">
       </item>
