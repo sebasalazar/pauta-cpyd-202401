@@ -24,6 +24,7 @@ public:
     bool operator<=(const YearMonth& other) const;
     bool operator>(const YearMonth& other) const;
     bool operator>=(const YearMonth& other) const;
+    YearMonth& operator=(const YearMonth& right);
 private:
     int month;
     int year;

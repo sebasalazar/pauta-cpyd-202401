@@ -27,12 +27,12 @@ std::vector<std::string> utem::split(const std::string &line, char delimiter) {
 
 Contenedor utem::parseCsvLine(const std::string& line) {
     Contenedor contenedor;
-    std::vector<std::string> fields = split(line, ';');
+    std::vector<std::string> fields = split(removeQuotes(line), ';');
     if (fields.size() == 10) {
-        std::string created = removeQuotes(fields[0]);
-        std::string sku = removeQuotes(fields[6]);
-        int quantity = std::stoi(removeQuotes(fields[7]));
-        double amount = std::stod(removeQuotes(fields[9]));
+        std::string created = fields[0];
+        std::string sku = fields[6];
+        int quantity = std::stoi(fields[7]);
+        double amount = std::stod(fields[9]);
 
         YearMonth ym = parseYearMonth(created);
         Producto producto = Producto(sku, (amount / quantity));

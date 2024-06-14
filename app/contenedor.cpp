@@ -5,9 +5,9 @@ Contenedor::Contenedor() {
     this->producto = Producto();
 }
 
-Contenedor::Contenedor(YearMonth yearMonth, Producto producto) {
-    this->yearMonth = yearMonth;
-    this->producto = producto;
+Contenedor::Contenedor(YearMonth ym, Producto p) {
+    this->yearMonth = YearMonth(ym.GetYear(), ym.GetMonth());
+    this->producto = Producto(p.GetSku(), p.GetAmount());
 }
 
 Contenedor::Contenedor(const Contenedor& orig) {

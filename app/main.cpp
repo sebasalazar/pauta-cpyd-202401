@@ -40,38 +40,6 @@ void participantes(std::string programa) {
     std::cout << std::endl << "Profesor: Sebastián Salazar Molina" << std::endl;
 }
 
-//void carga_inicial(std::string rutaArchivo) {
-//    std::ifstream archivo(rutaArchivo);
-//    if (!archivo.is_open()) {
-//        std::cerr << "Error al abrir el archivo" << std::endl;
-//        return;
-//    }
-//
-//    std::string encabezado;
-//    // Omitir la primera línea si contiene encabezados
-//    std::getline(archivo, encabezado);
-//
-//    std::string linea;
-//#pragma omp parallel private(linea)
-//    {
-//        // Lee el archivo línea por línea en paralelo
-//        while (std::getline(archivo, linea)) {
-//#pragma omp single nowait
-//            {
-//                Contenedor contenedor = utem::parseCsvLine(linea);
-//#pragma omp critical
-//                {
-//                    std::cout
-//                            << "Fecha: " << contenedor.GetYearMonth().GetYearMonth()
-//                            << " SKU: " << contenedor.GetProducto().GetSku()
-//                            << " Monto: " << contenedor.GetProducto().GetAmount()
-//                            << std::endl;
-//                }
-//            }
-//        }
-//    }
-//}
-
 void carga_inicial(std::string rutaArchivo) {
     std::ifstream archivo(rutaArchivo);
     if (!archivo.is_open()) {
@@ -79,8 +47,8 @@ void carga_inicial(std::string rutaArchivo) {
         return;
     }
 
-    std::string encabezado;
     // Omitir la primera línea si contiene encabezados
+    std::string encabezado;
     std::getline(archivo, encabezado);
 
     std::string linea;
@@ -94,4 +62,5 @@ void carga_inicial(std::string rutaArchivo) {
                 << std::endl;
     }
 
+    archivo.close();
 }

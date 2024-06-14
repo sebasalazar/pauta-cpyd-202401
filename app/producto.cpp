@@ -44,3 +44,14 @@ bool Producto::operator!=(const Producto& right) const {
 bool Producto::operator==(const Producto& right) const {
     return (this->sku == right.sku);
 }
+
+Producto& Producto::operator=(const Producto& right) {
+    if (this == &right) {
+        return *this;
+    }
+
+    sku = right.sku;
+    amount = right.amount;
+
+    return *this;
+}

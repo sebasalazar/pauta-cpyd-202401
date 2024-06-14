@@ -16,6 +16,7 @@ public:
     void SetSku(std::string sku);
     bool operator!=(const Producto& right) const;
     bool operator==(const Producto& right) const;
+    Producto& operator=(const Producto& right);
 private:
     std::string sku;
     double amount;
