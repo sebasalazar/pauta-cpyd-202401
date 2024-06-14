@@ -1,15 +1,16 @@
 #include "utem.h"
 
 YearMonth utem::parseYearMonth(const std::string& str) {
-    std::istringstream iss(str);
-    int year, month;
-    char dash;
-
-    if (!(iss >> year >> dash >> month) || dash != '-' || !iss.eof()) {
-        throw std::invalid_argument("Formato inválido se espera inicio YYYY-MM");
-    }
+    int year = std::stoi(str.substr(0, 4));
+    int month = std::stoi(str.substr(5, 2));
 
     return YearMonth(year, month);
+}
+
+std::string utem::removeQuotes(const std::string &text) {
+    std::string result = text;
+    result.erase(std::remove(result.begin(), result.end(), '"'), result.end());
+    return result;
 }
 
 std::vector<std::string> utem::split(const std::string &line, char delimiter) {
@@ -28,10 +29,10 @@ Contenedor utem::parseCsvLine(const std::string& line) {
     Contenedor contenedor;
     std::vector<std::string> fields = split(line, ';');
     if (fields.size() == 10) {
-        std::string created = fields[0];
-        std::string sku = fields[6];
-        int quantity = std::atoi(fields[7].c_str());
-        double amount = std::atof(fields[9].c_str());
+        std::string created = removeQuotes(fields[0]);
+        std::string sku = removeQuotes(fields[6]);
+        int quantity = std::stoi(removeQuotes(fields[7]));
+        double amount = std::stod(removeQuotes(fields[9]));
 
         YearMonth ym = parseYearMonth(created);
         Producto producto = Producto(sku, (amount / quantity));

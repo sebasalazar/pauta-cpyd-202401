@@ -38,7 +38,8 @@ int YearMonth::GetYear() const {
 }
 
 int YearMonth::GetYearMonth() const {
-    return ((year * 100) + month);
+    int code = ((year * 100) + month);
+    return code;
 }
 
 std::string YearMonth::toString() const {
