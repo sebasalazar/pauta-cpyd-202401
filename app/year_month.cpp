@@ -5,6 +5,15 @@ YearMonth::YearMonth() {
     this->year = 0;
 }
 
+YearMonth::YearMonth(int code) {
+    int currentYear = code / 100;
+    int currentMonth = code % 100;
+    validate(currentYear, currentMonth);
+
+    this->month = currentMonth;
+    this->year = currentYear;
+}
+
 YearMonth::YearMonth(int year, int month) {
     validate(year, month);
     this->month = month;

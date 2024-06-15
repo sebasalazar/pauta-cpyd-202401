@@ -1,10 +1,12 @@
 CXX = g++
 CXXFLAGS = -g3 -Wall -std=c++14 -fopenmp
 MKDIR = mkdir -p
+RM = rm -fr
 
 LIBS = -lm
 
 directorios:
+	$(RM) build dist tmp
 	$(MKDIR) build dist
 
 utem.o: directorios utem.cpp
@@ -28,9 +30,9 @@ all: clean main.o producto.o year_month.o utem.o contenedor.o
 	build/year_month.o build/utem.o \
 	build/contenedor.o \
 	$(LIBS)
-	rm -fr build
+	$(RM) build
 
 clean:
-	rm -fr *.o a.out core programa dist build
+	rm -fr *.o a.out core programa dist build tmp
 
 .DEFAULT_GOAL := all

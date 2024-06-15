@@ -4,6 +4,8 @@
     <df root="." name="0">
       <df name="dist">
       </df>
+      <df name="tmp">
+      </df>
       <in>contenedor.cpp</in>
       <in>contenedor.h</in>
       <in>main.cpp</in>
@@ -40,6 +42,8 @@
         <gdb_interceptlist>
           <gdbinterceptoptions gdb_all="false" gdb_unhandled="true" gdb_unexpected="true"/>
         </gdb_interceptlist>
+        <gdb_signals>
+        </gdb_signals>
         <gdb_options>
           <DebugOptions>
           </DebugOptions>
@@ -52,8 +56,9 @@
       <runprofile version="9">
         <runcommandpicklist>
           <runcommandpicklistitem>"${OUTPUT_PATH}"</runcommandpicklistitem>
+          <runcommandpicklistitem>"${OUTPUT_PATH}" pocos.csv</runcommandpicklistitem>
         </runcommandpicklist>
-        <runcommand>"${OUTPUT_PATH}"</runcommand>
+        <runcommand>"${OUTPUT_PATH}" pocos.csv</runcommand>
         <rundir>.</rundir>
         <buildfirst>false</buildfirst>
         <terminal-type>0</terminal-type>

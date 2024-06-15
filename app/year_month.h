@@ -10,6 +10,7 @@
 class YearMonth {
 public:
     YearMonth();
+    YearMonth(int code);
     YearMonth(int year, int month);
     YearMonth(const YearMonth& orig);
     virtual ~YearMonth();
