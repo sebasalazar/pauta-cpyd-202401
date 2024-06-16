@@ -53,7 +53,28 @@ int main(int argc, char** argv) {
         }
 
         std::cout << utem::getLocalTime() << " Paso 3 - Comparo por año" << std::endl;
-        std::map<int, std::set<int> > map = utem::mapear(codes);
+        std::map<int, std::vector<int> > map = utem::mapear(codes);
+
+#pragma omp parallel
+        {
+#pragma omp single nowait
+            {
+                for (std::map<int, std::vector<int>>::iterator it = map.begin(); it != map.end(); ++it) {
+                    int code = it->first;
+                    std::vector<int> values = it->second;
+
+#pragma omp task firstprivate(code, values)
+                    {
+                        // Procesamiento paralelo sobre cada vector en el mapa
+                        std::cout << "Key: " << code << ", Values: ";
+                        for (int value : values) {
+                            std::cout << value << " ";
+                        }
+                        std::cout << std::endl;
+                    }
+                }
+            }
+        }
     } else {
         // Mostrar los integrantes
         participantes(argv[0]);

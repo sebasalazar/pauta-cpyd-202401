@@ -94,11 +94,11 @@ int utem::parseCsvLine(const std::string& line) {
     return code;
 }
 
-std::map<int, std::set<int>> utem::mapear(std::set<int> codes) {
-    std::map<int, std::set<int>> map;
+std::map<int, std::vector<int>> utem::mapear(std::set<int> codes) {
+    std::map<int, std::vector<int>> map;
     for (int code : codes) {
         YearMonth ym(code);
-        map[ym.GetYear()].insert(ym.GetYearMonth());
+        map[ym.GetYear()].push_back(ym.GetYearMonth());
     }
     return map;
 }

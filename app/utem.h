@@ -97,7 +97,7 @@ namespace utem {
      * @param codes listado de información
      * @return Mapa
      */
-    std::map<int, std::set<int>> mapear(std::set<int> codes);
+    std::map<int, std::vector<int>> mapear(std::set<int> codes);
 
     /**
      * @brief Esta función reduce las ocurrencias dentro de los archivos
