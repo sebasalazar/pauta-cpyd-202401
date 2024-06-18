@@ -1,22 +1,20 @@
 #include <iostream>
+#include <future>
 #include <map>
 #include <set>
 #include <fstream>
 #include <string>
-#include <cstdlib>
-#include <future>
-#include <mutex>
+#include <vector>
 #include <omp.h>
 #include "utem.h"
-
 
 /**
  * Función que muestra los participantes del grupo
  * @param programa nombre del ejecutable
  */
-void participantes(std::string programa);
+void participantes(const std::string& programa);
 
-std::set<int> carga_inicial(std::string rutaArchivo);
+std::set<int> carga_inicial(const std::string& rutaArchivo);
 
 /**
  * Taller computacional
@@ -26,19 +24,13 @@ std::set<int> carga_inicial(std::string rutaArchivo);
  */
 int main(int argc, char** argv) {
 
-    /**
-     * Incluir acá la lógica del programa
-     * 
-     */
     const std::string tmpDirectory = utem::createTempDirectory();
     std::cout << "Carpeta temporal " << tmpDirectory << std::endl;
 
     if (argc > 1) {
-        // Separamos los datos en archivos más pequeños dentro de la carpeta temporal, el original tiene 56916429 filas
         std::cout << utem::getLocalTime() << " Paso 1 - Clasifico los datos" << std::endl;
         std::set<int> codes = carga_inicial(argv[1]);
 
-        // El contendor de vector está preparado para trabajar en parallel for
         std::cout << utem::getLocalTime() << " Paso 2 - Reduzco los SKU en base a la mediana" << std::endl;
         std::vector<int> list(codes.begin(), codes.end());
 
@@ -47,14 +39,17 @@ int main(int argc, char** argv) {
             int code = list[index];
             utem::unificar(code);
 
-            // Esto es opcional, sólo para mostrar datos
 #pragma omp critical
             std::cout << utem::getLocalTime() << " Paso 2.1 Hilo " << omp_get_thread_num() << " el código " << code << std::endl;
         }
 
-        std::cout << utem::getLocalTime() << " Paso 3 - Comparo por año" << std::endl;
-        std::map<int, std::vector<int> > map = utem::mapear(codes);
-        std::map<int, double> amountSums;
+        std::cout << utem::getLocalTime() << " Paso 3 - Preparo los datos de todos los años" << std::endl;
+        std::future<std::map<int, double>> future = std::async(std::launch::async, cpi::makeCpi, list);
+
+        std::cout << utem::getLocalTime() << " Paso 4 - Preparo los datos por año" << std::endl;
+        std::map<int, std::vector<int>> map = utem::mapear(codes);
+        std::map<int, double> cpi;
+
 #pragma omp parallel
         {
 #pragma omp single nowait
@@ -65,53 +60,39 @@ int main(int argc, char** argv) {
 
 #pragma omp task firstprivate(year, months)
                     {
-                        // Procesamiento paralelo sobre cada vector en el mapa
-                        std::set<Product> canasta = utem::obtenerCanastaBasica(months);
-                        std::map<int, double> currentMap = utem::obtenerIpc(months, canasta);
-                        for (std::map<int, double>::iterator currentIt = currentMap.begin(); currentIt != currentMap.end(); ++currentIt) {
-                            amountSums[currentIt->first] = currentIt->second;
+                        std::map<int, double> currentMap = cpi::makeCpi(months);
+#pragma omp critical
+                        {
+                            cpi.insert(currentMap.begin(), currentMap.end());
+                            std::cout << utem::getLocalTime() << " Paso 4.1 - Terminando proceso del año " << year << std::endl;
                         }
                     }
                 }
             }
         }
 
-        int index = 0;
-        double current = 0;
-        std::map<int, double> ipc;
-        for (std::map<int, std::vector<int>>::iterator it = map.begin(); it != map.end(); ++it) {
-            int year = it->first;
-            std::vector<int> months = it->second;
-            std::sort(months.begin(), months.end());
-
-            for (int ym : months) {
-                double last = amountSums[ym];
-                if (index > 0) {
-                    ipc[ym] = ((last - current) / current) * 100;
-                } else {
-                    ipc[ym] = 0;
-                }
-                index += 1;
-                current = last;
-            }
+        for (std::map<int, double>::iterator it = cpi.begin(); it != cpi.end(); ++it) {
+            std::cout << it->first << " IPC: " << it->second << std::endl;
         }
 
-        for (std::map<int, double>::iterator it = ipc.begin(); it != ipc.end(); ++it) {
+        std::cout << "IPC de todos los meses" << std::endl;
+        std::map<int, double> all = future.get();
+        for (std::map<int, double>::iterator it = all.begin(); it != all.end(); ++it) {
             std::cout << it->first << " IPC: " << it->second << std::endl;
         }
     } else {
-        // Mostrar los integrantes
         participantes(argv[0]);
     }
+
     return EXIT_SUCCESS;
 }
 
-void participantes(std::string programa) {
+void participantes(const std::string& programa) {
     std::cout << std::endl << "=== Pauta del programa " << programa << " ===" << std::endl;
     std::cout << std::endl << "Profesor: Sebastián Salazar Molina" << std::endl;
 }
 
-std::set<int> carga_inicial(std::string rutaArchivo) {
+std::set<int> carga_inicial(const std::string& rutaArchivo) {
     std::set<int> codes;
 
     std::ifstream archivo(rutaArchivo);

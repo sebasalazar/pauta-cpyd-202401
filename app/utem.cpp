@@ -1,5 +1,37 @@
 #include "utem.h"
 
+std::vector<std::string> utem::parseLine(const std::string& line) {
+    std::vector<std::string> result;
+    std::string field;
+    bool insideQuotes = false;
+
+    for (size_t i = 0; i < line.size(); ++i) {
+        char c = line[i];
+        if (c == '"') {
+            // Cambia el estado de dentro/fuera de comillas
+            insideQuotes = !insideQuotes;
+        } else if (c == ';' && !insideQuotes) {
+            // Si encontramos un delimitador y no estamos dentro de comillas, es el fin de un campo
+            result.push_back(field);
+            field.clear();
+        } else {
+            // Cualquier otro carácter se añade al campo actual
+            field += c;
+        }
+    }
+    // Añadir el último campo al resultado
+    result.push_back(field);
+
+    // Eliminar las comillas de los campos
+    for (std::string& str : result) {
+        if (!str.empty() && str.front() == '"' && str.back() == '"') {
+            str = str.substr(1, str.size() - 2);
+        }
+    }
+
+    return result;
+}
+
 std::string utem::getLocalTime() {
     std::time_t now = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
     std::tm current = *std::localtime(&now);
@@ -75,7 +107,7 @@ void utem::escribir(YearMonth ym, Product producto) {
 
 int utem::parseCsvLine(const std::string& line) {
     int code = 0;
-    std::vector<std::string> fields = split(removeQuotes(line), ';');
+    std::vector<std::string> fields = parseLine(line);
     if (fields.size() == 10) {
         std::string sku = fields[6];
         if (sku != zeroStr) {

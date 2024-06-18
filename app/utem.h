@@ -17,7 +17,7 @@
 #include <unistd.h>
 #include <cstdlib>
 #include <limits.h>
-#include "ipc.h"
+#include "cpi.h"
 #include "product.h"
 #include "year_month.h"
 
@@ -26,6 +26,8 @@ namespace utem {
     const std::string zeroStr("0");
     const std::string tempPath("tmp");
 
+    std::vector<std::string> parseLine(const std::string& line);
+    
     /**
      * @brief Texto con la hora local
      * @return La hora local como texto en formato ISO
