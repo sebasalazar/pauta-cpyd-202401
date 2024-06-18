@@ -62,11 +62,12 @@ std::string utem::createTempDirectory() {
     return createDirectory(tempPath);
 }
 
-void utem::escribir(YearMonth ym, Producto producto) {
+void utem::escribir(YearMonth ym, Product producto) {
     std::string filename(tempPath + "/" + std::to_string(ym.GetYearMonth()));
     std::ofstream file(filename, std::ios_base::app); // Abre el archivo en modo append
     if (file.is_open()) {
         file << producto.GetSku() << ";" << producto.GetAmount() << std::endl;
+        file.close();
     } else {
         std::cerr << "Error al abrir el archivo para escritura." << std::endl;
     }
@@ -84,7 +85,7 @@ int utem::parseCsvLine(const std::string& line) {
 
             if (quantity > 0 && amount > 0) {
                 YearMonth ym = parseYearMonth(created);
-                Producto producto = Producto(sku, (amount / quantity));
+                Product producto = Product(sku, (amount / quantity));
                 escribir(ym, producto);
                 code = ym.GetYearMonth();
             }
@@ -159,4 +160,96 @@ double utem::calculateMedian(std::set<double> list) {
         // Tamaño impar: mediana es el valor central
         return *first;
     }
+}
+
+std::set<Product> utem::obtenerCanastaBasica(std::vector<int> codes) {
+    std::set<Product> canasta;
+    if (!codes.empty()) {
+        if (codes.size() > 1) {
+            std::set<Product> list;
+            int base = codes[0];
+            std::ifstream file(tempPath + "/" + std::to_string(base) + ".csv");
+            if (file.is_open()) {
+                std::string linea;
+                while (std::getline(file, linea)) {
+                    std::vector<std::string> splited = split(linea, ';');
+                    if (!splited.empty()) {
+                        Product p(splited[0], std::stod(splited[1]));
+                        list.insert(p);
+                    }
+                }
+                file.close();
+            }
+
+            for (int code : codes) {
+                if (code != base) {
+
+                    std::set<Product> current;
+                    std::ifstream file(tempPath + "/" + std::to_string(code) + ".csv");
+                    if (file.is_open()) {
+                        std::string linea;
+                        while (std::getline(file, linea)) {
+                            std::vector<std::string> splited = split(linea, ';');
+                            if (!splited.empty()) {
+                                Product p(splited[0], std::stod(splited[1]));
+                                current.insert(p);
+                            }
+                        }
+                        file.close();
+                    }
+
+                    if (!current.empty()) {
+                        std::set<Product> repited;
+                        std::set_intersection(list.begin(), list.end(), current.begin(), current.end(),
+                                std::inserter(repited, repited.begin()));
+
+                        list = std::move(repited);
+                    }
+                }
+            }
+
+            canasta = std::move(list);
+        } else {
+            int base = codes[0];
+            std::ifstream file(tempPath + "/" + std::to_string(base) + ".csv");
+            if (file.is_open()) {
+                std::string linea;
+                while (std::getline(file, linea)) {
+                    std::vector<std::string> splited = split(linea, ';');
+                    if (!splited.empty()) {
+                        Product p(splited[0], std::stod(splited[1]));
+                        canasta.insert(p);
+                    }
+                }
+                file.close();
+            }
+        }
+    }
+    return canasta;
+}
+
+std::map<int, double> utem::obtenerIpc(std::vector<int> codes, std::set<Product> products) {
+    std::map<int, double> map;
+    if (!codes.empty() && !products.empty()) {
+        std::sort(codes.begin(), codes.end());
+        for (int code : codes) {
+            double sum = 0;
+            std::ifstream file(tempPath + "/" + std::to_string(code) + ".csv");
+            if (file.is_open()) {
+                std::string linea;
+                while (std::getline(file, linea)) {
+                    std::vector<std::string> splited = split(linea, ';');
+                    if (!splited.empty()) {
+                        Product p(splited[0], std::stod(splited[1]));
+                        if (std::find(products.begin(), products.end(), p) != products.end()) {
+                            sum += p.GetAmount();
+                        }
+                    }
+                }
+                file.close();
+            }
+            map[code] = sum;
+        }
+    }
+    return map;
 }

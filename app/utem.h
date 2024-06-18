@@ -17,8 +17,8 @@
 #include <unistd.h>
 #include <cstdlib>
 #include <limits.h>
-#include "contenedor.h"
-#include "producto.h"
+#include "ipc.h"
+#include "product.h"
 #include "year_month.h"
 
 namespace utem {
@@ -82,7 +82,7 @@ namespace utem {
      * @param ym Objeto YearMonth.
      * @param producto Objeto Producto.
      */
-    void escribir(YearMonth ym, Producto producto);
+    void escribir(YearMonth ym, Product producto);
 
     /**
      * @brief Parsea una línea CSV y devuelve un objeto Contenedor.
@@ -111,6 +111,10 @@ namespace utem {
      * @param list Listado de datos a procesar
      */
     double calculateMedian(std::set<double> list);
+
+    std::set<Product> obtenerCanastaBasica(std::vector<int> codes);
+
+    std::map<int, double> obtenerIpc(std::vector<int> codes, std::set<Product> products);
 };
 
 #endif /* UTEM_H */

@@ -54,26 +54,50 @@ int main(int argc, char** argv) {
 
         std::cout << utem::getLocalTime() << " Paso 3 - Comparo por año" << std::endl;
         std::map<int, std::vector<int> > map = utem::mapear(codes);
-
+        std::map<int, double> amountSums;
 #pragma omp parallel
         {
 #pragma omp single nowait
             {
                 for (std::map<int, std::vector<int>>::iterator it = map.begin(); it != map.end(); ++it) {
-                    int code = it->first;
-                    std::vector<int> values = it->second;
+                    int year = it->first;
+                    std::vector<int> months = it->second;
 
-#pragma omp task firstprivate(code, values)
+#pragma omp task firstprivate(year, months)
                     {
                         // Procesamiento paralelo sobre cada vector en el mapa
-                        std::cout << "Key: " << code << ", Values: ";
-                        for (int value : values) {
-                            std::cout << value << " ";
+                        std::set<Product> canasta = utem::obtenerCanastaBasica(months);
+                        std::map<int, double> currentMap = utem::obtenerIpc(months, canasta);
+                        for (std::map<int, double>::iterator currentIt = currentMap.begin(); currentIt != currentMap.end(); ++currentIt) {
+                            amountSums[currentIt->first] = currentIt->second;
                         }
-                        std::cout << std::endl;
                     }
                 }
             }
+        }
+
+        int index = 0;
+        double current = 0;
+        std::map<int, double> ipc;
+        for (std::map<int, std::vector<int>>::iterator it = map.begin(); it != map.end(); ++it) {
+            int year = it->first;
+            std::vector<int> months = it->second;
+            std::sort(months.begin(), months.end());
+
+            for (int ym : months) {
+                double last = amountSums[ym];
+                if (index > 0) {
+                    ipc[ym] = ((last - current) / current) * 100;
+                } else {
+                    ipc[ym] = 0;
+                }
+                index += 1;
+                current = last;
+            }
+        }
+
+        for (std::map<int, double>::iterator it = ipc.begin(); it != ipc.end(); ++it) {
+            std::cout << it->first << " IPC: " << it->second << std::endl;
         }
     } else {
         // Mostrar los integrantes
