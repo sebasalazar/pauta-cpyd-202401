@@ -27,12 +27,18 @@ namespace utem {
     const std::string tempPath("tmp");
 
     std::vector<std::string> parseLine(const std::string& line);
-    
+
     /**
      * @brief Texto con la hora local
      * @return La hora local como texto en formato ISO
      */
     std::string getLocalTime();
+
+    /**
+     * @brief Texto con la hora local
+     * @return La hora local como texto en formato ISO
+     */
+    std::string getLocalTime(std::time_t ts);
 
     /**
      * @brief Parsea una cadena y devuelve un objeto YearMonth.
@@ -112,11 +118,11 @@ namespace utem {
      * 
      * @param list Listado de datos a procesar
      */
-    double calculateMedian(std::set<double> list);
+    double calculateMedian(std::vector<double> list);
 
     std::set<Product> obtenerCanastaBasica(std::vector<int> codes);
 
-    std::map<int, double> obtenerIpc(std::vector<int> codes, std::set<Product> products);
+
 };
 
 #endif /* UTEM_H */

@@ -41,6 +41,14 @@ std::string utem::getLocalTime() {
     return ss.str();
 }
 
+std::string utem::getLocalTime(std::time_t ts) {
+    std::tm current = *std::localtime(&ts);
+    // Formatear la fecha y hora
+    std::stringstream ss;
+    ss << std::put_time(&current, "%Y-%m-%d %H:%M:%S");
+    return ss.str();
+}
+
 YearMonth utem::parseYearMonth(const std::string& str) {
     int year = std::stoi(str.substr(0, 4));
     int month = std::stoi(str.substr(5, 2));
@@ -141,7 +149,7 @@ void utem::unificar(int code) {
     std::string inFilePath = tempPath + "/" + std::to_string(code);
     std::ifstream inFile(inFilePath);
     if (inFile.is_open()) {
-        std::map<std::string, std::set<double>> map;
+        std::map<std::string, std::vector<double>> map;
 
         std::string line;
         while (std::getline(inFile, line)) {
@@ -149,7 +157,7 @@ void utem::unificar(int code) {
             if (fields.size() == 2) {
                 std::string sku = fields[0];
                 double amount = std::stod(fields[1]);
-                map[sku].insert(amount);
+                map[sku].push_back(amount);
             }
         }
         inFile.close();
@@ -159,7 +167,7 @@ void utem::unificar(int code) {
         if (outFile.is_open()) {
             for (const auto& pair : map) {
                 std::string sku = pair.first;
-                const std::set<double>& amounts = pair.second;
+                const std::vector<double>& amounts = pair.second;
                 double amount = calculateMedian(amounts);
                 outFile << sku << ";" << amount << std::endl;
             }
@@ -177,15 +185,15 @@ void utem::unificar(int code) {
     }
 }
 
-double utem::calculateMedian(std::set<double> list) {
+double utem::calculateMedian(std::vector<double> list) {
     // Obtener el iterador al elemento mediano
-    std::set<double>::const_iterator first = list.begin();
+    std::vector<double>::const_iterator first = list.begin();
     std::advance(first, list.size() / 2);
 
     // Calcular la mediana
     if (list.size() % 2 == 0) {
         // Tamaño par: mediana es el promedio de los dos valores centrales
-        std::set<double>::const_iterator second = first;
+        std::vector<double>::const_iterator second = first;
         --second; // Retroceder un paso para el segundo valor central
         return (*first + *second) / 2.0;
     } else {
@@ -260,28 +268,4 @@ std::set<Product> utem::obtenerCanastaBasica(std::vector<int> codes) {
     return canasta;
 }
 
-std::map<int, double> utem::obtenerIpc(std::vector<int> codes, std::set<Product> products) {
-    std::map<int, double> map;
-    if (!codes.empty() && !products.empty()) {
-        std::sort(codes.begin(), codes.end());
-        for (int code : codes) {
-            double sum = 0;
-            std::ifstream file(tempPath + "/" + std::to_string(code) + ".csv");
-            if (file.is_open()) {
-                std::string linea;
-                while (std::getline(file, linea)) {
-                    std::vector<std::string> splited = split(linea, ';');
-                    if (!splited.empty()) {
-                        Product p(splited[0], std::stod(splited[1]));
-                        if (std::find(products.begin(), products.end(), p) != products.end()) {
-                            sum += p.GetAmount();
-                        }
-                    }
-                }
-                file.close();
-            }
-            map[code] = sum;
-        }
-    }
-    return map;
-}
+

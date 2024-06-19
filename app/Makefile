@@ -3,7 +3,7 @@ CXXFLAGS = -g3 -Wall -std=c++14 -fopenmp
 MKDIR = mkdir -p
 RM = rm -fr
 
-LIBS = -lm
+LIBS = -lm ./xlsxio/lib/libxlsxio_read.a -lminizip -lexpat
 
 directorios:
 	$(RM) build dist tmp cpi
@@ -21,14 +21,17 @@ year_month.o: directorios year_month.cpp
 product.o: directorios product.cpp
 	$(CXX) $(CXXFLAGS) -c product.cpp -o build/product.o
 
+summary.o: directorios summary.cpp
+	$(CXX) $(CXXFLAGS) -c summary.cpp -o build/summary.o
+
 main.o: directorios main.cpp
 	$(CXX) $(CXXFLAGS) -c main.cpp -o build/main.o
 
-all: clean main.o product.o year_month.o utem.o cpi.o
+all: clean main.o product.o year_month.o utem.o cpi.o summary.o
 	$(CXX) $(CXXFLAGS) -o dist/programa \
 	build/main.o build/product.o \
 	build/year_month.o build/utem.o \
-	build/cpi.o \
+	build/cpi.o build/summary.o \
 	$(LIBS)
 	$(RM) build
 

@@ -2,15 +2,14 @@
 <configurationDescriptor version="100">
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
     <df root="." name="0">
+      <in>cpi.cpp</in>
       <in>ipc.cpp</in>
-      <in>ipc.h</in>
       <in>main.cpp</in>
       <in>product.cpp</in>
-      <in>product.h</in>
+      <in>summary.cpp</in>
+      <in>summary.h</in>
       <in>utem.cpp</in>
-      <in>utem.h</in>
       <in>year_month.cpp</in>
-      <in>year_month.h</in>
     </df>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -34,6 +33,7 @@
       </toolsSet>
       <flagsDictionary>
         <element flagsID="0" commonFlags="-std=c++14"/>
+        <element flagsID="1" commonFlags="-std=c++14 -fopenmp"/>
       </flagsDictionary>
       <codeAssistance>
       </codeAssistance>
@@ -55,25 +55,33 @@
           <preBuildCommand></preBuildCommand>
         </preBuild>
       </makefileType>
-      <item path="ipc.cpp" ex="false" tool="1" flavor2="0">
+      <item path="cpi.cpp" ex="false" tool="1" flavor2="11">
+        <ccTool flags="1">
+        </ccTool>
       </item>
-      <item path="ipc.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="main.cpp" ex="false" tool="1" flavor2="11">
+      <item path="ipc.cpp" ex="false" tool="1" flavor2="11">
         <ccTool flags="0">
         </ccTool>
       </item>
-      <item path="product.cpp" ex="false" tool="1" flavor2="0">
+      <item path="main.cpp" ex="false" tool="1" flavor2="11">
+        <ccTool flags="1">
+        </ccTool>
       </item>
-      <item path="product.h" ex="false" tool="3" flavor2="0">
+      <item path="product.cpp" ex="false" tool="1" flavor2="11">
+        <ccTool flags="1">
+        </ccTool>
       </item>
-      <item path="utem.cpp" ex="false" tool="1" flavor2="0">
+      <item path="summary.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="utem.h" ex="false" tool="3" flavor2="0">
+      <item path="summary.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="year_month.cpp" ex="false" tool="1" flavor2="0">
+      <item path="utem.cpp" ex="false" tool="1" flavor2="11">
+        <ccTool flags="1">
+        </ccTool>
       </item>
-      <item path="year_month.h" ex="false" tool="3" flavor2="0">
+      <item path="year_month.cpp" ex="false" tool="1" flavor2="11">
+        <ccTool flags="1">
+        </ccTool>
       </item>
     </conf>
   </confs>

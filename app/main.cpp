@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 #include <future>
 #include <map>
 #include <set>
@@ -6,6 +7,7 @@
 #include <string>
 #include <vector>
 #include <omp.h>
+#include "summary.h"
 #include "utem.h"
 
 /**
@@ -24,12 +26,20 @@ std::set<int> carga_inicial(const std::string& rutaArchivo);
  */
 int main(int argc, char** argv) {
 
+    // Configurar std::cout para usar 2 decimales
+    std::cout << std::fixed << std::setprecision(2);
+
     const std::string tmpDirectory = utem::createTempDirectory();
     std::cout << "Carpeta temporal " << tmpDirectory << std::endl;
 
     if (argc > 1) {
         std::cout << utem::getLocalTime() << " Paso 1 - Clasifico los datos" << std::endl;
-        std::set<int> codes = carga_inicial(argv[1]);
+        std::string csvFile(argv[1]);
+        std::string excelFile(argv[2]);
+
+        std::future<std::map<int, double>> futureExchange = std::async(std::launch::async, cpi::getForeignExchange, excelFile);
+        std::set<int> codes = carga_inicial(csvFile);
+        std::map<int, double> exchange = futureExchange.get();
 
         std::cout << utem::getLocalTime() << " Paso 2 - Reduzco los SKU en base a la mediana" << std::endl;
         std::vector<int> list(codes.begin(), codes.end());
@@ -44,11 +54,11 @@ int main(int argc, char** argv) {
         }
 
         std::cout << utem::getLocalTime() << " Paso 3 - Preparo los datos de todos los años" << std::endl;
-        std::future<std::map<int, double>> future = std::async(std::launch::async, cpi::makeCpi, list);
+        std::future<std::map<int, Summary>> future = std::async(std::launch::async, cpi::makeCpi, exchange, list);
 
         std::cout << utem::getLocalTime() << " Paso 4 - Preparo los datos por año" << std::endl;
         std::map<int, std::vector<int>> map = utem::mapear(codes);
-        std::map<int, double> cpi;
+        std::map<int, Summary> cpi;
 
 #pragma omp parallel
         {
@@ -60,7 +70,7 @@ int main(int argc, char** argv) {
 
 #pragma omp task firstprivate(year, months)
                     {
-                        std::map<int, double> currentMap = cpi::makeCpi(months);
+                        std::map<int, Summary> currentMap = cpi::makeCpi(exchange, months);
 #pragma omp critical
                         {
                             cpi.insert(currentMap.begin(), currentMap.end());
@@ -71,14 +81,20 @@ int main(int argc, char** argv) {
             }
         }
 
-        for (std::map<int, double>::iterator it = cpi.begin(); it != cpi.end(); ++it) {
-            std::cout << it->first << " IPC: " << it->second << std::endl;
+        for (std::map<int, Summary>::iterator it = cpi.begin(); it != cpi.end(); ++it) {
+            std::cout << it->first
+                    << " IPC Perú:  " << it->second.GetCpiPen() << " (S/" << it->second.GetSumPen() << ") "
+                    << " IPC Chile: " << it->second.GetCpiClp() << " ($ " << it->second.GetSumClp() << ") "
+                    << std::endl;
         }
 
         std::cout << "IPC de todos los meses" << std::endl;
-        std::map<int, double> all = future.get();
-        for (std::map<int, double>::iterator it = all.begin(); it != all.end(); ++it) {
-            std::cout << it->first << " IPC: " << it->second << std::endl;
+        std::map<int, Summary> all = future.get();
+        for (std::map<int, Summary>::iterator it = all.begin(); it != all.end(); ++it) {
+            std::cout << it->first
+                    << " IPC Perú:  " << it->second.GetCpiPen() << " (S/" << it->second.GetSumPen() << ") "
+                    << " IPC Chile: " << it->second.GetCpiClp() << " ($ " << it->second.GetSumClp() << ") "
+                    << std::endl;
         }
     } else {
         participantes(argv[0]);
