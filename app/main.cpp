@@ -11,17 +11,22 @@
 #include "utem.h"
 
 /**
- * Función que muestra los participantes del grupo
+ * @brief Función que muestra los participantes del programa
  * @param programa nombre del ejecutable
  */
 void participantes(const std::string& programa);
 
+/**
+ * @brief Operación que separa en archivos año-mes los datos del archivo inicial
+ * @param rutaArchivo Ruta donde se encuentra el archivo CSV
+ * @return un lista única con los códigos de los archivos
+ */
 std::set<int> carga_inicial(const std::string& rutaArchivo);
 
 /**
- * Taller computacional
+ * Pauta del proyecto del curso
  * @param argc cantidad de argumentos
- * @param argv argumentos
+ * @param argv arreglo de argumentos
  * @return El código de salida del programa
  */
 int main(int argc, char** argv) {
@@ -29,10 +34,15 @@ int main(int argc, char** argv) {
     // Configurar std::cout para usar 2 decimales
     std::cout << std::fixed << std::setprecision(2);
 
+    // crea una carpeta temporal para almacenar los archivos intermedios
     const std::string tmpDirectory = utem::createTempDirectory();
     std::cout << "Carpeta temporal " << tmpDirectory << std::endl;
 
     if (argc > 1) {
+        /*
+         * El programa está segmentado en etapas.
+         * 
+         */
         std::cout << utem::getLocalTime() << " Paso 1 - Clasifico los datos" << std::endl;
         std::string csvFile(argv[1]);
         std::string excelFile(argv[2]);
