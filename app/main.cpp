@@ -83,7 +83,7 @@ int main(int argc, char** argv) {
 
         for (std::map<int, Summary>::iterator it = cpi.begin(); it != cpi.end(); ++it) {
             std::cout << it->first
-                    << " IPC Perú:  " << it->second.GetCpiPen() << " (S/" << it->second.GetSumPen() << ") "
+                    << " IPC Perú:  " << it->second.GetCpiPen() << " (S/" << it->second.GetSumPen() << ")\t\t"
                     << " IPC Chile: " << it->second.GetCpiClp() << " ($ " << it->second.GetSumClp() << ") "
                     << std::endl;
         }
@@ -92,7 +92,7 @@ int main(int argc, char** argv) {
         std::map<int, Summary> all = future.get();
         for (std::map<int, Summary>::iterator it = all.begin(); it != all.end(); ++it) {
             std::cout << it->first
-                    << " IPC Perú:  " << it->second.GetCpiPen() << " (S/" << it->second.GetSumPen() << ") "
+                    << " IPC Perú:  " << it->second.GetCpiPen() << " (S/" << it->second.GetSumPen() << ")\t\t"
                     << " IPC Chile: " << it->second.GetCpiClp() << " ($ " << it->second.GetSumClp() << ") "
                     << std::endl;
         }
