@@ -1,0 +1,6 @@
+%cpp -std=c++14
+%c -std=c11
+-iquote
+-I/usr/include
+-I/usr/local/include
+-I./include
