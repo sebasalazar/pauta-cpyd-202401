@@ -120,12 +120,11 @@ int utem::parseCsvLine(const std::string& line) {
         std::string sku = fields[6];
         if (sku != zeroStr) {
             std::string created = fields[0];
-            int quantity = std::stoi(fields[7]);
             double amount = std::stod(fields[9]);
 
-            if (quantity > 0 && amount > 0) {
+            if (amount > 0) {
                 YearMonth ym = parseYearMonth(created);
-                Product producto = Product(sku, (amount / quantity));
+                Product producto = Product(sku, amount);
                 escribir(ym, producto);
                 code = ym.GetYearMonth();
             }
@@ -135,7 +134,7 @@ int utem::parseCsvLine(const std::string& line) {
     return code;
 }
 
-std::map<int, std::vector<int>> utem::mapear(std::set<int> codes) {
+std::map<int, std::vector<int>> utem::getMonthsInYears(std::set<int> codes) {
     std::map<int, std::vector<int>> map;
     for (int code : codes) {
         YearMonth ym(code);

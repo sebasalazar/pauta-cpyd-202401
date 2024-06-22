@@ -23,8 +23,8 @@
 
 namespace utem {
 
-    const std::string zeroStr("0");
-    const std::string tempPath("tmp");
+    static const std::string zeroStr("0");
+    static const std::string tempPath("tmp");
 
     std::vector<std::string> parseLine(const std::string& line);
 
@@ -105,7 +105,7 @@ namespace utem {
      * @param codes listado de información
      * @return Mapa
      */
-    std::map<int, std::vector<int>> mapear(std::set<int> codes);
+    std::map<int, std::vector<int>> getMonthsInYears(std::set<int> codes);
 
     /**
      * @brief Esta función reduce las ocurrencias dentro de los archivos

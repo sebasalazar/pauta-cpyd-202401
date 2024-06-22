@@ -12,19 +12,22 @@
 
 /**
  * @brief Función que muestra los participantes del programa
- * @param programa nombre del ejecutable
+ * 
+ * @param program nombre del ejecutable
  */
-void participantes(const std::string& programa);
+void about(const std::string& program);
 
 /**
  * @brief Operación que separa en archivos año-mes los datos del archivo inicial
- * @param rutaArchivo Ruta donde se encuentra el archivo CSV
- * @return un lista única con los códigos de los archivos
+ * 
+ * @param csv Ruta donde se encuentra el archivo CSV
+ * @return un lista única con los año-mes que existen en el archivo
  */
-std::set<int> carga_inicial(const std::string& rutaArchivo);
+std::set<int> load(const std::string& csv);
 
 /**
- * Pauta del proyecto del curso
+ * @brief Pauta del proyecto del curso, sólo es una referencia al mecanismo usado para la evaluación.
+ * 
  * @param argc cantidad de argumentos
  * @param argv arreglo de argumentos
  * @return El código de salida del programa
@@ -38,43 +41,97 @@ int main(int argc, char** argv) {
     const std::string tmpDirectory = utem::createTempDirectory();
     std::cout << "Carpeta temporal " << tmpDirectory << std::endl;
 
-    if (argc > 1) {
+    if (argc > 2) {
         /*
          * El programa está segmentado en etapas.
          * 
          */
+        // Obtenemos la ruta del archivo CSV que será el primer argumento
+        const std::string csvFile(argv[1]);
+
+        // Obtenemos la ruta del archivo XLSX que será el segundo argumento
+        const std::string excelFile(argv[2]);
+
+        /*
+         * PASO 1.
+         * 
+         * Clasificación de DATOS
+         * Esta etapa tiene un paralelismo sencillo, 
+         * se puede optimizar bastante si se trabaja en 
+         * la lectura en paralelo del archivo.
+         * 
+         * Para cada año-mes tendrá un archivo con los productos que fueron comprados 
+         * en esa unidad de tiempo.
+         */
         std::cout << utem::getLocalTime() << " Paso 1 - Clasifico los datos" << std::endl;
-        std::string csvFile(argv[1]);
-        std::string excelFile(argv[2]);
 
+        // En un hilo asíncrono la aplicación cargará las divisas en un mapa que se llama exchange
         std::future<std::map<int, double>> futureExchange = std::async(std::launch::async, cpi::getForeignExchange, excelFile);
-        std::set<int> codes = carga_inicial(csvFile);
-        std::map<int, double> exchange = futureExchange.get();
 
-        std::cout << utem::getLocalTime() << " Paso 2 - Reduzco los SKU en base a la mediana" << std::endl;
-        std::vector<int> list(codes.begin(), codes.end());
+        // El hilo principal (lento) clasifica los datos que se procesan en el archivo 
+        // y nos devuelve una lista única de año-mes YYYYMM (ej: 202101,202102,...,202404)
+        const std::set<int> yearsMonth = load(csvFile);
 
+        // Obtenemos la respuesta del procesamiento asíncrono.
+        const std::map<int, double> exchange = futureExchange.get();
+
+        /*
+         * PASE 2.
+         * 
+         * Reducción de SKU, para obtener el monto se utilizará la MEDIANA como 
+         * mecanismo de cálculo y comparación.
+         * 
+         */
+        std::cout << utem::getLocalTime() << " Paso 2 - Reduzco los SKU" << std::endl;
+
+        // En la implementación OpenMP de GCC el contenedor vector está preparado para el paralelismo.
+        // copiamos un vector para mejorar el procesamiento
+        const std::vector<int> list(yearsMonth.begin(), yearsMonth.end());
+
+        // Para cada archivo generado en el paso anterior, se calcula la mediana de los precios
 #pragma omp parallel for
         for (size_t index = 0; index < list.size(); ++index) {
+            // Año-mes (YYYYMM) a procesar
             int code = list[index];
+
+            // Este mecanismo es mejorable, se calculan sku que después se descartarán
+            // Pero en la estrategia es válido, porque evita calcularlo después
             utem::unificar(code);
 
+            // Mostramos una línea para evidenciar el hilo que procesó el archivo (no es necesario).
 #pragma omp critical
             std::cout << utem::getLocalTime() << " Paso 2.1 Hilo " << omp_get_thread_num() << " el código " << code << std::endl;
         }
 
+        /*
+         * PASO 3.
+         * 
+         * Ejecuto un hilo asíncrono para procesar el IPC de todos los meses.
+         * Este proceso requiere revisar todos los archivos y es lento.
+         */
         std::cout << utem::getLocalTime() << " Paso 3 - Preparo los datos de todos los años" << std::endl;
+        
+        // Envío la tarea asíncrona
         std::future<std::map<int, Summary>> future = std::async(std::launch::async, cpi::makeCpi, exchange, list);
 
+        /*
+         * PASO 4.
+         * 
+         * Procesamos los valores para cada año.
+         * La idea es enviar lo años se procesen en paralelo.
+         */
         std::cout << utem::getLocalTime() << " Paso 4 - Preparo los datos por año" << std::endl;
-        std::map<int, std::vector<int>> map = utem::mapear(codes);
+        // Obtenemos un mapa en donde la llave es el año y los valores son los meses
+        const std::map<int, std::vector<int>> monthsInYear = utem::getMonthsInYears(yearsMonth);
+        
+        // Estructura donde almacenaremos el IPC, la llave es el año y los valores el resumen de los datos
         std::map<int, Summary> cpi;
 
 #pragma omp parallel
         {
 #pragma omp single nowait
             {
-                for (std::map<int, std::vector<int>>::iterator it = map.begin(); it != map.end(); ++it) {
+                for (std::map<int, std::vector<int>>::const_iterator it = monthsInYear.begin(); it != monthsInYear.end(); ++it) {
                     int year = it->first;
                     std::vector<int> months = it->second;
 
@@ -107,18 +164,20 @@ int main(int argc, char** argv) {
                     << std::endl;
         }
     } else {
-        participantes(argv[0]);
+        about(argv[0]);
     }
 
     return EXIT_SUCCESS;
 }
 
-void participantes(const std::string& programa) {
-    std::cout << std::endl << "=== Pauta del programa " << programa << " ===" << std::endl;
+void about(const std::string& program) {
+    std::cout << std::endl << "=== Pauta del Proyecto ===" << std::endl;
     std::cout << std::endl << "Profesor: Sebastián Salazar Molina" << std::endl;
+    std::cout << std::endl << "Modo de uso" << std::endl;
+    std::cout << std::endl << program << " \"ruta/a/pd.csv\" \"ruta/a/Datos históricos PEN_CLP.xlsx\"" << std::endl;
 }
 
-std::set<int> carga_inicial(const std::string& rutaArchivo) {
+std::set<int> load(const std::string& rutaArchivo) {
     std::set<int> codes;
 
     std::ifstream archivo(rutaArchivo);
