@@ -4,8 +4,6 @@
     <df root="." name="0">
       <df name="dist">
       </df>
-      <df name="tmp">
-      </df>
       <df name="xlsxio">
         <df name="lib">
         </df>

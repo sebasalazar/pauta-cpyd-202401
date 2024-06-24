@@ -9,6 +9,7 @@
 #include <omp.h>
 #include "summary.h"
 #include "utem.h"
+#include "file_service.h"
 
 /**
  * @brief Función que muestra los participantes del programa
@@ -36,10 +37,6 @@ int main(int argc, char** argv) {
 
     // Configurar std::cout para usar 2 decimales
     std::cout << std::fixed << std::setprecision(2);
-
-    // crea una carpeta temporal para almacenar los archivos intermedios
-    const std::string tmpDirectory = utem::createTempDirectory();
-    std::cout << "Carpeta temporal " << tmpDirectory << std::endl;
 
     if (argc > 2) {
         /*
@@ -96,7 +93,7 @@ int main(int argc, char** argv) {
 
             // Este mecanismo es mejorable, se calculan sku que después se descartarán
             // Pero en la estrategia es válido, porque evita calcularlo después
-            utem::unificar(code);
+            utem::unify(code);
 
             // Mostramos una línea para evidenciar el hilo que procesó el archivo (no es necesario).
 #pragma omp critical
@@ -110,7 +107,7 @@ int main(int argc, char** argv) {
          * Este proceso requiere revisar todos los archivos y es lento.
          */
         std::cout << utem::getLocalTime() << " Paso 3 - Preparo los datos de todos los años" << std::endl;
-        
+
         // Envío la tarea asíncrona
         std::future<std::map<int, Summary>> future = std::async(std::launch::async, cpi::makeCpi, exchange, list);
 
@@ -123,7 +120,7 @@ int main(int argc, char** argv) {
         std::cout << utem::getLocalTime() << " Paso 4 - Preparo los datos por año" << std::endl;
         // Obtenemos un mapa en donde la llave es el año y los valores son los meses
         const std::map<int, std::vector<int>> monthsInYear = utem::getMonthsInYears(yearsMonth);
-        
+
         // Estructura donde almacenaremos el IPC, la llave es el año y los valores el resumen de los datos
         std::map<int, Summary> cpi;
 
@@ -182,6 +179,8 @@ std::set<int> load(const std::string& rutaArchivo) {
 
     std::ifstream archivo(rutaArchivo);
     if (archivo.is_open()) {
+        FileService fileService;
+
         // Omitir la primera línea si contiene encabezados
         std::string encabezado;
         std::getline(archivo, encabezado);
@@ -191,7 +190,7 @@ std::set<int> load(const std::string& rutaArchivo) {
          * Leemos el archivo para clasificar los datos por mes.
          */
         while (std::getline(archivo, linea)) {
-            int code = utem::parseCsvLine(linea);
+            int code = fileService.parseCsvLine(linea);
             if (code > 0) {
                 codes.insert(code);
             }

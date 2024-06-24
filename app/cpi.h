@@ -6,6 +6,7 @@
 #include <fstream>
 #include <vector>
 #include <map>
+#include <omp.h>
 #include "xlsxio/xlsxio_read.h"
 #include "product.h"
 #include "utem.h"
@@ -18,6 +19,8 @@ namespace cpi {
     std::map<int, double> calculate(std::vector<int> months, std::map<int, double> amountSums);
 
     std::map<int, double> getCpi(std::vector<int> codes, std::set<Product> products);
+
+    std::map<int, double> getParallelCpi(std::vector<int> codes, std::set<Product> products);
 
     std::map<int, Summary> makeCpi(std::map<int, double> exchange, std::vector<int> codes);
 };

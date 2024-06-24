@@ -26,7 +26,6 @@ namespace utem {
     static const std::string zeroStr("0");
     static const std::string tempPath("tmp");
 
-    std::vector<std::string> parseLine(const std::string& line);
 
     /**
      * @brief Texto con la hora local
@@ -66,41 +65,6 @@ namespace utem {
     std::vector<std::string> split(const std::string &line, char delimiter);
 
     /**
-     * @brief Elimina un directorio en la ruta especificada.
-     * 
-     * @param dirPath Ruta del directorio a eliminar.
-     */
-    void removeDirectory(const std::string& dirPath);
-
-    /**
-     * @brief Crea un directorio en la ruta especificada.
-     * 
-     * @param dirPath Ruta del directorio a crear.
-     */
-    std::string createDirectory(const std::string& dirPath);
-
-    /**
-     * @brief Crea un directorio temporal.
-     */
-    std::string createTempDirectory();
-
-    /**
-     * @brief Escribe los datos de YearMonth y Producto.
-     * 
-     * @param ym Objeto YearMonth.
-     * @param producto Objeto Producto.
-     */
-    void escribir(YearMonth ym, Product producto);
-
-    /**
-     * @brief Parsea una línea CSV y devuelve un objeto Contenedor.
-     * 
-     * @param str Línea CSV a parsear.
-     * @return Código del año-mes procesado
-     */
-    int parseCsvLine(const std::string& str);
-
-    /**
      * @brief Transforma los años meses en un mapa separado por años
      * @param codes listado de información
      * @return Mapa
@@ -111,7 +75,7 @@ namespace utem {
      * @brief Esta función reduce las ocurrencias dentro de los archivos
      * @param code código a revisar
      */
-    void unificar(int code);
+    void unify(int code);
 
     /**
      * @brief Calcula la mediana.
@@ -120,7 +84,7 @@ namespace utem {
      */
     double calculateMedian(std::vector<double> list);
 
-    std::set<Product> obtenerCanastaBasica(std::vector<int> codes);
+    std::set<Product> getBasicBasket(std::vector<int> codes);
 
 
 };
