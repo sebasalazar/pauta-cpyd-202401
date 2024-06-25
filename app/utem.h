@@ -70,6 +70,8 @@ namespace utem {
      * @return Mapa
      */
     std::map<int, std::vector<int>> getMonthsInYears(std::set<int> codes);
+    
+    std::vector<int> getYears(std::set<int> codes);
 
     /**
      * @brief Esta función reduce las ocurrencias dentro de los archivos

@@ -3,11 +3,11 @@
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
     <df root="." name="0">
       <in>cpi.cpp</in>
+      <in>file_service.cpp</in>
       <in>ipc.cpp</in>
       <in>main.cpp</in>
       <in>product.cpp</in>
       <in>summary.cpp</in>
-      <in>summary.h</in>
       <in>utem.cpp</in>
       <in>year_month.cpp</in>
     </df>
@@ -59,9 +59,9 @@
         <ccTool flags="1">
         </ccTool>
       </item>
-      <item path="file_service.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="file_service.h" ex="false" tool="3" flavor2="0">
+      <item path="file_service.cpp" ex="false" tool="1" flavor2="11">
+        <ccTool flags="1">
+        </ccTool>
       </item>
       <item path="ipc.cpp" ex="false" tool="1" flavor2="11">
         <ccTool flags="0">
@@ -75,9 +75,9 @@
         <ccTool flags="1">
         </ccTool>
       </item>
-      <item path="summary.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="summary.h" ex="false" tool="3" flavor2="0">
+      <item path="summary.cpp" ex="false" tool="1" flavor2="11">
+        <ccTool flags="1">
+        </ccTool>
       </item>
       <item path="utem.cpp" ex="false" tool="1" flavor2="11">
         <ccTool flags="1">

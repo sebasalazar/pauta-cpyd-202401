@@ -120,30 +120,46 @@ int main(int argc, char** argv) {
         std::cout << utem::getLocalTime() << " Paso 4 - Preparo los datos por año" << std::endl;
         // Obtenemos un mapa en donde la llave es el año y los valores son los meses
         const std::map<int, std::vector<int>> monthsInYear = utem::getMonthsInYears(yearsMonth);
+        std::vector<int> years = utem::getYears(yearsMonth);
 
         // Estructura donde almacenaremos el IPC, la llave es el año y los valores el resumen de los datos
         std::map<int, Summary> cpi;
 
-#pragma omp parallel
-        {
-#pragma omp single nowait
-            {
-                for (std::map<int, std::vector<int>>::const_iterator it = monthsInYear.begin(); it != monthsInYear.end(); ++it) {
-                    int year = it->first;
-                    std::vector<int> months = it->second;
-
-#pragma omp task firstprivate(year, months)
-                    {
-                        std::map<int, Summary> currentMap = cpi::makeCpi(exchange, months);
+#pragma omp parallel for
+        for (size_t index = 0; index < years.size(); index++) {
+            int year = years[index];
+            std::vector<int> months = monthsInYear.at(year);
+            std::map<int, Summary> currentMap = cpi::makeCpi(exchange, months);
 #pragma omp critical
-                        {
-                            cpi.insert(currentMap.begin(), currentMap.end());
-                            std::cout << utem::getLocalTime() << " Paso 4.1 - Terminando proceso del año " << year << std::endl;
-                        }
-                    }
-                }
+            {
+                cpi.insert(currentMap.begin(), currentMap.end());
+                std::cout << utem::getLocalTime() << " Paso 4.1 - Terminando proceso del año " << year << std::endl;
             }
         }
+
+
+
+
+        //#pragma omp parallel
+        //        {
+        //#pragma omp single nowait
+        //            {
+        //                for (std::map<int, std::vector<int>>::const_iterator it = monthsInYear.begin(); it != monthsInYear.end(); ++it) {
+        //                    int year = it->first;
+        //                    std::vector<int> months = it->second;
+        //
+        //#pragma omp task firstprivate(year, months)
+        //                    {
+        //                        std::map<int, Summary> currentMap = cpi::makeCpi(exchange, months);
+        //#pragma omp critical
+        //                        {
+        //                            cpi.insert(currentMap.begin(), currentMap.end());
+        //                            std::cout << utem::getLocalTime() << " Paso 4.1 - Terminando proceso del año " << year << std::endl;
+        //                        }
+        //                    }
+        //                }
+        //            }
+        //        }
 
         for (std::map<int, Summary>::iterator it = cpi.begin(); it != cpi.end(); ++it) {
             std::cout << it->first

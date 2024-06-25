@@ -51,6 +51,19 @@ std::map<int, std::vector<int>> utem::getMonthsInYears(std::set<int> codes) {
     return map;
 }
 
+std::vector<int> utem::getYears(std::set<int> codes) {
+    std::vector<int> years;
+    if (!codes.empty()) {
+        std::set<int> uniques;
+        for (int code : codes) {
+            YearMonth ym(code);
+            uniques.insert(ym.GetYear());
+        }
+        years = std::vector<int>(uniques.begin(), uniques.end());
+    }
+    return years;
+}
+
 void utem::unify(int code) {
     // Leemos el archivo año-mes
     std::string inFilePath = tempPath + "/" + std::to_string(code);
