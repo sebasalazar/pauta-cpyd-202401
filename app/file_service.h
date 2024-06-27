@@ -23,11 +23,32 @@
 #include "year_month.h"
 #include "utem.h"
 
+/**
+ * @class FileService
+ * @brief Clase para manejar operaciones de archivo y directorio, incluyendo parsing de CSV.
+ */
 class FileService {
 public:
+    /**
+     * @brief Constructor por defecto.
+     *
+     * Inicializa un objeto FileService.
+     */
     FileService();
+
+    /**
+     * @brief Destructor.
+     *
+     * Libera los recursos utilizados por el objeto FileService.
+     */
     virtual ~FileService();
 
+    /**
+     * @brief Parsea una línea de texto y la divide en componentes.
+     * 
+     * @param line Línea de texto a parsear.
+     * @return std::vector<std::string> Vector con los componentes de la línea.
+     */
     std::vector<std::string> parseLine(const std::string& line);
 
     /**
@@ -61,11 +82,16 @@ public:
     int parseCsvLine(const std::string& str);
 
 private:
-
+    /**
+     * Mapa para manejar archivos abiertos.
+     * A medida que se necesitan abrir archivos, estos manejadores se agregan a 
+     * este mapa, de tal manera de sólo gastar tiempo en i/o una vez por 
+     * instancia de esta clase.
+     */
     std::unordered_map<std::string, std::ofstream> fileMap;
 
     /**
-     * @brief Escribe los datos de YearMonth y Producto.
+     * @brief Escribe los datos de YearMonth y Producto en un archivo.
      * 
      * @param ym Código Año-Mes.
      * @param sku Código del producto.

@@ -129,38 +129,18 @@ int main(int argc, char** argv) {
         for (size_t index = 0; index < years.size(); index++) {
             int year = years[index];
             std::vector<int> months = monthsInYear.at(year);
+
+            // Mapa con el resultado actual del año en curso
             std::map<int, Summary> currentMap = cpi::makeCpi(exchange, months);
 #pragma omp critical
             {
+                // se agrega al mapa de resultados
                 cpi.insert(currentMap.begin(), currentMap.end());
                 std::cout << utem::getLocalTime() << " Paso 4.1 - Terminando proceso del año " << year << std::endl;
             }
         }
 
-
-
-
-        //#pragma omp parallel
-        //        {
-        //#pragma omp single nowait
-        //            {
-        //                for (std::map<int, std::vector<int>>::const_iterator it = monthsInYear.begin(); it != monthsInYear.end(); ++it) {
-        //                    int year = it->first;
-        //                    std::vector<int> months = it->second;
-        //
-        //#pragma omp task firstprivate(year, months)
-        //                    {
-        //                        std::map<int, Summary> currentMap = cpi::makeCpi(exchange, months);
-        //#pragma omp critical
-        //                        {
-        //                            cpi.insert(currentMap.begin(), currentMap.end());
-        //                            std::cout << utem::getLocalTime() << " Paso 4.1 - Terminando proceso del año " << year << std::endl;
-        //                        }
-        //                    }
-        //                }
-        //            }
-        //        }
-
+        // Se muestras los resultados año-mes
         for (std::map<int, Summary>::iterator it = cpi.begin(); it != cpi.end(); ++it) {
             std::cout << it->first
                     << " IPC Perú:  " << it->second.GetCpiPen() << " (S/" << it->second.GetSumPen() << ")\t\t"
@@ -168,6 +148,7 @@ int main(int argc, char** argv) {
                     << std::endl;
         }
 
+        // Se muestran los resutlados para todos los meses
         std::cout << "IPC de todos los meses" << std::endl;
         std::map<int, Summary> all = future.get();
         for (std::map<int, Summary>::iterator it = all.begin(); it != all.end(); ++it) {
