@@ -1,0 +1,177 @@
+\doxysection{Referencia de la clase File\+Service}
+\hypertarget{classFileService}{}\label{classFileService}\index{FileService@{FileService}}
+
+
+Clase para manejar operaciones de archivo y directorio, incluyendo parsing de CSV.  
+
+
+
+
+{\ttfamily \#include $<$file\+\_\+service.\+h$>$}
+
+\doxysubsubsection*{Métodos públicos}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classFileService_a2e3edd9b5f046cef813f87fc38bb2730}{File\+Service}} ()
+\begin{DoxyCompactList}\small\item\em Constructor por defecto. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classFileService_ab0ed2b2304e128104c2cff8fc3fef1f3}{\texorpdfstring{$\sim$}{\string~}\+File\+Service}} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{classFileService_a61c09d45e1b6e867a517081f16c26d46}{parse\+Line}} (const std\+::string \&line)
+\begin{DoxyCompactList}\small\item\em Parsea una línea de texto y la divide en componentes. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classFileService_a301c94a171ab64371ef10d0ad218f1b9}{remove\+Directory}} (const std\+::string \&dir\+Path)
+\begin{DoxyCompactList}\small\item\em Elimina un directorio en la ruta especificada. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classFileService_ad369be5a34d28912e1c639db2e4025b4}{create\+Directory}} (const std\+::string \&dir\+Path)
+\begin{DoxyCompactList}\small\item\em Crea un directorio en la ruta especificada. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classFileService_aeb03cb1ee0198faaa329115e700e10cd}{create\+Temp\+Directory}} ()
+\begin{DoxyCompactList}\small\item\em Crea un directorio temporal. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classFileService_a92c6437029d3c10e0eb2f53da339219e}{parse\+Csv\+Line}} (const std\+::string \&str)
+\begin{DoxyCompactList}\small\item\em Parsea una línea CSV y devuelve un código de año-\/mes procesado. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+Clase para manejar operaciones de archivo y directorio, incluyendo parsing de CSV. 
+
+Definición en la línea \mbox{\hyperlink{file__service_8h_source_l00030}{30}} del archivo \mbox{\hyperlink{file__service_8h_source}{file\+\_\+service.\+h}}.
+
+
+
+\doxysubsection{Documentación de constructores y destructores}
+\Hypertarget{classFileService_a2e3edd9b5f046cef813f87fc38bb2730}\label{classFileService_a2e3edd9b5f046cef813f87fc38bb2730} 
+\index{FileService@{FileService}!FileService@{FileService}}
+\index{FileService@{FileService}!FileService@{FileService}}
+\doxysubsubsection{\texorpdfstring{FileService()}{FileService()}}
+{\footnotesize\ttfamily File\+Service\+::\+File\+Service (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Constructor por defecto. 
+
+Inicializa un objeto \doxylink{classFileService}{File\+Service}. 
+
+Definición en la línea \mbox{\hyperlink{file__service_8cpp_source_l00003}{3}} del archivo \mbox{\hyperlink{file__service_8cpp_source}{file\+\_\+service.\+cpp}}.
+
+\Hypertarget{classFileService_ab0ed2b2304e128104c2cff8fc3fef1f3}\label{classFileService_ab0ed2b2304e128104c2cff8fc3fef1f3} 
+\index{FileService@{FileService}!````~FileService@{\texorpdfstring{$\sim$}{\string~}FileService}}
+\index{````~FileService@{\texorpdfstring{$\sim$}{\string~}FileService}!FileService@{FileService}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}FileService()}{\string~FileService()}}
+{\footnotesize\ttfamily File\+Service\+::\texorpdfstring{$\sim$}{\string~}\+File\+Service (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Destructor. 
+
+Libera los recursos utilizados por el objeto \doxylink{classFileService}{File\+Service}. 
+
+Definición en la línea \mbox{\hyperlink{file__service_8cpp_source_l00008}{8}} del archivo \mbox{\hyperlink{file__service_8cpp_source}{file\+\_\+service.\+cpp}}.
+
+
+
+\doxysubsection{Documentación de funciones miembro}
+\Hypertarget{classFileService_ad369be5a34d28912e1c639db2e4025b4}\label{classFileService_ad369be5a34d28912e1c639db2e4025b4} 
+\index{FileService@{FileService}!createDirectory@{createDirectory}}
+\index{createDirectory@{createDirectory}!FileService@{FileService}}
+\doxysubsubsection{\texorpdfstring{createDirectory()}{createDirectory()}}
+{\footnotesize\ttfamily std\+::string File\+Service\+::create\+Directory (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{dir\+Path }\end{DoxyParamCaption})}
+
+
+
+Crea un directorio en la ruta especificada. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em dir\+Path} & Ruta del directorio a crear. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+std\+::string Ruta del directorio creado. 
+\end{DoxyReturn}
+
+
+Definición en la línea \mbox{\hyperlink{file__service_8cpp_source_l00056}{56}} del archivo \mbox{\hyperlink{file__service_8cpp_source}{file\+\_\+service.\+cpp}}.
+
+\Hypertarget{classFileService_aeb03cb1ee0198faaa329115e700e10cd}\label{classFileService_aeb03cb1ee0198faaa329115e700e10cd} 
+\index{FileService@{FileService}!createTempDirectory@{createTempDirectory}}
+\index{createTempDirectory@{createTempDirectory}!FileService@{FileService}}
+\doxysubsubsection{\texorpdfstring{createTempDirectory()}{createTempDirectory()}}
+{\footnotesize\ttfamily std\+::string File\+Service\+::create\+Temp\+Directory (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Crea un directorio temporal. 
+
+\begin{DoxyReturn}{Devuelve}
+std\+::string Ruta del directorio temporal creado. 
+\end{DoxyReturn}
+
+
+Definición en la línea \mbox{\hyperlink{file__service_8cpp_source_l00071}{71}} del archivo \mbox{\hyperlink{file__service_8cpp_source}{file\+\_\+service.\+cpp}}.
+
+\Hypertarget{classFileService_a92c6437029d3c10e0eb2f53da339219e}\label{classFileService_a92c6437029d3c10e0eb2f53da339219e} 
+\index{FileService@{FileService}!parseCsvLine@{parseCsvLine}}
+\index{parseCsvLine@{parseCsvLine}!FileService@{FileService}}
+\doxysubsubsection{\texorpdfstring{parseCsvLine()}{parseCsvLine()}}
+{\footnotesize\ttfamily int File\+Service\+::parse\+Csv\+Line (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{str }\end{DoxyParamCaption})}
+
+
+
+Parsea una línea CSV y devuelve un código de año-\/mes procesado. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em str} & Línea CSV a parsear. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+int Código del año-\/mes procesado. 
+\end{DoxyReturn}
+
+
+Definición en la línea \mbox{\hyperlink{file__service_8cpp_source_l00093}{93}} del archivo \mbox{\hyperlink{file__service_8cpp_source}{file\+\_\+service.\+cpp}}.
+
+\Hypertarget{classFileService_a61c09d45e1b6e867a517081f16c26d46}\label{classFileService_a61c09d45e1b6e867a517081f16c26d46} 
+\index{FileService@{FileService}!parseLine@{parseLine}}
+\index{parseLine@{parseLine}!FileService@{FileService}}
+\doxysubsubsection{\texorpdfstring{parseLine()}{parseLine()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::string $>$ File\+Service\+::parse\+Line (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{line }\end{DoxyParamCaption})}
+
+
+
+Parsea una línea de texto y la divide en componentes. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em line} & Línea de texto a parsear. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+std\+::vector$<$std\+::string$>$ Vector con los componentes de la línea. 
+\end{DoxyReturn}
+
+
+Definición en la línea \mbox{\hyperlink{file__service_8cpp_source_l00016}{16}} del archivo \mbox{\hyperlink{file__service_8cpp_source}{file\+\_\+service.\+cpp}}.
+
+\Hypertarget{classFileService_a301c94a171ab64371ef10d0ad218f1b9}\label{classFileService_a301c94a171ab64371ef10d0ad218f1b9} 
+\index{FileService@{FileService}!removeDirectory@{removeDirectory}}
+\index{removeDirectory@{removeDirectory}!FileService@{FileService}}
+\doxysubsubsection{\texorpdfstring{removeDirectory()}{removeDirectory()}}
+{\footnotesize\ttfamily void File\+Service\+::remove\+Directory (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{dir\+Path }\end{DoxyParamCaption})}
+
+
+
+Elimina un directorio en la ruta especificada. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em dir\+Path} & Ruta del directorio a eliminar. \\
+\hline
+\end{DoxyParams}
+
+
+Definición en la línea \mbox{\hyperlink{file__service_8cpp_source_l00048}{48}} del archivo \mbox{\hyperlink{file__service_8cpp_source}{file\+\_\+service.\+cpp}}.
+
+
+
+La documentación de esta clase está generada de los siguientes archivos\+:\begin{DoxyCompactItemize}
+\item 
+file\+\_\+service.\+h\item 
+file\+\_\+service.\+cpp\end{DoxyCompactItemize}

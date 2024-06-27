@@ -1,0 +1,188 @@
+\doxysection{main.\+cpp}
+\hypertarget{main_8cpp_source}{}\label{main_8cpp_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00002}00002\ \textcolor{preprocessor}{\#include\ <iomanip>}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00003}00003\ \textcolor{preprocessor}{\#include\ <future>}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00005}00005\ \textcolor{preprocessor}{\#include\ <set>}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00006}00006\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00007}00007\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00008}00008\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00009}00009\ \textcolor{preprocessor}{\#include\ <omp.h>}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00010}00010\ \textcolor{preprocessor}{\#include\ "{}summary.h"{}}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00011}00011\ \textcolor{preprocessor}{\#include\ "{}utem.h"{}}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00012}00012\ \textcolor{preprocessor}{\#include\ "{}file\_service.h"{}}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00019}00019\ \textcolor{keywordtype}{void}\ about(\textcolor{keyword}{const}\ std::string\&\ program);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00027}00027\ std::set<int>\ load(\textcolor{keyword}{const}\ std::string\&\ csv);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00036}00036\ \textcolor{keywordtype}{int}\ main(\textcolor{keywordtype}{int}\ argc,\ \textcolor{keywordtype}{char}**\ argv)\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00038}00038\ \ \ \ \ \textcolor{comment}{//\ Configurar\ std::cout\ para\ usar\ 2\ decimales}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00039}00039\ \ \ \ \ std::cout\ <<\ std::fixed\ <<\ std::setprecision(2);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00041}00041\ \ \ \ \ \textcolor{keywordflow}{if}\ (argc\ >\ 2)\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00042}00042\ \ \ \ \ \ \ \ \ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00043}00043\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ *\ El\ programa\ está\ segmentado\ en\ etapas.}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00044}00044\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00045}00045\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00046}00046\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Obtenemos\ la\ ruta\ del\ archivo\ CSV\ que\ será\ el\ primer\ argumento}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00047}00047\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ csvFile(argv[1]);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00049}00049\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Obtenemos\ la\ ruta\ del\ archivo\ XLSX\ que\ será\ el\ segundo\ argumento}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00050}00050\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ excelFile(argv[2]);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00052}00052\ \ \ \ \ \ \ \ \ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00053}00053\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ *\ PASO\ 1.}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00054}00054\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00055}00055\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ *\ Clasificación\ de\ DATOS}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00056}00056\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ *\ Esta\ etapa\ tiene\ un\ paralelismo\ sencillo,\ }}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00057}00057\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ *\ se\ puede\ optimizar\ bastante\ si\ se\ trabaja\ en\ }}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00058}00058\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ *\ la\ lectura\ en\ paralelo\ del\ archivo.}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00059}00059\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00060}00060\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ *\ Para\ cada\ año-\/mes\ tendrá\ un\ archivo\ con\ los\ productos\ que\ fueron\ comprados\ }}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00061}00061\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ *\ en\ esa\ unidad\ de\ tiempo.}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00062}00062\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00063}00063\ \ \ \ \ \ \ \ \ std::cout\ <<\ \mbox{\hyperlink{namespaceutem_a18dd7329862f1e8f88d4e02e72e0cd93}{utem::getLocalTime}}()\ <<\ \textcolor{stringliteral}{"{}\ Paso\ 1\ -\/\ Clasifico\ los\ datos"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00064}00064\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00065}00065\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ En\ un\ hilo\ asíncrono\ la\ aplicación\ cargará\ las\ divisas\ en\ un\ mapa\ que\ se\ llama\ exchange}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00066}00066\ \ \ \ \ \ \ \ \ std::future<std::map<int,\ double>>\ futureExchange\ =\ std::async(std::launch::async,\ \mbox{\hyperlink{namespacecpi_a60eaf6759abb47ff16c5297727369503}{cpi::getForeignExchange}},\ excelFile);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00067}00067\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00068}00068\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ El\ hilo\ principal\ (lento)\ clasifica\ los\ datos\ que\ se\ procesan\ en\ el\ archivo\ }}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00069}00069\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ y\ nos\ devuelve\ una\ lista\ única\ de\ año-\/mes\ YYYYMM\ (ej:\ 202101,202102,...,202404)}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00070}00070\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::set<int>\ yearsMonth\ =\ load(csvFile);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00071}00071\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00072}00072\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Obtenemos\ la\ respuesta\ del\ procesamiento\ asíncrono.}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00073}00073\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::map<int,\ double>\ exchange\ =\ futureExchange.get();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00074}00074\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00075}00075\ \ \ \ \ \ \ \ \ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00076}00076\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ *\ PASE\ 2.}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00077}00077\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00078}00078\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ *\ Reducción\ de\ SKU,\ para\ obtener\ el\ monto\ se\ utilizará\ la\ MEDIANA\ como\ }}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00079}00079\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ *\ mecanismo\ de\ cálculo\ y\ comparación.}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00080}00080\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00081}00081\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00082}00082\ \ \ \ \ \ \ \ \ std::cout\ <<\ \mbox{\hyperlink{namespaceutem_a18dd7329862f1e8f88d4e02e72e0cd93}{utem::getLocalTime}}()\ <<\ \textcolor{stringliteral}{"{}\ Paso\ 2\ -\/\ Reduzco\ los\ SKU"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00083}00083\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00084}00084\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ En\ la\ implementación\ OpenMP\ de\ GCC\ el\ contenedor\ vector\ está\ preparado\ para\ el\ paralelismo.}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00085}00085\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ copiamos\ un\ vector\ para\ mejorar\ el\ procesamiento}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00086}00086\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<int>\ list(yearsMonth.begin(),\ yearsMonth.end());}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00087}00087\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00088}00088\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Para\ cada\ archivo\ generado\ en\ el\ paso\ anterior,\ se\ calcula\ la\ mediana\ de\ los\ precios}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00089}00089\ \textcolor{preprocessor}{\#pragma\ omp\ parallel\ for}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00090}00090\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ index\ =\ 0;\ index\ <\ list.size();\ ++index)\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00091}00091\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Año-\/mes\ (YYYYMM)\ a\ procesar}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00092}00092\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ code\ =\ list[index];}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00093}00093\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00094}00094\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Este\ mecanismo\ es\ mejorable,\ se\ calculan\ sku\ que\ después\ se\ descartarán}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00095}00095\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Pero\ en\ la\ estrategia\ es\ válido,\ porque\ evita\ calcularlo\ después}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00096}00096\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceutem_a888fd05b88ff670ca063a638a4035624}{utem::unify}}(code);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00097}00097\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00098}00098\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Mostramos\ una\ línea\ para\ evidenciar\ el\ hilo\ que\ procesó\ el\ archivo\ (no\ es\ necesario).}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00099}00099\ \textcolor{preprocessor}{\#pragma\ omp\ critical}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00100}00100\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \mbox{\hyperlink{namespaceutem_a18dd7329862f1e8f88d4e02e72e0cd93}{utem::getLocalTime}}()\ <<\ \textcolor{stringliteral}{"{}\ Paso\ 2.1\ Hilo\ "{}}\ <<\ omp\_get\_thread\_num()\ <<\ \textcolor{stringliteral}{"{}\ el\ código\ "{}}\ <<\ code\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00101}00101\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00102}00102\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00103}00103\ \ \ \ \ \ \ \ \ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00104}00104\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ *\ PASO\ 3.}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00105}00105\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00106}00106\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ *\ Ejecuto\ un\ hilo\ asíncrono\ para\ procesar\ el\ IPC\ de\ todos\ los\ meses.}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00107}00107\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ *\ Este\ proceso\ requiere\ revisar\ todos\ los\ archivos\ y\ es\ lento.}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00108}00108\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00109}00109\ \ \ \ \ \ \ \ \ std::cout\ <<\ \mbox{\hyperlink{namespaceutem_a18dd7329862f1e8f88d4e02e72e0cd93}{utem::getLocalTime}}()\ <<\ \textcolor{stringliteral}{"{}\ Paso\ 3\ -\/\ Preparo\ los\ datos\ de\ todos\ los\ años"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00110}00110\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00111}00111\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Envío\ la\ tarea\ asíncrona}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00112}00112\ \ \ \ \ \ \ \ \ std::future<std::map<int,\ Summary>>\ future\ =\ std::async(std::launch::async,\ \mbox{\hyperlink{namespacecpi_a758c6f9f4acc189dfd424ecf3696b924}{cpi::makeCpi}},\ exchange,\ list);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00113}00113\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00114}00114\ \ \ \ \ \ \ \ \ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00115}00115\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ *\ PASO\ 4.}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00116}00116\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00117}00117\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ *\ Procesamos\ los\ valores\ para\ cada\ año.}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00118}00118\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ *\ La\ idea\ es\ enviar\ lo\ años\ se\ procesen\ en\ paralelo.}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00119}00119\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00120}00120\ \ \ \ \ \ \ \ \ std::cout\ <<\ \mbox{\hyperlink{namespaceutem_a18dd7329862f1e8f88d4e02e72e0cd93}{utem::getLocalTime}}()\ <<\ \textcolor{stringliteral}{"{}\ Paso\ 4\ -\/\ Preparo\ los\ datos\ por\ año"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00121}00121\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Obtenemos\ un\ mapa\ en\ donde\ la\ llave\ es\ el\ año\ y\ los\ valores\ son\ los\ meses}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00122}00122\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::map<int,\ std::vector<int>>\ monthsInYear\ =\ \mbox{\hyperlink{namespaceutem_a8422cb3a640494a45dfe615562394527}{utem::getMonthsInYears}}(yearsMonth);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00123}00123\ \ \ \ \ \ \ \ \ std::vector<int>\ years\ =\ \mbox{\hyperlink{namespaceutem_a8e10faf037337ea9349e98c836714611}{utem::getYears}}(yearsMonth);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00124}00124\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00125}00125\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Estructura\ donde\ almacenaremos\ el\ IPC,\ la\ llave\ es\ el\ año\ y\ los\ valores\ el\ resumen\ de\ los\ datos}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00126}00126\ \ \ \ \ \ \ \ \ std::map<int,\ Summary>\ \mbox{\hyperlink{namespacecpi}{cpi}};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00127}00127\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00128}00128\ \textcolor{preprocessor}{\#pragma\ omp\ parallel\ for}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00129}00129\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ index\ =\ 0;\ index\ <\ years.size();\ index++)\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00130}00130\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ year\ =\ years[index];}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00131}00131\ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<int>\ months\ =\ monthsInYear.at(year);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00132}00132\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00133}00133\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Mapa\ con\ el\ resultado\ actual\ del\ año\ en\ curso}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00134}00134\ \ \ \ \ \ \ \ \ \ \ \ \ std::map<int,\ Summary>\ currentMap\ =\ \mbox{\hyperlink{namespacecpi_a758c6f9f4acc189dfd424ecf3696b924}{cpi::makeCpi}}(exchange,\ months);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00135}00135\ \textcolor{preprocessor}{\#pragma\ omp\ critical}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00136}00136\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00137}00137\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ se\ agrega\ al\ mapa\ de\ resultados}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00138}00138\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacecpi}{cpi}}.insert(currentMap.begin(),\ currentMap.end());}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00139}00139\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \mbox{\hyperlink{namespaceutem_a18dd7329862f1e8f88d4e02e72e0cd93}{utem::getLocalTime}}()\ <<\ \textcolor{stringliteral}{"{}\ Paso\ 4.1\ -\/\ Terminando\ proceso\ del\ año\ "{}}\ <<\ year\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00140}00140\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00141}00141\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00142}00142\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00143}00143\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Se\ muestras\ los\ resultados\ año-\/mes}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00144}00144\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (std::map<int,\ Summary>::iterator\ it\ =\ \mbox{\hyperlink{namespacecpi}{cpi}}.begin();\ it\ !=\ \mbox{\hyperlink{namespacecpi}{cpi}}.end();\ ++it)\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00145}00145\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ it-\/>first}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00146}00146\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}\ IPC\ Perú:\ \ "{}}\ <<\ it-\/>second.GetCpiPen()\ <<\ \textcolor{stringliteral}{"{}\ (S/"{}}\ <<\ it-\/>second.GetSumPen()\ <<\ \textcolor{stringliteral}{"{})\(\backslash\)t\(\backslash\)t"{}}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00147}00147\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}\ IPC\ Chile:\ "{}}\ <<\ it-\/>second.GetCpiClp()\ <<\ \textcolor{stringliteral}{"{}\ (\$\ "{}}\ <<\ it-\/>second.GetSumClp()\ <<\ \textcolor{stringliteral}{"{})\ "{}}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00148}00148\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00149}00149\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00150}00150\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00151}00151\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Se\ muestran\ los\ resutlados\ para\ todos\ los\ meses}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00152}00152\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}IPC\ de\ todos\ los\ meses"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00153}00153\ \ \ \ \ \ \ \ \ std::map<int,\ Summary>\ all\ =\ future.get();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00154}00154\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (std::map<int,\ Summary>::iterator\ it\ =\ all.begin();\ it\ !=\ all.end();\ ++it)\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00155}00155\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ it-\/>first}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00156}00156\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}\ IPC\ Perú:\ \ "{}}\ <<\ it-\/>second.GetCpiPen()\ <<\ \textcolor{stringliteral}{"{}\ (S/"{}}\ <<\ it-\/>second.GetSumPen()\ <<\ \textcolor{stringliteral}{"{})\(\backslash\)t\(\backslash\)t"{}}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00157}00157\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}\ IPC\ Chile:\ "{}}\ <<\ it-\/>second.GetCpiClp()\ <<\ \textcolor{stringliteral}{"{}\ (\$\ "{}}\ <<\ it-\/>second.GetSumClp()\ <<\ \textcolor{stringliteral}{"{})\ "{}}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00158}00158\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00159}00159\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00160}00160\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00161}00161\ \ \ \ \ \ \ \ \ about(argv[0]);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00162}00162\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00163}00163\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00164}00164\ \ \ \ \ \textcolor{keywordflow}{return}\ EXIT\_SUCCESS;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00165}00165\ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00166}00166\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00167}00167\ \textcolor{keywordtype}{void}\ about(\textcolor{keyword}{const}\ std::string\&\ program)\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00168}00168\ \ \ \ \ std::cout\ <<\ std::endl\ <<\ \textcolor{stringliteral}{"{}===\ Pauta\ del\ Proyecto\ ==="{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00169}00169\ \ \ \ \ std::cout\ <<\ std::endl\ <<\ \textcolor{stringliteral}{"{}Profesor:\ Sebastián\ Salazar\ Molina"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00170}00170\ \ \ \ \ std::cout\ <<\ std::endl\ <<\ \textcolor{stringliteral}{"{}Modo\ de\ uso"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00171}00171\ \ \ \ \ std::cout\ <<\ std::endl\ <<\ program\ <<\ \textcolor{stringliteral}{"{}\ \(\backslash\)"{}ruta/a/pd.csv\(\backslash\)"{}\ \(\backslash\)"{}ruta/a/Datos\ históricos\ PEN\_CLP.xlsx\(\backslash\)"{}"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00172}00172\ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00173}00173\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00174}00174\ std::set<int>\ load(\textcolor{keyword}{const}\ std::string\&\ rutaArchivo)\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00175}00175\ \ \ \ \ std::set<int>\ codes;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00176}00176\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00177}00177\ \ \ \ \ std::ifstream\ archivo(rutaArchivo);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00178}00178\ \ \ \ \ \textcolor{keywordflow}{if}\ (archivo.is\_open())\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00179}00179\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classFileService}{FileService}}\ fileService;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00180}00180\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00181}00181\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Omitir\ la\ primera\ línea\ si\ contiene\ encabezados}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00182}00182\ \ \ \ \ \ \ \ \ std::string\ encabezado;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00183}00183\ \ \ \ \ \ \ \ \ std::getline(archivo,\ encabezado);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00184}00184\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00185}00185\ \ \ \ \ \ \ \ \ std::string\ linea;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00186}00186\ \ \ \ \ \ \ \ \ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00187}00187\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ *\ Leemos\ el\ archivo\ para\ clasificar\ los\ datos\ por\ mes.}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00188}00188\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00189}00189\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (std::getline(archivo,\ linea))\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00190}00190\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ code\ =\ fileService.\mbox{\hyperlink{classFileService_a92c6437029d3c10e0eb2f53da339219e}{parseCsvLine}}(linea);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00191}00191\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (code\ >\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00192}00192\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ codes.insert(code);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00193}00193\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00194}00194\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00195}00195\ \ \ \ \ \ \ \ \ archivo.close();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00196}00196\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00197}00197\ \ \ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}Error\ al\ abrir\ el\ archivo"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00198}00198\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00199}00199\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00200}00200\ \ \ \ \ \textcolor{keywordflow}{return}\ codes;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00201}00201\ \}}
+
+\end{DoxyCode}

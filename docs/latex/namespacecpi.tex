@@ -1,0 +1,144 @@
+\doxysection{Referencia del espacio de nombres cpi}
+\hypertarget{namespacecpi}{}\label{namespacecpi}\index{cpi@{cpi}}
+
+
+Espacio de nombres para las funciones relacionadas con el cálculo del IPC.  
+
+
+\doxysubsubsection*{Funciones}
+\begin{DoxyCompactItemize}
+\item 
+std\+::map$<$ int, double $>$ \mbox{\hyperlink{namespacecpi_a60eaf6759abb47ff16c5297727369503}{get\+Foreign\+Exchange}} (std\+::string file\+Path)
+\begin{DoxyCompactList}\small\item\em Obtiene el tipo de cambio extranjero desde un archivo. \end{DoxyCompactList}\item 
+std\+::map$<$ int, double $>$ \mbox{\hyperlink{namespacecpi_a313a97e5a1a49a453363b7893228b4b5}{calculate}} (std\+::vector$<$ int $>$ months, std\+::map$<$ int, double $>$ amount\+Sums)
+\begin{DoxyCompactList}\small\item\em Calcula el IPC utilizando los meses y las sumas de cantidades. \end{DoxyCompactList}\item 
+std\+::map$<$ int, double $>$ \mbox{\hyperlink{namespacecpi_abd9b30cfdcd8eb98416f84588471a6c0}{get\+Cpi}} (std\+::vector$<$ int $>$ codes, std\+::set$<$ \mbox{\hyperlink{classProduct}{Product}} $>$ products)
+\begin{DoxyCompactList}\small\item\em Obtiene el IPC basado en los códigos y productos proporcionados. \end{DoxyCompactList}\item 
+std\+::map$<$ int, double $>$ \mbox{\hyperlink{namespacecpi_aaa9395c7eb44f8d8e3372580819efc17}{get\+Parallel\+Cpi}} (std\+::vector$<$ int $>$ codes, std\+::set$<$ \mbox{\hyperlink{classProduct}{Product}} $>$ products)
+\begin{DoxyCompactList}\small\item\em Obtiene el IPC de forma paralela basado en los códigos y productos proporcionados. \end{DoxyCompactList}\item 
+std\+::map$<$ int, \mbox{\hyperlink{classSummary}{Summary}} $>$ \mbox{\hyperlink{namespacecpi_a758c6f9f4acc189dfd424ecf3696b924}{make\+Cpi}} (std\+::map$<$ int, double $>$ exchange, std\+::vector$<$ int $>$ codes)
+\begin{DoxyCompactList}\small\item\em Genera un mapa de resumen del IPC utilizando el tipo de cambio y los códigos proporcionados. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+Espacio de nombres para las funciones relacionadas con el cálculo del IPC. 
+
+\doxysubsection{Documentación de funciones}
+\Hypertarget{namespacecpi_a313a97e5a1a49a453363b7893228b4b5}\label{namespacecpi_a313a97e5a1a49a453363b7893228b4b5} 
+\index{cpi@{cpi}!calculate@{calculate}}
+\index{calculate@{calculate}!cpi@{cpi}}
+\doxysubsubsection{\texorpdfstring{calculate()}{calculate()}}
+{\footnotesize\ttfamily std\+::map$<$ int, double $>$ cpi\+::calculate (\begin{DoxyParamCaption}\item[{std\+::vector$<$ int $>$}]{months,  }\item[{std\+::map$<$ int, double $>$}]{amount\+Sums }\end{DoxyParamCaption})}
+
+
+
+Calcula el IPC utilizando los meses y las sumas de cantidades. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em months} & Vector de códigos de año-\/mes. \\
+\hline
+{\em amount\+Sums} & Mapa de sumas de cantidades por año-\/mes. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+std\+::map$<$int, double$>$ Mapa del IPC calculado por año-\/mes. 
+\end{DoxyReturn}
+
+
+Definición en la línea \mbox{\hyperlink{cpi_8cpp_source_l00117}{117}} del archivo \mbox{\hyperlink{cpi_8cpp_source}{cpi.\+cpp}}.
+
+\Hypertarget{namespacecpi_abd9b30cfdcd8eb98416f84588471a6c0}\label{namespacecpi_abd9b30cfdcd8eb98416f84588471a6c0} 
+\index{cpi@{cpi}!getCpi@{getCpi}}
+\index{getCpi@{getCpi}!cpi@{cpi}}
+\doxysubsubsection{\texorpdfstring{getCpi()}{getCpi()}}
+{\footnotesize\ttfamily std\+::map$<$ int, double $>$ cpi\+::get\+Cpi (\begin{DoxyParamCaption}\item[{std\+::vector$<$ int $>$}]{codes,  }\item[{std\+::set$<$ \mbox{\hyperlink{classProduct}{Product}} $>$}]{products }\end{DoxyParamCaption})}
+
+
+
+Obtiene el IPC basado en los códigos y productos proporcionados. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em codes} & Vector de códigos de año-\/mes. \\
+\hline
+{\em products} & Conjunto de productos. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+std\+::map$<$int, double$>$ Mapa del IPC por año-\/mes. 
+\end{DoxyReturn}
+
+
+Definición en la línea \mbox{\hyperlink{cpi_8cpp_source_l00049}{49}} del archivo \mbox{\hyperlink{cpi_8cpp_source}{cpi.\+cpp}}.
+
+\Hypertarget{namespacecpi_a60eaf6759abb47ff16c5297727369503}\label{namespacecpi_a60eaf6759abb47ff16c5297727369503} 
+\index{cpi@{cpi}!getForeignExchange@{getForeignExchange}}
+\index{getForeignExchange@{getForeignExchange}!cpi@{cpi}}
+\doxysubsubsection{\texorpdfstring{getForeignExchange()}{getForeignExchange()}}
+{\footnotesize\ttfamily std\+::map$<$ int, double $>$ cpi\+::get\+Foreign\+Exchange (\begin{DoxyParamCaption}\item[{std\+::string}]{file\+Path }\end{DoxyParamCaption})}
+
+
+
+Obtiene el tipo de cambio extranjero desde un archivo. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em file\+Path} & Ruta del archivo que contiene los datos de tipo de cambio. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+std\+::map$<$int, double$>$ Mapa con los tipos de cambio por año-\/mes. 
+\end{DoxyReturn}
+
+
+Definición en la línea \mbox{\hyperlink{cpi_8cpp_source_l00003}{3}} del archivo \mbox{\hyperlink{cpi_8cpp_source}{cpi.\+cpp}}.
+
+\Hypertarget{namespacecpi_aaa9395c7eb44f8d8e3372580819efc17}\label{namespacecpi_aaa9395c7eb44f8d8e3372580819efc17} 
+\index{cpi@{cpi}!getParallelCpi@{getParallelCpi}}
+\index{getParallelCpi@{getParallelCpi}!cpi@{cpi}}
+\doxysubsubsection{\texorpdfstring{getParallelCpi()}{getParallelCpi()}}
+{\footnotesize\ttfamily std\+::map$<$ int, double $>$ cpi\+::get\+Parallel\+Cpi (\begin{DoxyParamCaption}\item[{std\+::vector$<$ int $>$}]{codes,  }\item[{std\+::set$<$ \mbox{\hyperlink{classProduct}{Product}} $>$}]{products }\end{DoxyParamCaption})}
+
+
+
+Obtiene el IPC de forma paralela basado en los códigos y productos proporcionados. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em codes} & Vector de códigos de año-\/mes. \\
+\hline
+{\em products} & Conjunto de productos. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+std\+::map$<$int, double$>$ Mapa del IPC por año-\/mes. 
+\end{DoxyReturn}
+
+
+Definición en la línea \mbox{\hyperlink{cpi_8cpp_source_l00075}{75}} del archivo \mbox{\hyperlink{cpi_8cpp_source}{cpi.\+cpp}}.
+
+\Hypertarget{namespacecpi_a758c6f9f4acc189dfd424ecf3696b924}\label{namespacecpi_a758c6f9f4acc189dfd424ecf3696b924} 
+\index{cpi@{cpi}!makeCpi@{makeCpi}}
+\index{makeCpi@{makeCpi}!cpi@{cpi}}
+\doxysubsubsection{\texorpdfstring{makeCpi()}{makeCpi()}}
+{\footnotesize\ttfamily std\+::map$<$ int, \mbox{\hyperlink{classSummary}{Summary}} $>$ cpi\+::make\+Cpi (\begin{DoxyParamCaption}\item[{std\+::map$<$ int, double $>$}]{exchange,  }\item[{std\+::vector$<$ int $>$}]{codes }\end{DoxyParamCaption})}
+
+
+
+Genera un mapa de resumen del IPC utilizando el tipo de cambio y los códigos proporcionados. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em exchange} & Mapa de tipos de cambio por año-\/mes. \\
+\hline
+{\em codes} & Vector de códigos de año-\/mes. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+std\+::map$<$int, Summary$>$ Mapa de resúmenes de IPC por año-\/mes. 
+\end{DoxyReturn}
+
+
+Definición en la línea \mbox{\hyperlink{cpi_8cpp_source_l00136}{136}} del archivo \mbox{\hyperlink{cpi_8cpp_source}{cpi.\+cpp}}.
+

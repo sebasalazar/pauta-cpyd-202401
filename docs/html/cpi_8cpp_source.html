@@ -1,0 +1,303 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Pauta: Archivo de código fuente cpi.cpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="utem.jpg"/></td>
+  <td id="projectalign">
+   <div id="projectname">Pauta<span id="projectnumber">&#160;1.0.0</span>
+   </div>
+   <div id="projectbrief">Pauta Trabajo Computación Paralela</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Buscar');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function() { init_codefold(0); });
+/* @license-end */
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('cpi_8cpp_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Cargando...</div>
+<div class="SRStatus" id="Searching">Buscando...</div>
+<div class="SRStatus" id="NoMatches">Nada coincide</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">cpi.cpp</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#include &quot;cpi.h&quot;</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
+<div class="foldopen" id="foldopen00003" data-start="{" data-end="}">
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno"><a class="line" href="namespacecpi.html#a60eaf6759abb47ff16c5297727369503">    3</a></span>std::map&lt;int, double&gt; <a class="code hl_function" href="namespacecpi.html#a60eaf6759abb47ff16c5297727369503">cpi::getForeignExchange</a>(std::string filePath) {</div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span>    std::map&lt;int, double&gt; result;</div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span>    xlsxioreader xlsxioread;</div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>    <span class="keywordflow">if</span> (!filePath.empty() &amp;&amp; (xlsxioread = xlsxioread_open(filePath.c_str())) != NULL) {</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>        std::map&lt;int, std::vector&lt;double&gt;&gt; current;</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>        <span class="comment">//read values from first sheet</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>        xlsxioreadersheet sheet;</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>        <span class="keyword">const</span> <span class="keywordtype">char</span>* sheetname = NULL;</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>        <span class="keywordflow">if</span> ((sheet = xlsxioread_sheet_open(xlsxioread, sheetname, XLSXIOREAD_SKIP_EMPTY_ROWS)) != NULL) {</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>            <span class="comment">// leemos todas las filas</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>            <span class="keywordflow">while</span> (xlsxioread_sheet_next_row(sheet)) {</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>                <span class="comment">// Primera celda</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>                std::time_t ts = {};</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>                <span class="keywordtype">int</span> resultTime = xlsxioread_sheet_next_cell_datetime(sheet, &amp;ts);</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>                <span class="comment">// Segunda celda</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>                <span class="keywordtype">double</span> clp = 0;</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>                <span class="keywordtype">int</span> resultValue = xlsxioread_sheet_next_cell_float(sheet, &amp;clp);</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>                <span class="keywordflow">if</span> (resultTime &gt; 0 &amp;&amp; resultValue &gt; 0) {</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>                    std::string localTime = <a class="code hl_function" href="namespaceutem.html#a18dd7329862f1e8f88d4e02e72e0cd93">utem::getLocalTime</a>(ts);</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>                    <a class="code hl_class" href="classYearMonth.html">YearMonth</a> ym = <a class="code hl_function" href="namespaceutem.html#a2650ca72496b399d5c1c9ef52751ab6c">utem::parseYearMonth</a>(localTime);</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>                    current[ym.<a class="code hl_function" href="classYearMonth.html#a116c142edab9a4144ecbd7e638d3a272">GetYearMonth</a>()].push_back(clp);</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>                }</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>            }</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>            xlsxioread_sheet_close(sheet);</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        }</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        <span class="keywordflow">if</span> (!current.empty()) {</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>            <span class="keywordflow">for</span> (std::map&lt;<span class="keywordtype">int</span>, std::vector&lt;double&gt;&gt;::iterator it = current.begin(); it != current.end(); ++it) {</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>                <span class="keywordtype">int</span> ym = it-&gt;first;</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>                std::vector&lt;double&gt; values = it-&gt;second;</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>                result[ym] = <a class="code hl_function" href="namespaceutem.html#a5f5aebdab5865a60c89c2c9484d07239">utem::calculateMedian</a>(values);</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>            }</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        }</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        <span class="comment">// liberar memoria</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        xlsxioread_close(xlsxioread);</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        std::cerr &lt;&lt; <span class="stringliteral">&quot;Error con archivo Excel &quot;</span> &lt;&lt; filePath &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    }</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <span class="keywordflow">return</span> result;</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>}</div>
+</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
+<div class="foldopen" id="foldopen00049" data-start="{" data-end="}">
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="namespacecpi.html#abd9b30cfdcd8eb98416f84588471a6c0">   49</a></span>std::map&lt;int, double&gt; <a class="code hl_function" href="namespacecpi.html#abd9b30cfdcd8eb98416f84588471a6c0">cpi::getCpi</a>(std::vector&lt;int&gt; codes, std::set&lt;Product&gt; products) {</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    std::map&lt;int, double&gt; map;</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <span class="keywordflow">if</span> (!codes.empty() &amp;&amp; !products.empty()) {</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>        std::sort(codes.begin(), codes.end());</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> code : codes) {</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>            <span class="keywordtype">double</span> sum = 0;</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>            std::ifstream file(utem::tempPath + <span class="stringliteral">&quot;/&quot;</span> + std::to_string(code) + <span class="stringliteral">&quot;.csv&quot;</span>);</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>            <span class="keywordflow">if</span> (file.is_open()) {</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>                std::string linea;</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>                <span class="keywordflow">while</span> (std::getline(file, linea)) {</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>                    std::vector&lt;std::string&gt; splited = <a class="code hl_function" href="namespaceutem.html#a06f1caef9d21771c6a4cbd3cfa9e805e">utem::split</a>(linea, <span class="charliteral">&#39;;&#39;</span>);</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>                    <span class="keywordflow">if</span> (!splited.empty()) {</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>                        <a class="code hl_class" href="classProduct.html">Product</a> p(splited[0], std::stod(splited[1]));</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>                        <span class="keywordflow">if</span> (std::find(products.begin(), products.end(), p) != products.end()) {</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>                            sum += p.<a class="code hl_function" href="classProduct.html#a90c193bb2729bedd79b85dca3aba3d7a">GetAmount</a>();</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>                        }</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>                    }</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>                }</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>                file.close();</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>            }</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>            map[code] = sum;</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        }</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    }</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    <span class="keywordflow">return</span> map;</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>}</div>
+</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
+<div class="foldopen" id="foldopen00075" data-start="{" data-end="}">
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno"><a class="line" href="namespacecpi.html#aaa9395c7eb44f8d8e3372580819efc17">   75</a></span>std::map&lt;int, double&gt; <a class="code hl_function" href="namespacecpi.html#aaa9395c7eb44f8d8e3372580819efc17">cpi::getParallelCpi</a>(std::vector&lt;int&gt; codes, std::set&lt;Product&gt; products) {</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    std::map&lt;int, double&gt; map;</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    <span class="keywordflow">if</span> (!codes.empty() &amp;&amp; !products.empty()) {</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        std::sort(codes.begin(), codes.end());</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>        <span class="comment">// Define un map local para cada thread y fusiona después</span></div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>        std::vector&lt;std::map&lt;int, double&gt;&gt; local_maps(omp_get_max_threads());</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span><span class="preprocessor">#pragma omp parallel for</span></div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        <span class="keywordflow">for</span> (std::vector&lt;int&gt;::size_type i = 0; i &lt; codes.size(); ++i) {</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>            <span class="keywordtype">int</span> code = codes[i];</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>            <span class="keywordtype">double</span> sum = 0;</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>            std::ifstream file(utem::tempPath + <span class="stringliteral">&quot;/&quot;</span> + std::to_string(code) + <span class="stringliteral">&quot;.csv&quot;</span>);</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>            <span class="keywordflow">if</span> (file.is_open()) {</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>                std::string linea;</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>                <span class="keywordflow">while</span> (std::getline(file, linea)) {</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>                    std::vector&lt;std::string&gt; splited = <a class="code hl_function" href="namespaceutem.html#a06f1caef9d21771c6a4cbd3cfa9e805e">utem::split</a>(linea, <span class="charliteral">&#39;;&#39;</span>);</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>                    <span class="keywordflow">if</span> (!splited.empty()) {</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>                        <a class="code hl_class" href="classProduct.html">Product</a> p(splited[0], std::stod(splited[1]));</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>                        <span class="keywordflow">if</span> (products.find(p) != products.end()) {</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>                            sum += p.<a class="code hl_function" href="classProduct.html#a90c193bb2729bedd79b85dca3aba3d7a">GetAmount</a>();</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>                        }</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>                    }</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>                }</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>                file.close();</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>            }</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span> </div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>            <span class="comment">// Almacena el resultado en el map local del thread</span></div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>            <span class="keywordtype">int</span> thread_id = omp_get_thread_num();</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>            local_maps[thread_id][code] = sum;</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>        }</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span> </div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>        <span class="comment">// Fusiona los resultados de los maps locales en el map global</span></div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>        <span class="keywordflow">for</span> (std::vector&lt;std::map&lt;int, double&gt;&gt;::const_iterator local_map_it = local_maps.begin(); local_map_it != local_maps.end(); ++local_map_it) {</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>            <span class="keywordflow">for</span> (std::map&lt;int, double&gt;::const_iterator entry_it = local_map_it-&gt;begin(); entry_it != local_map_it-&gt;end(); ++entry_it) {</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>                map[entry_it-&gt;first] = entry_it-&gt;second;</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>            }</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>        }</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>    }</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>    <span class="keywordflow">return</span> map;</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>}</div>
+</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span> </div>
+<div class="foldopen" id="foldopen00117" data-start="{" data-end="}">
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno"><a class="line" href="namespacecpi.html#a313a97e5a1a49a453363b7893228b4b5">  117</a></span>std::map&lt;int, double&gt; <a class="code hl_function" href="namespacecpi.html#a313a97e5a1a49a453363b7893228b4b5">cpi::calculate</a>(std::vector&lt;int&gt; months, std::map&lt;int, double&gt; amountSums) {</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>    std::map&lt;int, double&gt; <a class="code hl_namespace" href="namespacecpi.html">cpi</a>;</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span> </div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>    <span class="keywordtype">int</span> index = 0;</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>    <span class="keywordtype">double</span> current = 0;</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>    std::sort(months.begin(), months.end());</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> ym : months) {</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>        <span class="keywordtype">double</span> last = amountSums[ym];</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>        <span class="keywordflow">if</span> (index &gt; 0) {</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>            <a class="code hl_namespace" href="namespacecpi.html">cpi</a>[ym] = ((last - current) / current) * 100;</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>            <a class="code hl_namespace" href="namespacecpi.html">cpi</a>[ym] = 0;</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>        }</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>        index += 1;</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>        current = last;</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>    }</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>    <span class="keywordflow">return</span> <a class="code hl_namespace" href="namespacecpi.html">cpi</a>;</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>}</div>
+</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span> </div>
+<div class="foldopen" id="foldopen00136" data-start="{" data-end="}">
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno"><a class="line" href="namespacecpi.html#a758c6f9f4acc189dfd424ecf3696b924">  136</a></span>std::map&lt;int, Summary&gt; <a class="code hl_function" href="namespacecpi.html#a758c6f9f4acc189dfd424ecf3696b924">cpi::makeCpi</a>(std::map&lt;int, double&gt; exchange, std::vector&lt;int&gt; codes) {</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>    std::map&lt;int, Summary&gt; result;</div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>    <span class="keywordflow">if</span> (!codes.empty()) {</div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>        std::map&lt;int, double&gt; clpSum;</div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>        std::map&lt;int, double&gt; penSum;</div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>        std::set&lt;Product&gt; basket = <a class="code hl_function" href="namespaceutem.html#a467752a0963d15bed224c93343919afa">utem::getBasicBasket</a>(codes);</div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span> </div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>        std::map&lt;int, double&gt; currentMap = <a class="code hl_function" href="namespacecpi.html#aaa9395c7eb44f8d8e3372580819efc17">getParallelCpi</a>(codes, basket);</div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>        <span class="keywordflow">for</span> (std::map&lt;int, double&gt;::iterator it = currentMap.begin(); it != currentMap.end(); ++it) {</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>            <span class="keywordtype">int</span> ym = it-&gt;first;</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>            <span class="keywordtype">double</span> pen = it-&gt;second;</div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>            <span class="keywordtype">double</span> clp = pen * exchange[ym];</div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>            penSum[ym] = pen;</div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>            clpSum[ym] = clp;</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>        }</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span> </div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>        std::map&lt;int, double&gt; penCpi = <a class="code hl_function" href="namespacecpi.html#a313a97e5a1a49a453363b7893228b4b5">calculate</a>(codes, penSum);</div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>        std::map&lt;int, double&gt; clpCpi = <a class="code hl_function" href="namespacecpi.html#a313a97e5a1a49a453363b7893228b4b5">calculate</a>(codes, clpSum);</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span> </div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> ym : codes) {</div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>            <span class="keywordtype">double</span> cpiPen = penCpi[ym];</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>            <span class="keywordtype">double</span> sumPen = penSum[ym];</div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>            <span class="keywordtype">double</span> cpiClp = clpCpi[ym];</div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>            <span class="keywordtype">long</span> sumClp = (long) clpSum[ym];</div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>            <a class="code hl_class" href="classSummary.html">Summary</a> summary(cpiPen, sumPen, cpiClp, sumClp);</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>            result[ym] = summary;</div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>        }</div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>    }</div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>    <span class="keywordflow">return</span> result;</div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>}</div>
+</div>
+<div class="ttc" id="aclassProduct_html"><div class="ttname"><a href="classProduct.html">Product</a></div><div class="ttdoc">Clase para representar un producto con un SKU y un monto asociado.</div><div class="ttdef"><b>Definition</b> <a href="product_8h_source.html#l00011">product.h:11</a></div></div>
+<div class="ttc" id="aclassProduct_html_a90c193bb2729bedd79b85dca3aba3d7a"><div class="ttname"><a href="classProduct.html#a90c193bb2729bedd79b85dca3aba3d7a">Product::GetAmount</a></div><div class="ttdeci">double GetAmount() const</div><div class="ttdoc">Obtiene el monto del producto.</div><div class="ttdef"><b>Definition</b> <a href="product_8cpp_source.html#l00024">product.cpp:24</a></div></div>
+<div class="ttc" id="aclassSummary_html"><div class="ttname"><a href="classSummary.html">Summary</a></div><div class="ttdoc">Clase para representar un resumen con valores de IPC y sumas en diferentes monedas.</div><div class="ttdef"><b>Definition</b> <a href="summary_8h_source.html#l00008">summary.h:8</a></div></div>
+<div class="ttc" id="aclassYearMonth_html"><div class="ttname"><a href="classYearMonth.html">YearMonth</a></div><div class="ttdoc">Clase para representar un año y un mes.</div><div class="ttdef"><b>Definition</b> <a href="year__month_8h_source.html#l00017">year_month.h:17</a></div></div>
+<div class="ttc" id="aclassYearMonth_html_a116c142edab9a4144ecbd7e638d3a272"><div class="ttname"><a href="classYearMonth.html#a116c142edab9a4144ecbd7e638d3a272">YearMonth::GetYearMonth</a></div><div class="ttdeci">int GetYearMonth() const</div><div class="ttdoc">Obtiene el código combinado de año y mes.</div><div class="ttdef"><b>Definition</b> <a href="year__month_8cpp_source.html#l00049">year_month.cpp:49</a></div></div>
+<div class="ttc" id="anamespacecpi_html"><div class="ttname"><a href="namespacecpi.html">cpi</a></div><div class="ttdoc">Espacio de nombres para las funciones relacionadas con el cálculo del IPC.</div></div>
+<div class="ttc" id="anamespacecpi_html_a313a97e5a1a49a453363b7893228b4b5"><div class="ttname"><a href="namespacecpi.html#a313a97e5a1a49a453363b7893228b4b5">cpi::calculate</a></div><div class="ttdeci">std::map&lt; int, double &gt; calculate(std::vector&lt; int &gt; months, std::map&lt; int, double &gt; amountSums)</div><div class="ttdoc">Calcula el IPC utilizando los meses y las sumas de cantidades.</div><div class="ttdef"><b>Definition</b> <a href="cpi_8cpp_source.html#l00117">cpi.cpp:117</a></div></div>
+<div class="ttc" id="anamespacecpi_html_a60eaf6759abb47ff16c5297727369503"><div class="ttname"><a href="namespacecpi.html#a60eaf6759abb47ff16c5297727369503">cpi::getForeignExchange</a></div><div class="ttdeci">std::map&lt; int, double &gt; getForeignExchange(std::string filePath)</div><div class="ttdoc">Obtiene el tipo de cambio extranjero desde un archivo.</div><div class="ttdef"><b>Definition</b> <a href="cpi_8cpp_source.html#l00003">cpi.cpp:3</a></div></div>
+<div class="ttc" id="anamespacecpi_html_a758c6f9f4acc189dfd424ecf3696b924"><div class="ttname"><a href="namespacecpi.html#a758c6f9f4acc189dfd424ecf3696b924">cpi::makeCpi</a></div><div class="ttdeci">std::map&lt; int, Summary &gt; makeCpi(std::map&lt; int, double &gt; exchange, std::vector&lt; int &gt; codes)</div><div class="ttdoc">Genera un mapa de resumen del IPC utilizando el tipo de cambio y los códigos proporcionados.</div><div class="ttdef"><b>Definition</b> <a href="cpi_8cpp_source.html#l00136">cpi.cpp:136</a></div></div>
+<div class="ttc" id="anamespacecpi_html_aaa9395c7eb44f8d8e3372580819efc17"><div class="ttname"><a href="namespacecpi.html#aaa9395c7eb44f8d8e3372580819efc17">cpi::getParallelCpi</a></div><div class="ttdeci">std::map&lt; int, double &gt; getParallelCpi(std::vector&lt; int &gt; codes, std::set&lt; Product &gt; products)</div><div class="ttdoc">Obtiene el IPC de forma paralela basado en los códigos y productos proporcionados.</div><div class="ttdef"><b>Definition</b> <a href="cpi_8cpp_source.html#l00075">cpi.cpp:75</a></div></div>
+<div class="ttc" id="anamespacecpi_html_abd9b30cfdcd8eb98416f84588471a6c0"><div class="ttname"><a href="namespacecpi.html#abd9b30cfdcd8eb98416f84588471a6c0">cpi::getCpi</a></div><div class="ttdeci">std::map&lt; int, double &gt; getCpi(std::vector&lt; int &gt; codes, std::set&lt; Product &gt; products)</div><div class="ttdoc">Obtiene el IPC basado en los códigos y productos proporcionados.</div><div class="ttdef"><b>Definition</b> <a href="cpi_8cpp_source.html#l00049">cpi.cpp:49</a></div></div>
+<div class="ttc" id="anamespaceutem_html_a06f1caef9d21771c6a4cbd3cfa9e805e"><div class="ttname"><a href="namespaceutem.html#a06f1caef9d21771c6a4cbd3cfa9e805e">utem::split</a></div><div class="ttdeci">std::vector&lt; std::string &gt; split(const std::string &amp;line, char delimiter)</div><div class="ttdoc">Divide una cadena de texto en partes utilizando un delimitador.</div><div class="ttdef"><b>Definition</b> <a href="utem_8cpp_source.html#l00033">utem.cpp:33</a></div></div>
+<div class="ttc" id="anamespaceutem_html_a18dd7329862f1e8f88d4e02e72e0cd93"><div class="ttname"><a href="namespaceutem.html#a18dd7329862f1e8f88d4e02e72e0cd93">utem::getLocalTime</a></div><div class="ttdeci">std::string getLocalTime()</div><div class="ttdoc">Obtiene la hora local actual como una cadena de texto en formato ISO.</div><div class="ttdef"><b>Definition</b> <a href="utem_8cpp_source.html#l00003">utem.cpp:3</a></div></div>
+<div class="ttc" id="anamespaceutem_html_a2650ca72496b399d5c1c9ef52751ab6c"><div class="ttname"><a href="namespaceutem.html#a2650ca72496b399d5c1c9ef52751ab6c">utem::parseYearMonth</a></div><div class="ttdeci">YearMonth parseYearMonth(const std::string &amp;str)</div><div class="ttdoc">Parsea una cadena y devuelve un objeto YearMonth.</div><div class="ttdef"><b>Definition</b> <a href="utem_8cpp_source.html#l00020">utem.cpp:20</a></div></div>
+<div class="ttc" id="anamespaceutem_html_a467752a0963d15bed224c93343919afa"><div class="ttname"><a href="namespaceutem.html#a467752a0963d15bed224c93343919afa">utem::getBasicBasket</a></div><div class="ttdeci">std::set&lt; Product &gt; getBasicBasket(std::vector&lt; int &gt; codes)</div><div class="ttdoc">Obtiene la canasta básica de productos a partir de un vector de códigos Año-Mes.</div><div class="ttdef"><b>Definition</b> <a href="utem_8cpp_source.html#l00125">utem.cpp:125</a></div></div>
+<div class="ttc" id="anamespaceutem_html_a5f5aebdab5865a60c89c2c9484d07239"><div class="ttname"><a href="namespaceutem.html#a5f5aebdab5865a60c89c2c9484d07239">utem::calculateMedian</a></div><div class="ttdeci">double calculateMedian(std::vector&lt; double &gt; list)</div><div class="ttdoc">Calcula la mediana de una lista de valores.</div><div class="ttdef"><b>Definition</b> <a href="utem_8cpp_source.html#l00108">utem.cpp:108</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><b>cpi.cpp</b></li>
+    <li class="footer">Generado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
+</body>
+</html>
