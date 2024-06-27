@@ -1,0 +1,357 @@
+\doxysection{Referencia de la clase Product}
+\hypertarget{classProduct}{}\label{classProduct}\index{Product@{Product}}
+
+
+Clase para representar un producto con un SKU y un monto asociado.  
+
+
+
+
+{\ttfamily \#include $<$product.\+h$>$}
+
+\doxysubsubsection*{Métodos públicos}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classProduct_a847c1d85e67ce387166a597579a55135}{Product}} ()
+\begin{DoxyCompactList}\small\item\em Constructor por defecto. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classProduct_a26599add58741ae44c7196d0271458cf}{Product}} (std\+::string sku, double amount)
+\begin{DoxyCompactList}\small\item\em Constructor con parámetros. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classProduct_a9152acacd9f3d58958345463ef4e0676}{Product}} (const \mbox{\hyperlink{classProduct}{Product}} \&orig)
+\begin{DoxyCompactList}\small\item\em Constructor de copia. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classProduct_abe0afd3bea96d979185ec2cfdf681e6f}{\texorpdfstring{$\sim$}{\string~}\+Product}} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classProduct_a90c193bb2729bedd79b85dca3aba3d7a}{Get\+Amount}} () const
+\begin{DoxyCompactList}\small\item\em Obtiene el monto del producto. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classProduct_a50c0de37f470125f7522586b1fd15e96}{Set\+Amount}} (double amount)
+\begin{DoxyCompactList}\small\item\em Establece el monto del producto. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classProduct_a8a233b785f98a645aca59ba2e22d1457}{Get\+Sku}} () const
+\begin{DoxyCompactList}\small\item\em Obtiene el SKU del producto. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classProduct_ab48e546d3466493144a930fcc66d99c2}{Set\+Sku}} (std\+::string sku)
+\begin{DoxyCompactList}\small\item\em Establece el SKU del producto. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classProduct_a76d4c3a20a09af5e55eefce24042291b}{operator!=}} (const \mbox{\hyperlink{classProduct}{Product}} \&right) const
+\begin{DoxyCompactList}\small\item\em Operador de desigualdad. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classProduct_aa8d6bfdf2d1066abda76beed4fcccd0e}{operator==}} (const \mbox{\hyperlink{classProduct}{Product}} \&right) const
+\begin{DoxyCompactList}\small\item\em Operador de igualdad. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classProduct}{Product}} \& \mbox{\hyperlink{classProduct_a1819cf27e0096b077f485c62cec38b15}{operator=}} (const \mbox{\hyperlink{classProduct}{Product}} \&right)
+\begin{DoxyCompactList}\small\item\em Operador de asignación. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classProduct_aa7784a58b7617514e4687b68d4b6a309}{operator$<$}} (const \mbox{\hyperlink{classProduct}{Product}} \&right) const
+\begin{DoxyCompactList}\small\item\em Operador menor que. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classProduct_a060c35df2261ec16c9cec29ece460b05}{operator$<$=}} (const \mbox{\hyperlink{classProduct}{Product}} \&right) const
+\begin{DoxyCompactList}\small\item\em Operador menor o igual que. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classProduct_a711263511685850744385e942091ce3d}{operator$>$}} (const \mbox{\hyperlink{classProduct}{Product}} \&right) const
+\begin{DoxyCompactList}\small\item\em Operador mayor que. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classProduct_ac6230634d5a44f986e1228525c379612}{operator$>$=}} (const \mbox{\hyperlink{classProduct}{Product}} \&right) const
+\begin{DoxyCompactList}\small\item\em Operador mayor o igual que. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+Clase para representar un producto con un SKU y un monto asociado. 
+
+Definición en la línea \mbox{\hyperlink{product_8h_source_l00011}{11}} del archivo \mbox{\hyperlink{product_8h_source}{product.\+h}}.
+
+
+
+\doxysubsection{Documentación de constructores y destructores}
+\Hypertarget{classProduct_a847c1d85e67ce387166a597579a55135}\label{classProduct_a847c1d85e67ce387166a597579a55135} 
+\index{Product@{Product}!Product@{Product}}
+\index{Product@{Product}!Product@{Product}}
+\doxysubsubsection{\texorpdfstring{Product()}{Product()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily Product\+::\+Product (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Constructor por defecto. 
+
+Inicializa un objeto \doxylink{classProduct}{Product} con valores predeterminados. 
+
+Definición en la línea \mbox{\hyperlink{product_8cpp_source_l00003}{3}} del archivo \mbox{\hyperlink{product_8cpp_source}{product.\+cpp}}.
+
+\Hypertarget{classProduct_a26599add58741ae44c7196d0271458cf}\label{classProduct_a26599add58741ae44c7196d0271458cf} 
+\index{Product@{Product}!Product@{Product}}
+\index{Product@{Product}!Product@{Product}}
+\doxysubsubsection{\texorpdfstring{Product()}{Product()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily Product\+::\+Product (\begin{DoxyParamCaption}\item[{std\+::string}]{sku,  }\item[{double}]{amount }\end{DoxyParamCaption})}
+
+
+
+Constructor con parámetros. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em sku} & SKU del producto. \\
+\hline
+{\em amount} & Monto asociado al producto. \\
+\hline
+\end{DoxyParams}
+
+
+Definición en la línea \mbox{\hyperlink{product_8cpp_source_l00008}{8}} del archivo \mbox{\hyperlink{product_8cpp_source}{product.\+cpp}}.
+
+\Hypertarget{classProduct_a9152acacd9f3d58958345463ef4e0676}\label{classProduct_a9152acacd9f3d58958345463ef4e0676} 
+\index{Product@{Product}!Product@{Product}}
+\index{Product@{Product}!Product@{Product}}
+\doxysubsubsection{\texorpdfstring{Product()}{Product()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily Product\+::\+Product (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classProduct}{Product}} \&}]{orig }\end{DoxyParamCaption})}
+
+
+
+Constructor de copia. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em orig} & Objeto \doxylink{classProduct}{Product} a copiar. \\
+\hline
+\end{DoxyParams}
+
+
+Definición en la línea \mbox{\hyperlink{product_8cpp_source_l00013}{13}} del archivo \mbox{\hyperlink{product_8cpp_source}{product.\+cpp}}.
+
+\Hypertarget{classProduct_abe0afd3bea96d979185ec2cfdf681e6f}\label{classProduct_abe0afd3bea96d979185ec2cfdf681e6f} 
+\index{Product@{Product}!````~Product@{\texorpdfstring{$\sim$}{\string~}Product}}
+\index{````~Product@{\texorpdfstring{$\sim$}{\string~}Product}!Product@{Product}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Product()}{\string~Product()}}
+{\footnotesize\ttfamily Product\+::\texorpdfstring{$\sim$}{\string~}\+Product (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Destructor. 
+
+
+
+Definición en la línea \mbox{\hyperlink{product_8cpp_source_l00018}{18}} del archivo \mbox{\hyperlink{product_8cpp_source}{product.\+cpp}}.
+
+
+
+\doxysubsection{Documentación de funciones miembro}
+\Hypertarget{classProduct_a90c193bb2729bedd79b85dca3aba3d7a}\label{classProduct_a90c193bb2729bedd79b85dca3aba3d7a} 
+\index{Product@{Product}!GetAmount@{GetAmount}}
+\index{GetAmount@{GetAmount}!Product@{Product}}
+\doxysubsubsection{\texorpdfstring{GetAmount()}{GetAmount()}}
+{\footnotesize\ttfamily double Product\+::\+Get\+Amount (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Obtiene el monto del producto. 
+
+\begin{DoxyReturn}{Devuelve}
+El monto del producto. 
+\end{DoxyReturn}
+
+
+Definición en la línea \mbox{\hyperlink{product_8cpp_source_l00024}{24}} del archivo \mbox{\hyperlink{product_8cpp_source}{product.\+cpp}}.
+
+\Hypertarget{classProduct_a8a233b785f98a645aca59ba2e22d1457}\label{classProduct_a8a233b785f98a645aca59ba2e22d1457} 
+\index{Product@{Product}!GetSku@{GetSku}}
+\index{GetSku@{GetSku}!Product@{Product}}
+\doxysubsubsection{\texorpdfstring{GetSku()}{GetSku()}}
+{\footnotesize\ttfamily std\+::string Product\+::\+Get\+Sku (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Obtiene el SKU del producto. 
+
+\begin{DoxyReturn}{Devuelve}
+El SKU del producto. 
+\end{DoxyReturn}
+
+
+Definición en la línea \mbox{\hyperlink{product_8cpp_source_l00032}{32}} del archivo \mbox{\hyperlink{product_8cpp_source}{product.\+cpp}}.
+
+\Hypertarget{classProduct_a76d4c3a20a09af5e55eefce24042291b}\label{classProduct_a76d4c3a20a09af5e55eefce24042291b} 
+\index{Product@{Product}!operator"!=@{operator"!=}}
+\index{operator"!=@{operator"!=}!Product@{Product}}
+\doxysubsubsection{\texorpdfstring{operator"!=()}{operator!=()}}
+{\footnotesize\ttfamily bool Product\+::operator!= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classProduct}{Product}} \&}]{right }\end{DoxyParamCaption}) const}
+
+
+
+Operador de desigualdad. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em right} & Objeto \doxylink{classProduct}{Product} a comparar. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+true si los productos son diferentes, false en caso contrario. 
+\end{DoxyReturn}
+
+
+Definición en la línea \mbox{\hyperlink{product_8cpp_source_l00040}{40}} del archivo \mbox{\hyperlink{product_8cpp_source}{product.\+cpp}}.
+
+\Hypertarget{classProduct_aa7784a58b7617514e4687b68d4b6a309}\label{classProduct_aa7784a58b7617514e4687b68d4b6a309} 
+\index{Product@{Product}!operator$<$@{operator$<$}}
+\index{operator$<$@{operator$<$}!Product@{Product}}
+\doxysubsubsection{\texorpdfstring{operator$<$()}{operator<()}}
+{\footnotesize\ttfamily bool Product\+::operator$<$ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classProduct}{Product}} \&}]{right }\end{DoxyParamCaption}) const}
+
+
+
+Operador menor que. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em right} & Objeto \doxylink{classProduct}{Product} a comparar. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+true si este producto es menor que el otro, false en caso contrario. 
+\end{DoxyReturn}
+
+
+Definición en la línea \mbox{\hyperlink{product_8cpp_source_l00059}{59}} del archivo \mbox{\hyperlink{product_8cpp_source}{product.\+cpp}}.
+
+\Hypertarget{classProduct_a060c35df2261ec16c9cec29ece460b05}\label{classProduct_a060c35df2261ec16c9cec29ece460b05} 
+\index{Product@{Product}!operator$<$=@{operator$<$=}}
+\index{operator$<$=@{operator$<$=}!Product@{Product}}
+\doxysubsubsection{\texorpdfstring{operator$<$=()}{operator<=()}}
+{\footnotesize\ttfamily bool Product\+::operator$<$= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classProduct}{Product}} \&}]{right }\end{DoxyParamCaption}) const}
+
+
+
+Operador menor o igual que. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em right} & Objeto \doxylink{classProduct}{Product} a comparar. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+true si este producto es menor o igual que el otro, false en caso contrario. 
+\end{DoxyReturn}
+
+
+Definición en la línea \mbox{\hyperlink{product_8cpp_source_l00063}{63}} del archivo \mbox{\hyperlink{product_8cpp_source}{product.\+cpp}}.
+
+\Hypertarget{classProduct_a1819cf27e0096b077f485c62cec38b15}\label{classProduct_a1819cf27e0096b077f485c62cec38b15} 
+\index{Product@{Product}!operator=@{operator=}}
+\index{operator=@{operator=}!Product@{Product}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classProduct}{Product}} \& Product\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classProduct}{Product}} \&}]{right }\end{DoxyParamCaption})}
+
+
+
+Operador de asignación. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em right} & Objeto \doxylink{classProduct}{Product} a asignar. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Una referencia a este objeto. 
+\end{DoxyReturn}
+
+
+Definición en la línea \mbox{\hyperlink{product_8cpp_source_l00048}{48}} del archivo \mbox{\hyperlink{product_8cpp_source}{product.\+cpp}}.
+
+\Hypertarget{classProduct_aa8d6bfdf2d1066abda76beed4fcccd0e}\label{classProduct_aa8d6bfdf2d1066abda76beed4fcccd0e} 
+\index{Product@{Product}!operator==@{operator==}}
+\index{operator==@{operator==}!Product@{Product}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily bool Product\+::operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classProduct}{Product}} \&}]{right }\end{DoxyParamCaption}) const}
+
+
+
+Operador de igualdad. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em right} & Objeto \doxylink{classProduct}{Product} a comparar. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+true si los productos son iguales, false en caso contrario. 
+\end{DoxyReturn}
+
+
+Definición en la línea \mbox{\hyperlink{product_8cpp_source_l00044}{44}} del archivo \mbox{\hyperlink{product_8cpp_source}{product.\+cpp}}.
+
+\Hypertarget{classProduct_a711263511685850744385e942091ce3d}\label{classProduct_a711263511685850744385e942091ce3d} 
+\index{Product@{Product}!operator$>$@{operator$>$}}
+\index{operator$>$@{operator$>$}!Product@{Product}}
+\doxysubsubsection{\texorpdfstring{operator$>$()}{operator>()}}
+{\footnotesize\ttfamily bool Product\+::operator$>$ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classProduct}{Product}} \&}]{right }\end{DoxyParamCaption}) const}
+
+
+
+Operador mayor que. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em right} & Objeto \doxylink{classProduct}{Product} a comparar. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+true si este producto es mayor que el otro, false en caso contrario. 
+\end{DoxyReturn}
+
+
+Definición en la línea \mbox{\hyperlink{product_8cpp_source_l00067}{67}} del archivo \mbox{\hyperlink{product_8cpp_source}{product.\+cpp}}.
+
+\Hypertarget{classProduct_ac6230634d5a44f986e1228525c379612}\label{classProduct_ac6230634d5a44f986e1228525c379612} 
+\index{Product@{Product}!operator$>$=@{operator$>$=}}
+\index{operator$>$=@{operator$>$=}!Product@{Product}}
+\doxysubsubsection{\texorpdfstring{operator$>$=()}{operator>=()}}
+{\footnotesize\ttfamily bool Product\+::operator$>$= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classProduct}{Product}} \&}]{right }\end{DoxyParamCaption}) const}
+
+
+
+Operador mayor o igual que. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em right} & Objeto \doxylink{classProduct}{Product} a comparar. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+true si este producto es mayor o igual que el otro, false en caso contrario. 
+\end{DoxyReturn}
+
+
+Definición en la línea \mbox{\hyperlink{product_8cpp_source_l00071}{71}} del archivo \mbox{\hyperlink{product_8cpp_source}{product.\+cpp}}.
+
+\Hypertarget{classProduct_a50c0de37f470125f7522586b1fd15e96}\label{classProduct_a50c0de37f470125f7522586b1fd15e96} 
+\index{Product@{Product}!SetAmount@{SetAmount}}
+\index{SetAmount@{SetAmount}!Product@{Product}}
+\doxysubsubsection{\texorpdfstring{SetAmount()}{SetAmount()}}
+{\footnotesize\ttfamily void Product\+::\+Set\+Amount (\begin{DoxyParamCaption}\item[{double}]{amount }\end{DoxyParamCaption})}
+
+
+
+Establece el monto del producto. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em amount} & El nuevo monto del producto. \\
+\hline
+\end{DoxyParams}
+
+
+Definición en la línea \mbox{\hyperlink{product_8cpp_source_l00028}{28}} del archivo \mbox{\hyperlink{product_8cpp_source}{product.\+cpp}}.
+
+\Hypertarget{classProduct_ab48e546d3466493144a930fcc66d99c2}\label{classProduct_ab48e546d3466493144a930fcc66d99c2} 
+\index{Product@{Product}!SetSku@{SetSku}}
+\index{SetSku@{SetSku}!Product@{Product}}
+\doxysubsubsection{\texorpdfstring{SetSku()}{SetSku()}}
+{\footnotesize\ttfamily void Product\+::\+Set\+Sku (\begin{DoxyParamCaption}\item[{std\+::string}]{sku }\end{DoxyParamCaption})}
+
+
+
+Establece el SKU del producto. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em sku} & El nuevo SKU del producto. \\
+\hline
+\end{DoxyParams}
+
+
+Definición en la línea \mbox{\hyperlink{product_8cpp_source_l00036}{36}} del archivo \mbox{\hyperlink{product_8cpp_source}{product.\+cpp}}.
+
+
+
+La documentación de esta clase está generada de los siguientes archivos\+:\begin{DoxyCompactItemize}
+\item 
+product.\+h\item 
+product.\+cpp\end{DoxyCompactItemize}

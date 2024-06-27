@@ -30,3 +30,9 @@
 *.exe
 *.out
 *.app
+
+# Datos intermedios
+*.csv
+dist/
+build/
+

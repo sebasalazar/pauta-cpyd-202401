@@ -1,0 +1,22 @@
+called: /usr/bin/g++
+	/home/seba/sources/UTEM/pauta_trabajo
+	g++
+	-g3
+	-Wall
+	-std=c++14
+	-c
+	main.cpp
+	-o
+	build/main.o
+
+called: /usr/bin/g++
+	/home/seba/sources/UTEM/pauta_trabajo
+	g++
+	-g3
+	-Wall
+	-std=c++14
+	-o
+	dist/programa
+	build/main.o
+	-lm
+
