@@ -1,0 +1,57 @@
+\doxysection{utem.\+h}
+\hypertarget{utem_8h_source}{}\label{utem_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{utem_8h_source_l00001}00001\ \textcolor{preprocessor}{\#ifndef\ UTEM\_H}}
+\DoxyCodeLine{\Hypertarget{utem_8h_source_l00002}00002\ \textcolor{preprocessor}{\#define\ UTEM\_H}}
+\DoxyCodeLine{\Hypertarget{utem_8h_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{utem_8h_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <chrono>}}
+\DoxyCodeLine{\Hypertarget{utem_8h_source_l00005}00005\ \textcolor{preprocessor}{\#include\ <algorithm>}}
+\DoxyCodeLine{\Hypertarget{utem_8h_source_l00006}00006\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{\Hypertarget{utem_8h_source_l00007}00007\ \textcolor{preprocessor}{\#include\ <iomanip>}}
+\DoxyCodeLine{\Hypertarget{utem_8h_source_l00008}00008\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\Hypertarget{utem_8h_source_l00009}00009\ \textcolor{preprocessor}{\#include\ <sstream>}}
+\DoxyCodeLine{\Hypertarget{utem_8h_source_l00010}00010\ \textcolor{preprocessor}{\#include\ <stdexcept>}}
+\DoxyCodeLine{\Hypertarget{utem_8h_source_l00011}00011\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{\Hypertarget{utem_8h_source_l00012}00012\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{\Hypertarget{utem_8h_source_l00013}00013\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{\Hypertarget{utem_8h_source_l00014}00014\ \textcolor{preprocessor}{\#include\ <set>}}
+\DoxyCodeLine{\Hypertarget{utem_8h_source_l00015}00015\ \textcolor{preprocessor}{\#include\ <sys/stat.h>}}
+\DoxyCodeLine{\Hypertarget{utem_8h_source_l00016}00016\ \textcolor{preprocessor}{\#include\ <sys/types.h>}}
+\DoxyCodeLine{\Hypertarget{utem_8h_source_l00017}00017\ \textcolor{preprocessor}{\#include\ <unistd.h>}}
+\DoxyCodeLine{\Hypertarget{utem_8h_source_l00018}00018\ \textcolor{preprocessor}{\#include\ <cstdlib>}}
+\DoxyCodeLine{\Hypertarget{utem_8h_source_l00019}00019\ \textcolor{preprocessor}{\#include\ <limits.h>}}
+\DoxyCodeLine{\Hypertarget{utem_8h_source_l00020}00020\ \textcolor{preprocessor}{\#include\ "{}cpi.h"{}}}
+\DoxyCodeLine{\Hypertarget{utem_8h_source_l00021}00021\ \textcolor{preprocessor}{\#include\ "{}product.h"{}}}
+\DoxyCodeLine{\Hypertarget{utem_8h_source_l00022}00022\ \textcolor{preprocessor}{\#include\ "{}year\_month.h"{}}}
+\DoxyCodeLine{\Hypertarget{utem_8h_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{utem_8h_source_l00027}\mbox{\hyperlink{namespaceutem}{00027}}\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceutem}{utem}}\ \{}
+\DoxyCodeLine{\Hypertarget{utem_8h_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{utem_8h_source_l00032}00032\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ std::string\ zeroStr(\textcolor{stringliteral}{"{}0"{}});}
+\DoxyCodeLine{\Hypertarget{utem_8h_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{utem_8h_source_l00037}00037\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ std::string\ tempPath(\textcolor{stringliteral}{"{}tmp"{}});}
+\DoxyCodeLine{\Hypertarget{utem_8h_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{utem_8h_source_l00044}00044\ \ \ \ \ std::string\ \mbox{\hyperlink{namespaceutem_a18dd7329862f1e8f88d4e02e72e0cd93}{getLocalTime}}();}
+\DoxyCodeLine{\Hypertarget{utem_8h_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{utem_8h_source_l00052}00052\ \ \ \ \ std::string\ \mbox{\hyperlink{namespaceutem_a18dd7329862f1e8f88d4e02e72e0cd93}{getLocalTime}}(std::time\_t\ ts);}
+\DoxyCodeLine{\Hypertarget{utem_8h_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{utem_8h_source_l00060}00060\ \ \ \ \ \mbox{\hyperlink{classYearMonth}{YearMonth}}\ \mbox{\hyperlink{namespaceutem_a2650ca72496b399d5c1c9ef52751ab6c}{parseYearMonth}}(\textcolor{keyword}{const}\ std::string\&\ str);}
+\DoxyCodeLine{\Hypertarget{utem_8h_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{utem_8h_source_l00068}00068\ \ \ \ \ std::string\ \mbox{\hyperlink{namespaceutem_af05de8a55c75be84f3a8b6a0992dfd28}{removeQuotes}}(\textcolor{keyword}{const}\ std::string\ \&text);}
+\DoxyCodeLine{\Hypertarget{utem_8h_source_l00069}00069\ }
+\DoxyCodeLine{\Hypertarget{utem_8h_source_l00077}00077\ \ \ \ \ std::vector<std::string>\ \mbox{\hyperlink{namespaceutem_a06f1caef9d21771c6a4cbd3cfa9e805e}{split}}(\textcolor{keyword}{const}\ std::string\ \&line,\ \textcolor{keywordtype}{char}\ delimiter);}
+\DoxyCodeLine{\Hypertarget{utem_8h_source_l00078}00078\ }
+\DoxyCodeLine{\Hypertarget{utem_8h_source_l00085}00085\ \ \ \ \ std::map<int,\ std::vector<int>>\ \mbox{\hyperlink{namespaceutem_a8422cb3a640494a45dfe615562394527}{getMonthsInYears}}(std::set<int>\ codes);}
+\DoxyCodeLine{\Hypertarget{utem_8h_source_l00086}00086\ }
+\DoxyCodeLine{\Hypertarget{utem_8h_source_l00093}00093\ \ \ \ \ std::vector<int>\ \mbox{\hyperlink{namespaceutem_a8e10faf037337ea9349e98c836714611}{getYears}}(std::set<int>\ codes);}
+\DoxyCodeLine{\Hypertarget{utem_8h_source_l00094}00094\ }
+\DoxyCodeLine{\Hypertarget{utem_8h_source_l00100}00100\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespaceutem_a888fd05b88ff670ca063a638a4035624}{unify}}(\textcolor{keywordtype}{int}\ code);}
+\DoxyCodeLine{\Hypertarget{utem_8h_source_l00101}00101\ }
+\DoxyCodeLine{\Hypertarget{utem_8h_source_l00108}00108\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{namespaceutem_a5f5aebdab5865a60c89c2c9484d07239}{calculateMedian}}(std::vector<double>\ list);}
+\DoxyCodeLine{\Hypertarget{utem_8h_source_l00109}00109\ }
+\DoxyCodeLine{\Hypertarget{utem_8h_source_l00116}00116\ \ \ \ \ std::set<Product>\ \mbox{\hyperlink{namespaceutem_a467752a0963d15bed224c93343919afa}{getBasicBasket}}(std::vector<int>\ codes);}
+\DoxyCodeLine{\Hypertarget{utem_8h_source_l00117}00117\ }
+\DoxyCodeLine{\Hypertarget{utem_8h_source_l00118}00118\ \};}
+\DoxyCodeLine{\Hypertarget{utem_8h_source_l00119}00119\ }
+\DoxyCodeLine{\Hypertarget{utem_8h_source_l00120}00120\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ UTEM\_H\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

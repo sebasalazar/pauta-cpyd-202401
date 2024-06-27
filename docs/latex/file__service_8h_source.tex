@@ -1,0 +1,53 @@
+\doxysection{file\+\_\+service.\+h}
+\hypertarget{file__service_8h_source}{}\label{file__service_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{file__service_8h_source_l00001}00001\ \textcolor{preprocessor}{\#ifndef\ FILE\_SERVICE\_H}}
+\DoxyCodeLine{\Hypertarget{file__service_8h_source_l00002}00002\ \textcolor{preprocessor}{\#define\ FILE\_SERVICE\_H}}
+\DoxyCodeLine{\Hypertarget{file__service_8h_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{file__service_8h_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <chrono>}}
+\DoxyCodeLine{\Hypertarget{file__service_8h_source_l00005}00005\ \textcolor{preprocessor}{\#include\ <unordered\_map>}}
+\DoxyCodeLine{\Hypertarget{file__service_8h_source_l00006}00006\ \textcolor{preprocessor}{\#include\ <algorithm>}}
+\DoxyCodeLine{\Hypertarget{file__service_8h_source_l00007}00007\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{\Hypertarget{file__service_8h_source_l00008}00008\ \textcolor{preprocessor}{\#include\ <iomanip>}}
+\DoxyCodeLine{\Hypertarget{file__service_8h_source_l00009}00009\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\Hypertarget{file__service_8h_source_l00010}00010\ \textcolor{preprocessor}{\#include\ <sstream>}}
+\DoxyCodeLine{\Hypertarget{file__service_8h_source_l00011}00011\ \textcolor{preprocessor}{\#include\ <stdexcept>}}
+\DoxyCodeLine{\Hypertarget{file__service_8h_source_l00012}00012\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{\Hypertarget{file__service_8h_source_l00013}00013\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{\Hypertarget{file__service_8h_source_l00014}00014\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{\Hypertarget{file__service_8h_source_l00015}00015\ \textcolor{preprocessor}{\#include\ <set>}}
+\DoxyCodeLine{\Hypertarget{file__service_8h_source_l00016}00016\ \textcolor{preprocessor}{\#include\ <sys/stat.h>}}
+\DoxyCodeLine{\Hypertarget{file__service_8h_source_l00017}00017\ \textcolor{preprocessor}{\#include\ <sys/types.h>}}
+\DoxyCodeLine{\Hypertarget{file__service_8h_source_l00018}00018\ \textcolor{preprocessor}{\#include\ <unistd.h>}}
+\DoxyCodeLine{\Hypertarget{file__service_8h_source_l00019}00019\ \textcolor{preprocessor}{\#include\ <cstdlib>}}
+\DoxyCodeLine{\Hypertarget{file__service_8h_source_l00020}00020\ \textcolor{preprocessor}{\#include\ <limits.h>}}
+\DoxyCodeLine{\Hypertarget{file__service_8h_source_l00021}00021\ \textcolor{preprocessor}{\#include\ "{}cpi.h"{}}}
+\DoxyCodeLine{\Hypertarget{file__service_8h_source_l00022}00022\ \textcolor{preprocessor}{\#include\ "{}product.h"{}}}
+\DoxyCodeLine{\Hypertarget{file__service_8h_source_l00023}00023\ \textcolor{preprocessor}{\#include\ "{}year\_month.h"{}}}
+\DoxyCodeLine{\Hypertarget{file__service_8h_source_l00024}00024\ \textcolor{preprocessor}{\#include\ "{}utem.h"{}}}
+\DoxyCodeLine{\Hypertarget{file__service_8h_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{file__service_8h_source_l00030}\mbox{\hyperlink{classFileService}{00030}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classFileService}{FileService}}\ \{}
+\DoxyCodeLine{\Hypertarget{file__service_8h_source_l00031}00031\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{file__service_8h_source_l00037}00037\ \ \ \ \ \mbox{\hyperlink{classFileService_a2e3edd9b5f046cef813f87fc38bb2730}{FileService}}();}
+\DoxyCodeLine{\Hypertarget{file__service_8h_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{file__service_8h_source_l00044}00044\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classFileService_ab0ed2b2304e128104c2cff8fc3fef1f3}{\string~FileService}}();}
+\DoxyCodeLine{\Hypertarget{file__service_8h_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{file__service_8h_source_l00052}00052\ \ \ \ \ std::vector<std::string>\ \mbox{\hyperlink{classFileService_a61c09d45e1b6e867a517081f16c26d46}{parseLine}}(\textcolor{keyword}{const}\ std::string\&\ line);}
+\DoxyCodeLine{\Hypertarget{file__service_8h_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{file__service_8h_source_l00059}00059\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classFileService_a301c94a171ab64371ef10d0ad218f1b9}{removeDirectory}}(\textcolor{keyword}{const}\ std::string\&\ dirPath);}
+\DoxyCodeLine{\Hypertarget{file__service_8h_source_l00060}00060\ }
+\DoxyCodeLine{\Hypertarget{file__service_8h_source_l00067}00067\ \ \ \ \ std::string\ \mbox{\hyperlink{classFileService_ad369be5a34d28912e1c639db2e4025b4}{createDirectory}}(\textcolor{keyword}{const}\ std::string\&\ dirPath);}
+\DoxyCodeLine{\Hypertarget{file__service_8h_source_l00068}00068\ }
+\DoxyCodeLine{\Hypertarget{file__service_8h_source_l00074}00074\ \ \ \ \ std::string\ \mbox{\hyperlink{classFileService_aeb03cb1ee0198faaa329115e700e10cd}{createTempDirectory}}();}
+\DoxyCodeLine{\Hypertarget{file__service_8h_source_l00075}00075\ }
+\DoxyCodeLine{\Hypertarget{file__service_8h_source_l00082}00082\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classFileService_a92c6437029d3c10e0eb2f53da339219e}{parseCsvLine}}(\textcolor{keyword}{const}\ std::string\&\ str);}
+\DoxyCodeLine{\Hypertarget{file__service_8h_source_l00083}00083\ }
+\DoxyCodeLine{\Hypertarget{file__service_8h_source_l00084}00084\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{file__service_8h_source_l00091}00091\ \ \ \ \ std::unordered\_map<std::string,\ std::ofstream>\ fileMap;}
+\DoxyCodeLine{\Hypertarget{file__service_8h_source_l00092}00092\ }
+\DoxyCodeLine{\Hypertarget{file__service_8h_source_l00100}00100\ \ \ \ \ \textcolor{keywordtype}{void}\ write(\textcolor{keywordtype}{int}\ ym,\ std::string\&\ sku,\ \textcolor{keywordtype}{double}\ amount);}
+\DoxyCodeLine{\Hypertarget{file__service_8h_source_l00101}00101\ \};}
+\DoxyCodeLine{\Hypertarget{file__service_8h_source_l00102}00102\ }
+\DoxyCodeLine{\Hypertarget{file__service_8h_source_l00103}00103\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ FILE\_SERVICE\_H\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

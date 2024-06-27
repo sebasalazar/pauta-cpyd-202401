@@ -13,6 +13,8 @@
       </df>
       <in>cpi.cpp</in>
       <in>cpi.h</in>
+      <in>file_service.cpp</in>
+      <in>file_service.h</in>
       <in>ipc.cpp</in>
       <in>main.cpp</in>
       <in>product.cpp</in>

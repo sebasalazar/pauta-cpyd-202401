@@ -9,6 +9,7 @@
 #include <omp.h>
 #include "summary.h"
 #include "utem.h"
+#include "file_service.h"
 
 /**
  * @brief Función que muestra los participantes del programa
@@ -36,10 +37,6 @@ int main(int argc, char** argv) {
 
     // Configurar std::cout para usar 2 decimales
     std::cout << std::fixed << std::setprecision(2);
-
-    // crea una carpeta temporal para almacenar los archivos intermedios
-    const std::string tmpDirectory = utem::createTempDirectory();
-    std::cout << "Carpeta temporal " << tmpDirectory << std::endl;
 
     if (argc > 2) {
         /*
@@ -96,7 +93,7 @@ int main(int argc, char** argv) {
 
             // Este mecanismo es mejorable, se calculan sku que después se descartarán
             // Pero en la estrategia es válido, porque evita calcularlo después
-            utem::unificar(code);
+            utem::unify(code);
 
             // Mostramos una línea para evidenciar el hilo que procesó el archivo (no es necesario).
 #pragma omp critical
@@ -110,7 +107,7 @@ int main(int argc, char** argv) {
          * Este proceso requiere revisar todos los archivos y es lento.
          */
         std::cout << utem::getLocalTime() << " Paso 3 - Preparo los datos de todos los años" << std::endl;
-        
+
         // Envío la tarea asíncrona
         std::future<std::map<int, Summary>> future = std::async(std::launch::async, cpi::makeCpi, exchange, list);
 
@@ -123,31 +120,27 @@ int main(int argc, char** argv) {
         std::cout << utem::getLocalTime() << " Paso 4 - Preparo los datos por año" << std::endl;
         // Obtenemos un mapa en donde la llave es el año y los valores son los meses
         const std::map<int, std::vector<int>> monthsInYear = utem::getMonthsInYears(yearsMonth);
-        
+        std::vector<int> years = utem::getYears(yearsMonth);
+
         // Estructura donde almacenaremos el IPC, la llave es el año y los valores el resumen de los datos
         std::map<int, Summary> cpi;
 
-#pragma omp parallel
-        {
-#pragma omp single nowait
-            {
-                for (std::map<int, std::vector<int>>::const_iterator it = monthsInYear.begin(); it != monthsInYear.end(); ++it) {
-                    int year = it->first;
-                    std::vector<int> months = it->second;
+#pragma omp parallel for
+        for (size_t index = 0; index < years.size(); index++) {
+            int year = years[index];
+            std::vector<int> months = monthsInYear.at(year);
 
-#pragma omp task firstprivate(year, months)
-                    {
-                        std::map<int, Summary> currentMap = cpi::makeCpi(exchange, months);
+            // Mapa con el resultado actual del año en curso
+            std::map<int, Summary> currentMap = cpi::makeCpi(exchange, months);
 #pragma omp critical
-                        {
-                            cpi.insert(currentMap.begin(), currentMap.end());
-                            std::cout << utem::getLocalTime() << " Paso 4.1 - Terminando proceso del año " << year << std::endl;
-                        }
-                    }
-                }
+            {
+                // se agrega al mapa de resultados
+                cpi.insert(currentMap.begin(), currentMap.end());
+                std::cout << utem::getLocalTime() << " Paso 4.1 - Terminando proceso del año " << year << std::endl;
             }
         }
 
+        // Se muestras los resultados año-mes
         for (std::map<int, Summary>::iterator it = cpi.begin(); it != cpi.end(); ++it) {
             std::cout << it->first
                     << " IPC Perú:  " << it->second.GetCpiPen() << " (S/" << it->second.GetSumPen() << ")\t\t"
@@ -155,6 +148,7 @@ int main(int argc, char** argv) {
                     << std::endl;
         }
 
+        // Se muestran los resutlados para todos los meses
         std::cout << "IPC de todos los meses" << std::endl;
         std::map<int, Summary> all = future.get();
         for (std::map<int, Summary>::iterator it = all.begin(); it != all.end(); ++it) {
@@ -182,6 +176,8 @@ std::set<int> load(const std::string& rutaArchivo) {
 
     std::ifstream archivo(rutaArchivo);
     if (archivo.is_open()) {
+        FileService fileService;
+
         // Omitir la primera línea si contiene encabezados
         std::string encabezado;
         std::getline(archivo, encabezado);
@@ -191,7 +187,7 @@ std::set<int> load(const std::string& rutaArchivo) {
          * Leemos el archivo para clasificar los datos por mes.
          */
         while (std::getline(archivo, linea)) {
-            int code = utem::parseCsvLine(linea);
+            int code = fileService.parseCsvLine(linea);
             if (code > 0) {
                 codes.insert(code);
             }

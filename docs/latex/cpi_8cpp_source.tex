@@ -1,0 +1,170 @@
+\doxysection{cpi.\+cpp}
+\hypertarget{cpi_8cpp_source}{}\label{cpi_8cpp_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}cpi.h"{}}}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00003}\mbox{\hyperlink{namespacecpi_a60eaf6759abb47ff16c5297727369503}{00003}}\ std::map<int,\ double>\ \mbox{\hyperlink{namespacecpi_a60eaf6759abb47ff16c5297727369503}{cpi::getForeignExchange}}(std::string\ filePath)\ \{}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00004}00004\ \ \ \ \ std::map<int,\ double>\ result;}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00006}00006\ \ \ \ \ xlsxioreader\ xlsxioread;}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00008}00008\ \ \ \ \ \textcolor{keywordflow}{if}\ (!filePath.empty()\ \&\&\ (xlsxioread\ =\ xlsxioread\_open(filePath.c\_str()))\ !=\ NULL)\ \{}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00009}00009\ \ \ \ \ \ \ \ \ std::map<int,\ std::vector<double>>\ current;}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00010}00010\ \ \ \ \ \ \ \ \ \textcolor{comment}{//read\ values\ from\ first\ sheet}}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00011}00011\ \ \ \ \ \ \ \ \ xlsxioreadersheet\ sheet;}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00012}00012\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ sheetname\ =\ NULL;}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00013}00013\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ ((sheet\ =\ xlsxioread\_sheet\_open(xlsxioread,\ sheetname,\ XLSXIOREAD\_SKIP\_EMPTY\_ROWS))\ !=\ NULL)\ \{}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00014}00014\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ leemos\ todas\ las\ filas}}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00015}00015\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (xlsxioread\_sheet\_next\_row(sheet))\ \{}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00016}00016\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Primera\ celda}}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00017}00017\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::time\_t\ ts\ =\ \{\};}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00018}00018\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ resultTime\ =\ xlsxioread\_sheet\_next\_cell\_datetime(sheet,\ \&ts);}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00020}00020\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Segunda\ celda}}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00021}00021\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ clp\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00022}00022\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ resultValue\ =\ xlsxioread\_sheet\_next\_cell\_float(sheet,\ \&clp);}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00024}00024\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (resultTime\ >\ 0\ \&\&\ resultValue\ >\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00025}00025\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ localTime\ =\ \mbox{\hyperlink{namespaceutem_a18dd7329862f1e8f88d4e02e72e0cd93}{utem::getLocalTime}}(ts);}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00026}00026\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classYearMonth}{YearMonth}}\ ym\ =\ \mbox{\hyperlink{namespaceutem_a2650ca72496b399d5c1c9ef52751ab6c}{utem::parseYearMonth}}(localTime);}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00027}00027\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ current[ym.\mbox{\hyperlink{classYearMonth_a116c142edab9a4144ecbd7e638d3a272}{GetYearMonth}}()].push\_back(clp);}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00028}00028\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00029}00029\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ xlsxioread\_sheet\_close(sheet);}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00031}00031\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00033}00033\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!current.empty())\ \{}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (std::map<\textcolor{keywordtype}{int},\ std::vector<double>>::iterator\ it\ =\ current.begin();\ it\ !=\ current.end();\ ++it)\ \{}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ ym\ =\ it-\/>first;}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<double>\ values\ =\ it-\/>second;}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ result[ym]\ =\ \mbox{\hyperlink{namespaceutem_a5f5aebdab5865a60c89c2c9484d07239}{utem::calculateMedian}}(values);}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00039}00039\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00041}00041\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ liberar\ memoria}}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00042}00042\ \ \ \ \ \ \ \ \ xlsxioread\_close(xlsxioread);}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00043}00043\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00044}00044\ \ \ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}Error\ con\ archivo\ Excel\ "{}}\ <<\ filePath\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00045}00045\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00046}00046\ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00047}00047\ \}}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00049}\mbox{\hyperlink{namespacecpi_abd9b30cfdcd8eb98416f84588471a6c0}{00049}}\ std::map<int,\ double>\ \mbox{\hyperlink{namespacecpi_abd9b30cfdcd8eb98416f84588471a6c0}{cpi::getCpi}}(std::vector<int>\ codes,\ std::set<Product>\ products)\ \{}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00050}00050\ \ \ \ \ std::map<int,\ double>\ map;}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00051}00051\ \ \ \ \ \textcolor{keywordflow}{if}\ (!codes.empty()\ \&\&\ !products.empty())\ \{}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00052}00052\ \ \ \ \ \ \ \ \ std::sort(codes.begin(),\ codes.end());}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00053}00053\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ code\ :\ codes)\ \{}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ sum\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00055}00055\ \ \ \ \ \ \ \ \ \ \ \ \ std::ifstream\ file(utem::tempPath\ +\ \textcolor{stringliteral}{"{}/"{}}\ +\ std::to\_string(code)\ +\ \textcolor{stringliteral}{"{}.csv"{}});}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (file.is\_open())\ \{}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ linea;}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (std::getline(file,\ linea))\ \{}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<std::string>\ splited\ =\ \mbox{\hyperlink{namespaceutem_a06f1caef9d21771c6a4cbd3cfa9e805e}{utem::split}}(linea,\ \textcolor{charliteral}{';'});}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!splited.empty())\ \{}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classProduct}{Product}}\ p(splited[0],\ std::stod(splited[1]));}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00062}00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (std::find(products.begin(),\ products.end(),\ p)\ !=\ products.end())\ \{}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ sum\ +=\ p.\mbox{\hyperlink{classProduct_a90c193bb2729bedd79b85dca3aba3d7a}{GetAmount}}();}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00064}00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00065}00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00066}00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00067}00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ file.close();}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00068}00068\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00069}00069\ \ \ \ \ \ \ \ \ \ \ \ \ map[code]\ =\ sum;}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00070}00070\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00071}00071\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00072}00072\ \ \ \ \ \textcolor{keywordflow}{return}\ map;}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00073}00073\ \}}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00074}00074\ }
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00075}\mbox{\hyperlink{namespacecpi_aaa9395c7eb44f8d8e3372580819efc17}{00075}}\ std::map<int,\ double>\ \mbox{\hyperlink{namespacecpi_aaa9395c7eb44f8d8e3372580819efc17}{cpi::getParallelCpi}}(std::vector<int>\ codes,\ std::set<Product>\ products)\ \{}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00076}00076\ \ \ \ \ std::map<int,\ double>\ map;}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00077}00077\ \ \ \ \ \textcolor{keywordflow}{if}\ (!codes.empty()\ \&\&\ !products.empty())\ \{}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00078}00078\ \ \ \ \ \ \ \ \ std::sort(codes.begin(),\ codes.end());}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00079}00079\ }
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00080}00080\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Define\ un\ map\ local\ para\ cada\ thread\ y\ fusiona\ después}}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00081}00081\ \ \ \ \ \ \ \ \ std::vector<std::map<int,\ double>>\ local\_maps(omp\_get\_max\_threads());}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00082}00082\ }
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00083}00083\ \textcolor{preprocessor}{\#pragma\ omp\ parallel\ for}}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00084}00084\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (std::vector<int>::size\_type\ i\ =\ 0;\ i\ <\ codes.size();\ ++i)\ \{}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00085}00085\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ code\ =\ codes[i];}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00086}00086\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ sum\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00087}00087\ \ \ \ \ \ \ \ \ \ \ \ \ std::ifstream\ file(utem::tempPath\ +\ \textcolor{stringliteral}{"{}/"{}}\ +\ std::to\_string(code)\ +\ \textcolor{stringliteral}{"{}.csv"{}});}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00088}00088\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (file.is\_open())\ \{}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00089}00089\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ linea;}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00090}00090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (std::getline(file,\ linea))\ \{}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00091}00091\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<std::string>\ splited\ =\ \mbox{\hyperlink{namespaceutem_a06f1caef9d21771c6a4cbd3cfa9e805e}{utem::split}}(linea,\ \textcolor{charliteral}{';'});}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00092}00092\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!splited.empty())\ \{}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00093}00093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classProduct}{Product}}\ p(splited[0],\ std::stod(splited[1]));}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00094}00094\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (products.find(p)\ !=\ products.end())\ \{}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00095}00095\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ sum\ +=\ p.\mbox{\hyperlink{classProduct_a90c193bb2729bedd79b85dca3aba3d7a}{GetAmount}}();}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00096}00096\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00097}00097\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00098}00098\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00099}00099\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ file.close();}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00100}00100\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00101}00101\ }
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00102}00102\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Almacena\ el\ resultado\ en\ el\ map\ local\ del\ thread}}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00103}00103\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ thread\_id\ =\ omp\_get\_thread\_num();}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00104}00104\ \ \ \ \ \ \ \ \ \ \ \ \ local\_maps[thread\_id][code]\ =\ sum;}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00105}00105\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00106}00106\ }
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00107}00107\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Fusiona\ los\ resultados\ de\ los\ maps\ locales\ en\ el\ map\ global}}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00108}00108\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (std::vector<std::map<int,\ double>>::const\_iterator\ local\_map\_it\ =\ local\_maps.begin();\ local\_map\_it\ !=\ local\_maps.end();\ ++local\_map\_it)\ \{}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00109}00109\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (std::map<int,\ double>::const\_iterator\ entry\_it\ =\ local\_map\_it-\/>begin();\ entry\_it\ !=\ local\_map\_it-\/>end();\ ++entry\_it)\ \{}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00110}00110\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ map[entry\_it-\/>first]\ =\ entry\_it-\/>second;}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00111}00111\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00112}00112\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00113}00113\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00114}00114\ \ \ \ \ \textcolor{keywordflow}{return}\ map;}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00115}00115\ \}}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00116}00116\ }
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00117}\mbox{\hyperlink{namespacecpi_a313a97e5a1a49a453363b7893228b4b5}{00117}}\ std::map<int,\ double>\ \mbox{\hyperlink{namespacecpi_a313a97e5a1a49a453363b7893228b4b5}{cpi::calculate}}(std::vector<int>\ months,\ std::map<int,\ double>\ amountSums)\ \{}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00118}00118\ \ \ \ \ std::map<int,\ double>\ \mbox{\hyperlink{namespacecpi}{cpi}};}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00119}00119\ }
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00120}00120\ \ \ \ \ \textcolor{keywordtype}{int}\ index\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00121}00121\ \ \ \ \ \textcolor{keywordtype}{double}\ current\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00122}00122\ \ \ \ \ std::sort(months.begin(),\ months.end());}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00123}00123\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ ym\ :\ months)\ \{}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00124}00124\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ last\ =\ amountSums[ym];}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00125}00125\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (index\ >\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00126}00126\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacecpi}{cpi}}[ym]\ =\ ((last\ -\/\ current)\ /\ current)\ *\ 100;}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00127}00127\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00128}00128\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacecpi}{cpi}}[ym]\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00129}00129\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00130}00130\ \ \ \ \ \ \ \ \ index\ +=\ 1;}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00131}00131\ \ \ \ \ \ \ \ \ current\ =\ last;}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00132}00132\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00133}00133\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{namespacecpi}{cpi}};}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00134}00134\ \}}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00135}00135\ }
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00136}\mbox{\hyperlink{namespacecpi_a758c6f9f4acc189dfd424ecf3696b924}{00136}}\ std::map<int,\ Summary>\ \mbox{\hyperlink{namespacecpi_a758c6f9f4acc189dfd424ecf3696b924}{cpi::makeCpi}}(std::map<int,\ double>\ exchange,\ std::vector<int>\ codes)\ \{}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00137}00137\ \ \ \ \ std::map<int,\ Summary>\ result;}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00138}00138\ \ \ \ \ \textcolor{keywordflow}{if}\ (!codes.empty())\ \{}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00139}00139\ \ \ \ \ \ \ \ \ std::map<int,\ double>\ clpSum;}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00140}00140\ \ \ \ \ \ \ \ \ std::map<int,\ double>\ penSum;}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00141}00141\ \ \ \ \ \ \ \ \ std::set<Product>\ basket\ =\ \mbox{\hyperlink{namespaceutem_a467752a0963d15bed224c93343919afa}{utem::getBasicBasket}}(codes);}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00142}00142\ }
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00143}00143\ \ \ \ \ \ \ \ \ std::map<int,\ double>\ currentMap\ =\ \mbox{\hyperlink{namespacecpi_aaa9395c7eb44f8d8e3372580819efc17}{getParallelCpi}}(codes,\ basket);}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00144}00144\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (std::map<int,\ double>::iterator\ it\ =\ currentMap.begin();\ it\ !=\ currentMap.end();\ ++it)\ \{}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00145}00145\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ ym\ =\ it-\/>first;}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00146}00146\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ pen\ =\ it-\/>second;}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00147}00147\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ clp\ =\ pen\ *\ exchange[ym];}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00148}00148\ \ \ \ \ \ \ \ \ \ \ \ \ penSum[ym]\ =\ pen;}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00149}00149\ \ \ \ \ \ \ \ \ \ \ \ \ clpSum[ym]\ =\ clp;}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00150}00150\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00151}00151\ }
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00152}00152\ \ \ \ \ \ \ \ \ std::map<int,\ double>\ penCpi\ =\ \mbox{\hyperlink{namespacecpi_a313a97e5a1a49a453363b7893228b4b5}{calculate}}(codes,\ penSum);}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00153}00153\ \ \ \ \ \ \ \ \ std::map<int,\ double>\ clpCpi\ =\ \mbox{\hyperlink{namespacecpi_a313a97e5a1a49a453363b7893228b4b5}{calculate}}(codes,\ clpSum);}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00154}00154\ }
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00155}00155\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ ym\ :\ codes)\ \{}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00156}00156\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ cpiPen\ =\ penCpi[ym];}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00157}00157\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ sumPen\ =\ penSum[ym];}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00158}00158\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ cpiClp\ =\ clpCpi[ym];}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00159}00159\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{long}\ sumClp\ =\ (long)\ clpSum[ym];}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00160}00160\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classSummary}{Summary}}\ summary(cpiPen,\ sumPen,\ cpiClp,\ sumClp);}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00161}00161\ \ \ \ \ \ \ \ \ \ \ \ \ result[ym]\ =\ summary;}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00162}00162\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00163}00163\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00164}00164\ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{\Hypertarget{cpi_8cpp_source_l00165}00165\ \}}
+
+\end{DoxyCode}

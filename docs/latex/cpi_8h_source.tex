@@ -1,0 +1,33 @@
+\doxysection{cpi.\+h}
+\hypertarget{cpi_8h_source}{}\label{cpi_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{cpi_8h_source_l00001}00001\ \textcolor{preprocessor}{\#ifndef\ CPI\_H}}
+\DoxyCodeLine{\Hypertarget{cpi_8h_source_l00002}00002\ \textcolor{preprocessor}{\#define\ CPI\_H}}
+\DoxyCodeLine{\Hypertarget{cpi_8h_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{cpi_8h_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\Hypertarget{cpi_8h_source_l00005}00005\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{\Hypertarget{cpi_8h_source_l00006}00006\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{\Hypertarget{cpi_8h_source_l00007}00007\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{\Hypertarget{cpi_8h_source_l00008}00008\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{\Hypertarget{cpi_8h_source_l00009}00009\ \textcolor{preprocessor}{\#include\ <omp.h>}}
+\DoxyCodeLine{\Hypertarget{cpi_8h_source_l00010}00010\ \textcolor{preprocessor}{\#include\ "{}xlsxio/xlsxio\_read.h"{}}}
+\DoxyCodeLine{\Hypertarget{cpi_8h_source_l00011}00011\ \textcolor{preprocessor}{\#include\ "{}product.h"{}}}
+\DoxyCodeLine{\Hypertarget{cpi_8h_source_l00012}00012\ \textcolor{preprocessor}{\#include\ "{}utem.h"{}}}
+\DoxyCodeLine{\Hypertarget{cpi_8h_source_l00013}00013\ \textcolor{preprocessor}{\#include\ "{}summary.h"{}}}
+\DoxyCodeLine{\Hypertarget{cpi_8h_source_l00014}00014\ }
+\DoxyCodeLine{\Hypertarget{cpi_8h_source_l00019}00019\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacecpi}{cpi}}\ \{}
+\DoxyCodeLine{\Hypertarget{cpi_8h_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{cpi_8h_source_l00027}00027\ \ \ \ \ std::map<int,\ double>\ \mbox{\hyperlink{namespacecpi_a60eaf6759abb47ff16c5297727369503}{getForeignExchange}}(std::string\ filePath);}
+\DoxyCodeLine{\Hypertarget{cpi_8h_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{cpi_8h_source_l00036}00036\ \ \ \ \ std::map<int,\ double>\ \mbox{\hyperlink{namespacecpi_a313a97e5a1a49a453363b7893228b4b5}{calculate}}(std::vector<int>\ months,\ std::map<int,\ double>\ amountSums);}
+\DoxyCodeLine{\Hypertarget{cpi_8h_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{cpi_8h_source_l00045}00045\ \ \ \ \ std::map<int,\ double>\ \mbox{\hyperlink{namespacecpi_abd9b30cfdcd8eb98416f84588471a6c0}{getCpi}}(std::vector<int>\ codes,\ std::set<Product>\ products);}
+\DoxyCodeLine{\Hypertarget{cpi_8h_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{cpi_8h_source_l00054}00054\ \ \ \ \ std::map<int,\ double>\ \mbox{\hyperlink{namespacecpi_aaa9395c7eb44f8d8e3372580819efc17}{getParallelCpi}}(std::vector<int>\ codes,\ std::set<Product>\ products);}
+\DoxyCodeLine{\Hypertarget{cpi_8h_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{cpi_8h_source_l00063}00063\ \ \ \ \ std::map<int,\ Summary>\ \mbox{\hyperlink{namespacecpi_a758c6f9f4acc189dfd424ecf3696b924}{makeCpi}}(std::map<int,\ double>\ exchange,\ std::vector<int>\ codes);}
+\DoxyCodeLine{\Hypertarget{cpi_8h_source_l00064}00064\ \};}
+\DoxyCodeLine{\Hypertarget{cpi_8h_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{cpi_8h_source_l00066}00066\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ CPI\_H\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

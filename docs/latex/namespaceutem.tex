@@ -1,0 +1,245 @@
+\doxysection{Referencia del espacio de nombres utem}
+\hypertarget{namespaceutem}{}\label{namespaceutem}\index{utem@{utem}}
+\doxysubsubsection*{Funciones}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{namespaceutem_a18dd7329862f1e8f88d4e02e72e0cd93}{get\+Local\+Time}} ()
+\begin{DoxyCompactList}\small\item\em Obtiene la hora local actual como una cadena de texto en formato ISO. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{namespaceutem_a42733e8151f257d2b7bc88e929ca7e93}{get\+Local\+Time}} (std\+::time\+\_\+t ts)
+\begin{DoxyCompactList}\small\item\em Convierte un timestamp dado a una cadena de texto en formato ISO. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classYearMonth}{Year\+Month}} \mbox{\hyperlink{namespaceutem_a2650ca72496b399d5c1c9ef52751ab6c}{parse\+Year\+Month}} (const std\+::string \&str)
+\begin{DoxyCompactList}\small\item\em Parsea una cadena y devuelve un objeto \doxylink{classYearMonth}{Year\+Month}. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{namespaceutem_af05de8a55c75be84f3a8b6a0992dfd28}{remove\+Quotes}} (const std\+::string \&text)
+\begin{DoxyCompactList}\small\item\em Remueve las comillas dobles de una cadena de texto. \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{namespaceutem_a06f1caef9d21771c6a4cbd3cfa9e805e}{split}} (const std\+::string \&line, char delimiter)
+\begin{DoxyCompactList}\small\item\em Divide una cadena de texto en partes utilizando un delimitador. \end{DoxyCompactList}\item 
+std\+::map$<$ int, std\+::vector$<$ int $>$ $>$ \mbox{\hyperlink{namespaceutem_a8422cb3a640494a45dfe615562394527}{get\+Months\+In\+Years}} (std\+::set$<$ int $>$ codes)
+\begin{DoxyCompactList}\small\item\em Organiza un conjunto de códigos de año y mes en un mapa separado por años. \end{DoxyCompactList}\item 
+std\+::vector$<$ int $>$ \mbox{\hyperlink{namespaceutem_a8e10faf037337ea9349e98c836714611}{get\+Years}} (std\+::set$<$ int $>$ codes)
+\begin{DoxyCompactList}\small\item\em Obtiene un vector de años a partir de un conjunto de códigos de año y mes. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceutem_a888fd05b88ff670ca063a638a4035624}{unify}} (int code)
+\begin{DoxyCompactList}\small\item\em Reduce las ocurrencias dentro de los archivos para un código dado. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{namespaceutem_a5f5aebdab5865a60c89c2c9484d07239}{calculate\+Median}} (std\+::vector$<$ double $>$ list)
+\begin{DoxyCompactList}\small\item\em Calcula la mediana de una lista de valores. \end{DoxyCompactList}\item 
+std\+::set$<$ \mbox{\hyperlink{classProduct}{Product}} $>$ \mbox{\hyperlink{namespaceutem_a467752a0963d15bed224c93343919afa}{get\+Basic\+Basket}} (std\+::vector$<$ int $>$ codes)
+\begin{DoxyCompactList}\small\item\em Obtiene la canasta básica de productos a partir de un vector de códigos Año-\/\+Mes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+Utilitario para algunas tareas comunes para el manejo del programa. 
+
+\doxysubsection{Documentación de funciones}
+\Hypertarget{namespaceutem_a5f5aebdab5865a60c89c2c9484d07239}\label{namespaceutem_a5f5aebdab5865a60c89c2c9484d07239} 
+\index{utem@{utem}!calculateMedian@{calculateMedian}}
+\index{calculateMedian@{calculateMedian}!utem@{utem}}
+\doxysubsubsection{\texorpdfstring{calculateMedian()}{calculateMedian()}}
+{\footnotesize\ttfamily double utem\+::calculate\+Median (\begin{DoxyParamCaption}\item[{std\+::vector$<$ double $>$}]{list }\end{DoxyParamCaption})}
+
+
+
+Calcula la mediana de una lista de valores. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em list} & Lista de valores a procesar. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+La mediana de la lista de valores. 
+\end{DoxyReturn}
+
+
+Definición en la línea \mbox{\hyperlink{utem_8cpp_source_l00108}{108}} del archivo \mbox{\hyperlink{utem_8cpp_source}{utem.\+cpp}}.
+
+\Hypertarget{namespaceutem_a467752a0963d15bed224c93343919afa}\label{namespaceutem_a467752a0963d15bed224c93343919afa} 
+\index{utem@{utem}!getBasicBasket@{getBasicBasket}}
+\index{getBasicBasket@{getBasicBasket}!utem@{utem}}
+\doxysubsubsection{\texorpdfstring{getBasicBasket()}{getBasicBasket()}}
+{\footnotesize\ttfamily std\+::set$<$ \mbox{\hyperlink{classProduct}{Product}} $>$ utem\+::get\+Basic\+Basket (\begin{DoxyParamCaption}\item[{std\+::vector$<$ int $>$}]{codes }\end{DoxyParamCaption})}
+
+
+
+Obtiene la canasta básica de productos a partir de un vector de códigos Año-\/\+Mes. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em codes} & Vector de códigos a procesar. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Un conjunto de productos que forman la canasta básica. 
+\end{DoxyReturn}
+
+
+Definición en la línea \mbox{\hyperlink{utem_8cpp_source_l00125}{125}} del archivo \mbox{\hyperlink{utem_8cpp_source}{utem.\+cpp}}.
+
+\Hypertarget{namespaceutem_a18dd7329862f1e8f88d4e02e72e0cd93}\label{namespaceutem_a18dd7329862f1e8f88d4e02e72e0cd93} 
+\index{utem@{utem}!getLocalTime@{getLocalTime}}
+\index{getLocalTime@{getLocalTime}!utem@{utem}}
+\doxysubsubsection{\texorpdfstring{getLocalTime()}{getLocalTime()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily std\+::string utem\+::get\+Local\+Time (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Obtiene la hora local actual como una cadena de texto en formato ISO. 
+
+\begin{DoxyReturn}{Devuelve}
+La hora local actual en formato ISO (YYYY-\/\+MM-\/\+DD HH\+:\+MM\+:SS). 
+\end{DoxyReturn}
+
+
+Definición en la línea \mbox{\hyperlink{utem_8cpp_source_l00003}{3}} del archivo \mbox{\hyperlink{utem_8cpp_source}{utem.\+cpp}}.
+
+\Hypertarget{namespaceutem_a42733e8151f257d2b7bc88e929ca7e93}\label{namespaceutem_a42733e8151f257d2b7bc88e929ca7e93} 
+\index{utem@{utem}!getLocalTime@{getLocalTime}}
+\index{getLocalTime@{getLocalTime}!utem@{utem}}
+\doxysubsubsection{\texorpdfstring{getLocalTime()}{getLocalTime()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily std\+::string utem\+::get\+Local\+Time (\begin{DoxyParamCaption}\item[{std\+::time\+\_\+t}]{ts }\end{DoxyParamCaption})}
+
+
+
+Convierte un timestamp dado a una cadena de texto en formato ISO. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em ts} & Timestamp a convertir. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+La hora correspondiente al timestamp en formato ISO (YYYY-\/\+MM-\/\+DD HH\+:\+MM\+:SS). 
+\end{DoxyReturn}
+
+
+Definición en la línea \mbox{\hyperlink{utem_8cpp_source_l00012}{12}} del archivo \mbox{\hyperlink{utem_8cpp_source}{utem.\+cpp}}.
+
+\Hypertarget{namespaceutem_a8422cb3a640494a45dfe615562394527}\label{namespaceutem_a8422cb3a640494a45dfe615562394527} 
+\index{utem@{utem}!getMonthsInYears@{getMonthsInYears}}
+\index{getMonthsInYears@{getMonthsInYears}!utem@{utem}}
+\doxysubsubsection{\texorpdfstring{getMonthsInYears()}{getMonthsInYears()}}
+{\footnotesize\ttfamily std\+::map$<$ int, std\+::vector$<$ int $>$ $>$ utem\+::get\+Months\+In\+Years (\begin{DoxyParamCaption}\item[{std\+::set$<$ int $>$}]{codes }\end{DoxyParamCaption})}
+
+
+
+Organiza un conjunto de códigos de año y mes en un mapa separado por años. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em codes} & Conjunto de códigos de año y mes en formato AAMM. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Un mapa donde la clave es el año y el valor es un vector de meses correspondientes a ese año. 
+\end{DoxyReturn}
+
+
+Definición en la línea \mbox{\hyperlink{utem_8cpp_source_l00045}{45}} del archivo \mbox{\hyperlink{utem_8cpp_source}{utem.\+cpp}}.
+
+\Hypertarget{namespaceutem_a8e10faf037337ea9349e98c836714611}\label{namespaceutem_a8e10faf037337ea9349e98c836714611} 
+\index{utem@{utem}!getYears@{getYears}}
+\index{getYears@{getYears}!utem@{utem}}
+\doxysubsubsection{\texorpdfstring{getYears()}{getYears()}}
+{\footnotesize\ttfamily std\+::vector$<$ int $>$ utem\+::get\+Years (\begin{DoxyParamCaption}\item[{std\+::set$<$ int $>$}]{codes }\end{DoxyParamCaption})}
+
+
+
+Obtiene un vector de años a partir de un conjunto de códigos de año y mes. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em codes} & Conjunto de códigos de año y mes en formato AAMM. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Un vector con los años presentes en los códigos. 
+\end{DoxyReturn}
+
+
+Definición en la línea \mbox{\hyperlink{utem_8cpp_source_l00054}{54}} del archivo \mbox{\hyperlink{utem_8cpp_source}{utem.\+cpp}}.
+
+\Hypertarget{namespaceutem_a2650ca72496b399d5c1c9ef52751ab6c}\label{namespaceutem_a2650ca72496b399d5c1c9ef52751ab6c} 
+\index{utem@{utem}!parseYearMonth@{parseYearMonth}}
+\index{parseYearMonth@{parseYearMonth}!utem@{utem}}
+\doxysubsubsection{\texorpdfstring{parseYearMonth()}{parseYearMonth()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classYearMonth}{Year\+Month}} utem\+::parse\+Year\+Month (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{str }\end{DoxyParamCaption})}
+
+
+
+Parsea una cadena y devuelve un objeto \doxylink{classYearMonth}{Year\+Month}. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em str} & Cadena de texto a procesar. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+El objeto \doxylink{classYearMonth}{Year\+Month} resultante del parseo. 
+\end{DoxyReturn}
+
+
+Definición en la línea \mbox{\hyperlink{utem_8cpp_source_l00020}{20}} del archivo \mbox{\hyperlink{utem_8cpp_source}{utem.\+cpp}}.
+
+\Hypertarget{namespaceutem_af05de8a55c75be84f3a8b6a0992dfd28}\label{namespaceutem_af05de8a55c75be84f3a8b6a0992dfd28} 
+\index{utem@{utem}!removeQuotes@{removeQuotes}}
+\index{removeQuotes@{removeQuotes}!utem@{utem}}
+\doxysubsubsection{\texorpdfstring{removeQuotes()}{removeQuotes()}}
+{\footnotesize\ttfamily std\+::string utem\+::remove\+Quotes (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{text }\end{DoxyParamCaption})}
+
+
+
+Remueve las comillas dobles de una cadena de texto. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em text} & Cadena de texto a procesar. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+La cadena de texto sin comillas dobles. 
+\end{DoxyReturn}
+
+
+Definición en la línea \mbox{\hyperlink{utem_8cpp_source_l00027}{27}} del archivo \mbox{\hyperlink{utem_8cpp_source}{utem.\+cpp}}.
+
+\Hypertarget{namespaceutem_a06f1caef9d21771c6a4cbd3cfa9e805e}\label{namespaceutem_a06f1caef9d21771c6a4cbd3cfa9e805e} 
+\index{utem@{utem}!split@{split}}
+\index{split@{split}!utem@{utem}}
+\doxysubsubsection{\texorpdfstring{split()}{split()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::string $>$ utem\+::split (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{line,  }\item[{char}]{delimiter }\end{DoxyParamCaption})}
+
+
+
+Divide una cadena de texto en partes utilizando un delimitador. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em line} & Cadena de texto a dividir. \\
+\hline
+{\em delimiter} & Carácter delimitador utilizado para dividir la cadena. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Un vector con las partes resultantes de la división. 
+\end{DoxyReturn}
+
+
+Definición en la línea \mbox{\hyperlink{utem_8cpp_source_l00033}{33}} del archivo \mbox{\hyperlink{utem_8cpp_source}{utem.\+cpp}}.
+
+\Hypertarget{namespaceutem_a888fd05b88ff670ca063a638a4035624}\label{namespaceutem_a888fd05b88ff670ca063a638a4035624} 
+\index{utem@{utem}!unify@{unify}}
+\index{unify@{unify}!utem@{utem}}
+\doxysubsubsection{\texorpdfstring{unify()}{unify()}}
+{\footnotesize\ttfamily void utem\+::unify (\begin{DoxyParamCaption}\item[{int}]{code }\end{DoxyParamCaption})}
+
+
+
+Reduce las ocurrencias dentro de los archivos para un código dado. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em code} & Código a revisar y unificar. \\
+\hline
+\end{DoxyParams}
+
+
+Definición en la línea \mbox{\hyperlink{utem_8cpp_source_l00067}{67}} del archivo \mbox{\hyperlink{utem_8cpp_source}{utem.\+cpp}}.
+

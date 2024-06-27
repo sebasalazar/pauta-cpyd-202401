@@ -1,0 +1,381 @@
+\doxysection{Referencia de la clase Year\+Month}
+\hypertarget{classYearMonth}{}\label{classYearMonth}\index{YearMonth@{YearMonth}}
+
+
+Clase para representar un año y un mes.  
+
+
+
+
+{\ttfamily \#include $<$year\+\_\+month.\+h$>$}
+
+\doxysubsubsection*{Métodos públicos}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classYearMonth_a47dbdadb9fa90a0293762568d90b3697}{Year\+Month}} ()
+\begin{DoxyCompactList}\small\item\em Constructor por defecto. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classYearMonth_a4e95c48cc4ea07db08b806b4c6472aaf}{Year\+Month}} (int code)
+\begin{DoxyCompactList}\small\item\em Constructor que inicializa con un código combinado de año y mes. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classYearMonth_a7cfecca87534d453d4713239b3f80e9c}{Year\+Month}} (int year, int month)
+\begin{DoxyCompactList}\small\item\em Constructor que inicializa con un año y un mes específicos. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classYearMonth_aac83da76fa35456a65b67e5fdb2eaf40}{Year\+Month}} (const \mbox{\hyperlink{classYearMonth}{Year\+Month}} \&orig)
+\begin{DoxyCompactList}\small\item\em Constructor de copia. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classYearMonth_a5fc8eb0c9234d2fcdb92c6074d8f14c2}{\texorpdfstring{$\sim$}{\string~}\+Year\+Month}} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classYearMonth_a2fff82d4bb5abce01618fa3fd0380627}{Get\+Month}} () const
+\begin{DoxyCompactList}\small\item\em Obtiene el mes. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classYearMonth_aeea1978dcb2b1032cf1cace284d968cc}{Get\+Year}} () const
+\begin{DoxyCompactList}\small\item\em Obtiene el año. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classYearMonth_a116c142edab9a4144ecbd7e638d3a272}{Get\+Year\+Month}} () const
+\begin{DoxyCompactList}\small\item\em Obtiene el código combinado de año y mes. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classYearMonth_a201d77ddd088adca5f0670a215fad215}{to\+String}} () const
+\begin{DoxyCompactList}\small\item\em Convierte el objeto \doxylink{classYearMonth}{Year\+Month} a una cadena de texto. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classYearMonth_aa93a889dd0e4a46f4a635f3f374a59db}{operator==}} (const \mbox{\hyperlink{classYearMonth}{Year\+Month}} \&other) const
+\begin{DoxyCompactList}\small\item\em Operador de igualdad. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classYearMonth_a7023ee2f076308db893e7cdd144c64be}{operator!=}} (const \mbox{\hyperlink{classYearMonth}{Year\+Month}} \&other) const
+\begin{DoxyCompactList}\small\item\em Operador de desigualdad. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classYearMonth_af317334a4a05bd041c3702a89e7a1df7}{operator$<$}} (const \mbox{\hyperlink{classYearMonth}{Year\+Month}} \&other) const
+\begin{DoxyCompactList}\small\item\em Operador menor que. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classYearMonth_a20f7e4a45cd6af0546b4fdf09174bb94}{operator$<$=}} (const \mbox{\hyperlink{classYearMonth}{Year\+Month}} \&other) const
+\begin{DoxyCompactList}\small\item\em Operador menor o igual que. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classYearMonth_abb22ddd0e45f1e41272ec65e7d55e34e}{operator$>$}} (const \mbox{\hyperlink{classYearMonth}{Year\+Month}} \&other) const
+\begin{DoxyCompactList}\small\item\em Operador mayor que. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classYearMonth_a4607e72453406b452b2309b41afcf1fb}{operator$>$=}} (const \mbox{\hyperlink{classYearMonth}{Year\+Month}} \&other) const
+\begin{DoxyCompactList}\small\item\em Operador mayor o igual que. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classYearMonth}{Year\+Month}} \& \mbox{\hyperlink{classYearMonth_aa5d7362bbb3649f60738c1952474d4c8}{operator=}} (const \mbox{\hyperlink{classYearMonth}{Year\+Month}} \&right)
+\begin{DoxyCompactList}\small\item\em Operador de asignación. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+Clase para representar un año y un mes. 
+
+La clase \doxylink{classYearMonth}{Year\+Month} proporciona una representación y manipulación de una combinación de año y mes. Esta es una idea robada de Java 8+, que es útil para trabajar con año y mes de una forma resuminda. 
+
+Definición en la línea \mbox{\hyperlink{year__month_8h_source_l00017}{17}} del archivo \mbox{\hyperlink{year__month_8h_source}{year\+\_\+month.\+h}}.
+
+
+
+\doxysubsection{Documentación de constructores y destructores}
+\Hypertarget{classYearMonth_a47dbdadb9fa90a0293762568d90b3697}\label{classYearMonth_a47dbdadb9fa90a0293762568d90b3697} 
+\index{YearMonth@{YearMonth}!YearMonth@{YearMonth}}
+\index{YearMonth@{YearMonth}!YearMonth@{YearMonth}}
+\doxysubsubsection{\texorpdfstring{YearMonth()}{YearMonth()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily Year\+Month\+::\+Year\+Month (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Constructor por defecto. 
+
+Inicializa un objeto \doxylink{classYearMonth}{Year\+Month} con el año y mes por defecto. 
+
+Definición en la línea \mbox{\hyperlink{year__month_8cpp_source_l00003}{3}} del archivo \mbox{\hyperlink{year__month_8cpp_source}{year\+\_\+month.\+cpp}}.
+
+\Hypertarget{classYearMonth_a4e95c48cc4ea07db08b806b4c6472aaf}\label{classYearMonth_a4e95c48cc4ea07db08b806b4c6472aaf} 
+\index{YearMonth@{YearMonth}!YearMonth@{YearMonth}}
+\index{YearMonth@{YearMonth}!YearMonth@{YearMonth}}
+\doxysubsubsection{\texorpdfstring{YearMonth()}{YearMonth()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily Year\+Month\+::\+Year\+Month (\begin{DoxyParamCaption}\item[{int}]{code }\end{DoxyParamCaption})}
+
+
+
+Constructor que inicializa con un código combinado de año y mes. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em code} & Código combinado de año y mes en el formato AAAAMM (AAAA\+: año 2024, MM\+: mes 6 sería 202406). \\
+\hline
+\end{DoxyParams}
+
+
+Definición en la línea \mbox{\hyperlink{year__month_8cpp_source_l00008}{8}} del archivo \mbox{\hyperlink{year__month_8cpp_source}{year\+\_\+month.\+cpp}}.
+
+\Hypertarget{classYearMonth_a7cfecca87534d453d4713239b3f80e9c}\label{classYearMonth_a7cfecca87534d453d4713239b3f80e9c} 
+\index{YearMonth@{YearMonth}!YearMonth@{YearMonth}}
+\index{YearMonth@{YearMonth}!YearMonth@{YearMonth}}
+\doxysubsubsection{\texorpdfstring{YearMonth()}{YearMonth()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily Year\+Month\+::\+Year\+Month (\begin{DoxyParamCaption}\item[{int}]{year,  }\item[{int}]{month }\end{DoxyParamCaption})}
+
+
+
+Constructor que inicializa con un año y un mes específicos. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em year} & Año a ser establecido. \\
+\hline
+{\em month} & Mes a ser establecido. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Excepciones}
+{\em std\+::invalid\+\_\+argument} & Si el mes no está en el rango 1-\/12. \\
+\hline
+\end{DoxyExceptions}
+
+
+Definición en la línea \mbox{\hyperlink{year__month_8cpp_source_l00017}{17}} del archivo \mbox{\hyperlink{year__month_8cpp_source}{year\+\_\+month.\+cpp}}.
+
+\Hypertarget{classYearMonth_aac83da76fa35456a65b67e5fdb2eaf40}\label{classYearMonth_aac83da76fa35456a65b67e5fdb2eaf40} 
+\index{YearMonth@{YearMonth}!YearMonth@{YearMonth}}
+\index{YearMonth@{YearMonth}!YearMonth@{YearMonth}}
+\doxysubsubsection{\texorpdfstring{YearMonth()}{YearMonth()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily Year\+Month\+::\+Year\+Month (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classYearMonth}{Year\+Month}} \&}]{orig }\end{DoxyParamCaption})}
+
+
+
+Constructor de copia. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em orig} & Objeto \doxylink{classYearMonth}{Year\+Month} a copiar. \\
+\hline
+\end{DoxyParams}
+
+
+Definición en la línea \mbox{\hyperlink{year__month_8cpp_source_l00023}{23}} del archivo \mbox{\hyperlink{year__month_8cpp_source}{year\+\_\+month.\+cpp}}.
+
+\Hypertarget{classYearMonth_a5fc8eb0c9234d2fcdb92c6074d8f14c2}\label{classYearMonth_a5fc8eb0c9234d2fcdb92c6074d8f14c2} 
+\index{YearMonth@{YearMonth}!````~YearMonth@{\texorpdfstring{$\sim$}{\string~}YearMonth}}
+\index{````~YearMonth@{\texorpdfstring{$\sim$}{\string~}YearMonth}!YearMonth@{YearMonth}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}YearMonth()}{\string~YearMonth()}}
+{\footnotesize\ttfamily Year\+Month\+::\texorpdfstring{$\sim$}{\string~}\+Year\+Month (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Destructor. 
+
+
+
+Definición en la línea \mbox{\hyperlink{year__month_8cpp_source_l00028}{28}} del archivo \mbox{\hyperlink{year__month_8cpp_source}{year\+\_\+month.\+cpp}}.
+
+
+
+\doxysubsection{Documentación de funciones miembro}
+\Hypertarget{classYearMonth_a2fff82d4bb5abce01618fa3fd0380627}\label{classYearMonth_a2fff82d4bb5abce01618fa3fd0380627} 
+\index{YearMonth@{YearMonth}!GetMonth@{GetMonth}}
+\index{GetMonth@{GetMonth}!YearMonth@{YearMonth}}
+\doxysubsubsection{\texorpdfstring{GetMonth()}{GetMonth()}}
+{\footnotesize\ttfamily int Year\+Month\+::\+Get\+Month (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Obtiene el mes. 
+
+\begin{DoxyReturn}{Devuelve}
+El mes (1-\/12). 
+\end{DoxyReturn}
+
+
+Definición en la línea \mbox{\hyperlink{year__month_8cpp_source_l00041}{41}} del archivo \mbox{\hyperlink{year__month_8cpp_source}{year\+\_\+month.\+cpp}}.
+
+\Hypertarget{classYearMonth_aeea1978dcb2b1032cf1cace284d968cc}\label{classYearMonth_aeea1978dcb2b1032cf1cace284d968cc} 
+\index{YearMonth@{YearMonth}!GetYear@{GetYear}}
+\index{GetYear@{GetYear}!YearMonth@{YearMonth}}
+\doxysubsubsection{\texorpdfstring{GetYear()}{GetYear()}}
+{\footnotesize\ttfamily int Year\+Month\+::\+Get\+Year (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Obtiene el año. 
+
+\begin{DoxyReturn}{Devuelve}
+El año. 
+\end{DoxyReturn}
+
+
+Definición en la línea \mbox{\hyperlink{year__month_8cpp_source_l00045}{45}} del archivo \mbox{\hyperlink{year__month_8cpp_source}{year\+\_\+month.\+cpp}}.
+
+\Hypertarget{classYearMonth_a116c142edab9a4144ecbd7e638d3a272}\label{classYearMonth_a116c142edab9a4144ecbd7e638d3a272} 
+\index{YearMonth@{YearMonth}!GetYearMonth@{GetYearMonth}}
+\index{GetYearMonth@{GetYearMonth}!YearMonth@{YearMonth}}
+\doxysubsubsection{\texorpdfstring{GetYearMonth()}{GetYearMonth()}}
+{\footnotesize\ttfamily int Year\+Month\+::\+Get\+Year\+Month (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Obtiene el código combinado de año y mes. 
+
+\begin{DoxyReturn}{Devuelve}
+El código combinado en el formato AAMM. 
+\end{DoxyReturn}
+
+
+Definición en la línea \mbox{\hyperlink{year__month_8cpp_source_l00049}{49}} del archivo \mbox{\hyperlink{year__month_8cpp_source}{year\+\_\+month.\+cpp}}.
+
+\Hypertarget{classYearMonth_a7023ee2f076308db893e7cdd144c64be}\label{classYearMonth_a7023ee2f076308db893e7cdd144c64be} 
+\index{YearMonth@{YearMonth}!operator"!=@{operator"!=}}
+\index{operator"!=@{operator"!=}!YearMonth@{YearMonth}}
+\doxysubsubsection{\texorpdfstring{operator"!=()}{operator!=()}}
+{\footnotesize\ttfamily bool Year\+Month\+::operator!= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classYearMonth}{Year\+Month}} \&}]{other }\end{DoxyParamCaption}) const}
+
+
+
+Operador de desigualdad. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em other} & Objeto \doxylink{classYearMonth}{Year\+Month} a comparar. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+true si ambos objetos son diferentes, false en caso contrario. 
+\end{DoxyReturn}
+
+
+Definición en la línea \mbox{\hyperlink{year__month_8cpp_source_l00063}{63}} del archivo \mbox{\hyperlink{year__month_8cpp_source}{year\+\_\+month.\+cpp}}.
+
+\Hypertarget{classYearMonth_af317334a4a05bd041c3702a89e7a1df7}\label{classYearMonth_af317334a4a05bd041c3702a89e7a1df7} 
+\index{YearMonth@{YearMonth}!operator$<$@{operator$<$}}
+\index{operator$<$@{operator$<$}!YearMonth@{YearMonth}}
+\doxysubsubsection{\texorpdfstring{operator$<$()}{operator<()}}
+{\footnotesize\ttfamily bool Year\+Month\+::operator$<$ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classYearMonth}{Year\+Month}} \&}]{other }\end{DoxyParamCaption}) const}
+
+
+
+Operador menor que. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em other} & Objeto \doxylink{classYearMonth}{Year\+Month} a comparar. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+true si este objeto es menor que el otro, false en caso contrario. 
+\end{DoxyReturn}
+
+
+Definición en la línea \mbox{\hyperlink{year__month_8cpp_source_l00067}{67}} del archivo \mbox{\hyperlink{year__month_8cpp_source}{year\+\_\+month.\+cpp}}.
+
+\Hypertarget{classYearMonth_a20f7e4a45cd6af0546b4fdf09174bb94}\label{classYearMonth_a20f7e4a45cd6af0546b4fdf09174bb94} 
+\index{YearMonth@{YearMonth}!operator$<$=@{operator$<$=}}
+\index{operator$<$=@{operator$<$=}!YearMonth@{YearMonth}}
+\doxysubsubsection{\texorpdfstring{operator$<$=()}{operator<=()}}
+{\footnotesize\ttfamily bool Year\+Month\+::operator$<$= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classYearMonth}{Year\+Month}} \&}]{other }\end{DoxyParamCaption}) const}
+
+
+
+Operador menor o igual que. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em other} & Objeto \doxylink{classYearMonth}{Year\+Month} a comparar. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+true si este objeto es menor o igual que el otro, false en caso contrario. 
+\end{DoxyReturn}
+
+
+Definición en la línea \mbox{\hyperlink{year__month_8cpp_source_l00071}{71}} del archivo \mbox{\hyperlink{year__month_8cpp_source}{year\+\_\+month.\+cpp}}.
+
+\Hypertarget{classYearMonth_aa5d7362bbb3649f60738c1952474d4c8}\label{classYearMonth_aa5d7362bbb3649f60738c1952474d4c8} 
+\index{YearMonth@{YearMonth}!operator=@{operator=}}
+\index{operator=@{operator=}!YearMonth@{YearMonth}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classYearMonth}{Year\+Month}} \& Year\+Month\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classYearMonth}{Year\+Month}} \&}]{right }\end{DoxyParamCaption})}
+
+
+
+Operador de asignación. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em right} & Objeto \doxylink{classYearMonth}{Year\+Month} a asignar. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Una referencia a este objeto. 
+\end{DoxyReturn}
+
+
+Definición en la línea \mbox{\hyperlink{year__month_8cpp_source_l00083}{83}} del archivo \mbox{\hyperlink{year__month_8cpp_source}{year\+\_\+month.\+cpp}}.
+
+\Hypertarget{classYearMonth_aa93a889dd0e4a46f4a635f3f374a59db}\label{classYearMonth_aa93a889dd0e4a46f4a635f3f374a59db} 
+\index{YearMonth@{YearMonth}!operator==@{operator==}}
+\index{operator==@{operator==}!YearMonth@{YearMonth}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily bool Year\+Month\+::operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classYearMonth}{Year\+Month}} \&}]{other }\end{DoxyParamCaption}) const}
+
+
+
+Operador de igualdad. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em other} & Objeto \doxylink{classYearMonth}{Year\+Month} a comparar. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+true si ambos objetos son iguales, false en caso contrario. 
+\end{DoxyReturn}
+
+
+Definición en la línea \mbox{\hyperlink{year__month_8cpp_source_l00059}{59}} del archivo \mbox{\hyperlink{year__month_8cpp_source}{year\+\_\+month.\+cpp}}.
+
+\Hypertarget{classYearMonth_abb22ddd0e45f1e41272ec65e7d55e34e}\label{classYearMonth_abb22ddd0e45f1e41272ec65e7d55e34e} 
+\index{YearMonth@{YearMonth}!operator$>$@{operator$>$}}
+\index{operator$>$@{operator$>$}!YearMonth@{YearMonth}}
+\doxysubsubsection{\texorpdfstring{operator$>$()}{operator>()}}
+{\footnotesize\ttfamily bool Year\+Month\+::operator$>$ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classYearMonth}{Year\+Month}} \&}]{other }\end{DoxyParamCaption}) const}
+
+
+
+Operador mayor que. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em other} & Objeto \doxylink{classYearMonth}{Year\+Month} a comparar. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+true si este objeto es mayor que el otro, false en caso contrario. 
+\end{DoxyReturn}
+
+
+Definición en la línea \mbox{\hyperlink{year__month_8cpp_source_l00075}{75}} del archivo \mbox{\hyperlink{year__month_8cpp_source}{year\+\_\+month.\+cpp}}.
+
+\Hypertarget{classYearMonth_a4607e72453406b452b2309b41afcf1fb}\label{classYearMonth_a4607e72453406b452b2309b41afcf1fb} 
+\index{YearMonth@{YearMonth}!operator$>$=@{operator$>$=}}
+\index{operator$>$=@{operator$>$=}!YearMonth@{YearMonth}}
+\doxysubsubsection{\texorpdfstring{operator$>$=()}{operator>=()}}
+{\footnotesize\ttfamily bool Year\+Month\+::operator$>$= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classYearMonth}{Year\+Month}} \&}]{other }\end{DoxyParamCaption}) const}
+
+
+
+Operador mayor o igual que. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em other} & Objeto \doxylink{classYearMonth}{Year\+Month} a comparar. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+true si este objeto es mayor o igual que el otro, false en caso contrario. 
+\end{DoxyReturn}
+
+
+Definición en la línea \mbox{\hyperlink{year__month_8cpp_source_l00079}{79}} del archivo \mbox{\hyperlink{year__month_8cpp_source}{year\+\_\+month.\+cpp}}.
+
+\Hypertarget{classYearMonth_a201d77ddd088adca5f0670a215fad215}\label{classYearMonth_a201d77ddd088adca5f0670a215fad215} 
+\index{YearMonth@{YearMonth}!toString@{toString}}
+\index{toString@{toString}!YearMonth@{YearMonth}}
+\doxysubsubsection{\texorpdfstring{toString()}{toString()}}
+{\footnotesize\ttfamily std\+::string Year\+Month\+::to\+String (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Convierte el objeto \doxylink{classYearMonth}{Year\+Month} a una cadena de texto. 
+
+\begin{DoxyReturn}{Devuelve}
+Una cadena en el formato "{}\+YYYY-\/\+MM"{}. 
+\end{DoxyReturn}
+
+
+Definición en la línea \mbox{\hyperlink{year__month_8cpp_source_l00053}{53}} del archivo \mbox{\hyperlink{year__month_8cpp_source}{year\+\_\+month.\+cpp}}.
+
+
+
+La documentación de esta clase está generada de los siguientes archivos\+:\begin{DoxyCompactItemize}
+\item 
+year\+\_\+month.\+h\item 
+year\+\_\+month.\+cpp\end{DoxyCompactItemize}

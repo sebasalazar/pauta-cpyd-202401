@@ -9,6 +9,9 @@ directorios:
 	$(RM) build dist tmp cpi
 	$(MKDIR) build dist
 
+file_service.o: directorios file_service.cpp
+	$(CXX) $(CXXFLAGS) -c file_service.cpp -o build/file_service.o
+
 utem.o: directorios utem.cpp
 	$(CXX) $(CXXFLAGS) -c utem.cpp -o build/utem.o
 
@@ -27,11 +30,12 @@ summary.o: directorios summary.cpp
 main.o: directorios main.cpp
 	$(CXX) $(CXXFLAGS) -c main.cpp -o build/main.o
 
-all: clean main.o product.o year_month.o utem.o cpi.o summary.o
+all: clean main.o product.o year_month.o utem.o cpi.o summary.o file_service.o
 	$(CXX) $(CXXFLAGS) -o dist/programa \
 	build/main.o build/product.o \
 	build/year_month.o build/utem.o \
 	build/cpi.o build/summary.o \
+	build/file_service.o \
 	$(LIBS)
 	$(RM) build
 

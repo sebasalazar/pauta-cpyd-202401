@@ -1,0 +1,201 @@
+\doxysection{utem.\+cpp}
+\hypertarget{utem_8cpp_source}{}\label{utem_8cpp_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}utem.h"{}}}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00003}\mbox{\hyperlink{namespaceutem_a18dd7329862f1e8f88d4e02e72e0cd93}{00003}}\ std::string\ \mbox{\hyperlink{namespaceutem_a18dd7329862f1e8f88d4e02e72e0cd93}{utem::getLocalTime}}()\ \{}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00004}00004\ \ \ \ \ std::time\_t\ now\ =\ std::chrono::system\_clock::to\_time\_t(std::chrono::system\_clock::now());}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00005}00005\ \ \ \ \ std::tm\ current\ =\ *std::localtime(\&now);}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00006}00006\ \ \ \ \ \textcolor{comment}{//\ Formatear\ la\ fecha\ y\ hora}}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00007}00007\ \ \ \ \ std::stringstream\ ss;}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00008}00008\ \ \ \ \ ss\ <<\ std::put\_time(\&current,\ \textcolor{stringliteral}{"{}\%Y-\/\%m-\/\%d\ \%H:\%M:\%S"{}});}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00009}00009\ \ \ \ \ \textcolor{keywordflow}{return}\ ss.str();}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00010}00010\ \}}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00012}\mbox{\hyperlink{namespaceutem_a42733e8151f257d2b7bc88e929ca7e93}{00012}}\ std::string\ \mbox{\hyperlink{namespaceutem_a18dd7329862f1e8f88d4e02e72e0cd93}{utem::getLocalTime}}(std::time\_t\ ts)\ \{}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00013}00013\ \ \ \ \ std::tm\ current\ =\ *std::localtime(\&ts);}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00014}00014\ \ \ \ \ \textcolor{comment}{//\ Formatear\ la\ fecha\ y\ hora}}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00015}00015\ \ \ \ \ std::stringstream\ ss;}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00016}00016\ \ \ \ \ ss\ <<\ std::put\_time(\&current,\ \textcolor{stringliteral}{"{}\%Y-\/\%m-\/\%d\ \%H:\%M:\%S"{}});}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00017}00017\ \ \ \ \ \textcolor{keywordflow}{return}\ ss.str();}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00018}00018\ \}}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00020}\mbox{\hyperlink{namespaceutem_a2650ca72496b399d5c1c9ef52751ab6c}{00020}}\ \mbox{\hyperlink{classYearMonth}{YearMonth}}\ \mbox{\hyperlink{namespaceutem_a2650ca72496b399d5c1c9ef52751ab6c}{utem::parseYearMonth}}(\textcolor{keyword}{const}\ std::string\&\ str)\ \{}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00021}00021\ \ \ \ \ \textcolor{keywordtype}{int}\ year\ =\ std::stoi(str.substr(0,\ 4));}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00022}00022\ \ \ \ \ \textcolor{keywordtype}{int}\ month\ =\ std::stoi(str.substr(5,\ 2));}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00024}00024\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classYearMonth}{YearMonth}}(year,\ month);}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00025}00025\ \}}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00027}\mbox{\hyperlink{namespaceutem_af05de8a55c75be84f3a8b6a0992dfd28}{00027}}\ std::string\ \mbox{\hyperlink{namespaceutem_af05de8a55c75be84f3a8b6a0992dfd28}{utem::removeQuotes}}(\textcolor{keyword}{const}\ std::string\ \&text)\ \{}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00028}00028\ \ \ \ \ std::string\ result\ =\ text;}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00029}00029\ \ \ \ \ result.erase(std::remove(result.begin(),\ result.end(),\ \textcolor{charliteral}{'"{}'}),\ result.end());}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00030}00030\ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00031}00031\ \}}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00033}\mbox{\hyperlink{namespaceutem_a06f1caef9d21771c6a4cbd3cfa9e805e}{00033}}\ std::vector<std::string>\ \mbox{\hyperlink{namespaceutem_a06f1caef9d21771c6a4cbd3cfa9e805e}{utem::split}}(\textcolor{keyword}{const}\ std::string\ \&line,\ \textcolor{keywordtype}{char}\ delimiter)\ \{}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00034}00034\ \ \ \ \ std::vector<std::string>\ result;}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00035}00035\ \ \ \ \ std::stringstream\ ss(line);}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00036}00036\ \ \ \ \ std::string\ item;}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00038}00038\ \ \ \ \ \textcolor{keywordflow}{while}\ (std::getline(ss,\ item,\ delimiter))\ \{}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00039}00039\ \ \ \ \ \ \ \ \ result.push\_back(item);}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00040}00040\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00042}00042\ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00043}00043\ \}}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00045}\mbox{\hyperlink{namespaceutem_a8422cb3a640494a45dfe615562394527}{00045}}\ std::map<int,\ std::vector<int>>\ \mbox{\hyperlink{namespaceutem_a8422cb3a640494a45dfe615562394527}{utem::getMonthsInYears}}(std::set<int>\ codes)\ \{}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00046}00046\ \ \ \ \ std::map<int,\ std::vector<int>>\ map;}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00047}00047\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ code\ :\ codes)\ \{}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00048}00048\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classYearMonth}{YearMonth}}\ ym(code);}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00049}00049\ \ \ \ \ \ \ \ \ map[ym.\mbox{\hyperlink{classYearMonth_aeea1978dcb2b1032cf1cace284d968cc}{GetYear}}()].push\_back(ym.\mbox{\hyperlink{classYearMonth_a116c142edab9a4144ecbd7e638d3a272}{GetYearMonth}}());}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00050}00050\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00051}00051\ \ \ \ \ \textcolor{keywordflow}{return}\ map;}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00052}00052\ \}}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00054}\mbox{\hyperlink{namespaceutem_a8e10faf037337ea9349e98c836714611}{00054}}\ std::vector<int>\ \mbox{\hyperlink{namespaceutem_a8e10faf037337ea9349e98c836714611}{utem::getYears}}(std::set<int>\ codes)\ \{}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00055}00055\ \ \ \ \ std::vector<int>\ years;}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00056}00056\ \ \ \ \ \textcolor{keywordflow}{if}\ (!codes.empty())\ \{}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00057}00057\ \ \ \ \ \ \ \ \ std::set<int>\ uniques;}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00058}00058\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ code\ :\ codes)\ \{}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classYearMonth}{YearMonth}}\ ym(code);}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ uniques.insert(ym.\mbox{\hyperlink{classYearMonth_aeea1978dcb2b1032cf1cace284d968cc}{GetYear}}());}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00061}00061\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00062}00062\ \ \ \ \ \ \ \ \ years\ =\ std::vector<int>(uniques.begin(),\ uniques.end());}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00063}00063\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00064}00064\ \ \ \ \ \textcolor{keywordflow}{return}\ years;}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00065}00065\ \}}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00066}00066\ }
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00067}\mbox{\hyperlink{namespaceutem_a888fd05b88ff670ca063a638a4035624}{00067}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespaceutem_a888fd05b88ff670ca063a638a4035624}{utem::unify}}(\textcolor{keywordtype}{int}\ code)\ \{}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00068}00068\ \ \ \ \ \textcolor{comment}{//\ Leemos\ el\ archivo\ año-\/mes}}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00069}00069\ \ \ \ \ std::string\ inFilePath\ =\ tempPath\ +\ \textcolor{stringliteral}{"{}/"{}}\ +\ std::to\_string(code);}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00070}00070\ \ \ \ \ std::ifstream\ inFile(inFilePath);}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00071}00071\ \ \ \ \ \textcolor{keywordflow}{if}\ (inFile.is\_open())\ \{}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00072}00072\ \ \ \ \ \ \ \ \ std::map<std::string,\ std::vector<double>>\ map;}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00073}00073\ }
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00074}00074\ \ \ \ \ \ \ \ \ std::string\ line;}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00075}00075\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (std::getline(inFile,\ line))\ \{}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00076}00076\ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<std::string>\ fields\ =\ \mbox{\hyperlink{namespaceutem_a06f1caef9d21771c6a4cbd3cfa9e805e}{split}}(line,\ \textcolor{charliteral}{';'});}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00077}00077\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (fields.size()\ ==\ 2)\ \{}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00078}00078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ sku\ =\ fields[0];}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00079}00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ amount\ =\ std::stod(fields[1]);}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00080}00080\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ map[sku].push\_back(amount);}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00081}00081\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00082}00082\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00083}00083\ \ \ \ \ \ \ \ \ inFile.close();}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00084}00084\ }
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00085}00085\ \ \ \ \ \ \ \ \ std::string\ outFilePath\ =\ tempPath\ +\ \textcolor{stringliteral}{"{}/"{}}\ +\ std::to\_string(code)\ +\ \textcolor{stringliteral}{"{}.csv"{}};}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00086}00086\ \ \ \ \ \ \ \ \ std::ofstream\ outFile(outFilePath,\ std::ios\_base::app);\ \textcolor{comment}{//\ Abre\ el\ archivo\ en\ modo\ append}}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00087}00087\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (outFile.is\_open())\ \{}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00088}00088\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (std::map<std::string,\ std::vector<double>>::iterator\ it\ =\ map.begin();\ it\ !=\ map.end();\ ++it)\ \{}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00089}00089\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ sku\ =\ it-\/>first;}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00090}00090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<double>\ amounts\ =\ it-\/>second;}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00091}00091\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ amount\ =\ \mbox{\hyperlink{namespaceutem_a5f5aebdab5865a60c89c2c9484d07239}{calculateMedian}}(amounts);}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00092}00092\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ outFile\ <<\ sku\ <<\ \textcolor{stringliteral}{"{};"{}}\ <<\ amount\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00093}00093\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00094}00094\ \ \ \ \ \ \ \ \ \ \ \ \ outFile.close();\ \textcolor{comment}{//\ Cerrar\ el\ archivo\ después\ de\ escribir}}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00095}00095\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00096}00096\ \ \ \ \ \ \ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}Error\ al\ abrir\ el\ archivo\ para\ escritura:\ "{}}\ <<\ outFilePath\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00097}00097\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00098}00098\ }
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00099}00099\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Eliminamos\ el\ archivo\ temporal}}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00100}00100\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (std::remove(inFilePath.c\_str())\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00101}00101\ \ \ \ \ \ \ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}Error\ al\ eliminar\ el\ archivo\ temporal:\ "{}}\ <<\ outFilePath\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00102}00102\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00103}00103\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00104}00104\ \ \ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}Error\ al\ abrir\ el\ archivo\ de\ entrada:\ "{}}\ <<\ inFilePath\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00105}00105\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00106}00106\ \}}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00107}00107\ }
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00108}\mbox{\hyperlink{namespaceutem_a5f5aebdab5865a60c89c2c9484d07239}{00108}}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{namespaceutem_a5f5aebdab5865a60c89c2c9484d07239}{utem::calculateMedian}}(std::vector<double>\ list)\ \{}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00109}00109\ \ \ \ \ \textcolor{comment}{//\ Obtener\ el\ iterador\ al\ elemento\ mediano}}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00110}00110\ \ \ \ \ std::vector<double>::const\_iterator\ first\ =\ list.begin();}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00111}00111\ \ \ \ \ std::advance(first,\ list.size()\ /\ 2);}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00112}00112\ }
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00113}00113\ \ \ \ \ \textcolor{comment}{//\ Calcular\ la\ mediana}}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00114}00114\ \ \ \ \ \textcolor{keywordflow}{if}\ (list.size()\ \%\ 2\ ==\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00115}00115\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Tamaño\ par:\ mediana\ es\ el\ promedio\ de\ los\ dos\ valores\ centrales}}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00116}00116\ \ \ \ \ \ \ \ \ std::vector<double>::const\_iterator\ second\ =\ first;}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00117}00117\ \ \ \ \ \ \ \ \ -\/-\/second;\ \textcolor{comment}{//\ Retroceder\ un\ paso\ para\ el\ segundo\ valor\ central}}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00118}00118\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (*first\ +\ *second)\ /\ 2.0;}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00119}00119\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00120}00120\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Tamaño\ impar:\ mediana\ es\ el\ valor\ central}}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00121}00121\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *first;}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00122}00122\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00123}00123\ \}}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00124}00124\ }
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00125}\mbox{\hyperlink{namespaceutem_a467752a0963d15bed224c93343919afa}{00125}}\ std::set<Product>\ \mbox{\hyperlink{namespaceutem_a467752a0963d15bed224c93343919afa}{utem::getBasicBasket}}(std::vector<int>\ codes)\ \{}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00126}00126\ \ \ \ \ std::set<Product>\ basket;}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00127}00127\ \ \ \ \ \textcolor{keywordflow}{if}\ (!codes.empty())\ \{}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00128}00128\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (codes.size()\ >\ 1)\ \{}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00129}00129\ \ \ \ \ \ \ \ \ \ \ \ \ std::set<Product>\ list;}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00130}00130\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ base\ =\ codes[0];}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00131}00131\ \ \ \ \ \ \ \ \ \ \ \ \ std::ifstream\ file(tempPath\ +\ \textcolor{stringliteral}{"{}/"{}}\ +\ std::to\_string(base)\ +\ \textcolor{stringliteral}{"{}.csv"{}});}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00132}00132\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (file.is\_open())\ \{}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00133}00133\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ linea;}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00134}00134\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (std::getline(file,\ linea))\ \{}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00135}00135\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<std::string>\ splited\ =\ \mbox{\hyperlink{namespaceutem_a06f1caef9d21771c6a4cbd3cfa9e805e}{split}}(linea,\ \textcolor{charliteral}{';'});}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00136}00136\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!splited.empty())\ \{}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00137}00137\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classProduct}{Product}}\ p(splited[0],\ std::stod(splited[1]));}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00138}00138\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ list.insert(p);}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00139}00139\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00140}00140\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00141}00141\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ file.close();}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00142}00142\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00143}00143\ }
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00144}00144\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Paraleliza\ este\ bloque\ con\ OpenMP}}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00145}00145\ \textcolor{preprocessor}{\#pragma\ omp\ parallel\ for}}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00146}00146\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (std::vector<int>::size\_type\ i\ =\ 1;\ i\ <\ codes.size();\ ++i)\ \{}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00147}00147\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ code\ =\ codes[i];}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00148}00148\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (code\ !=\ base)\ \{}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00149}00149\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::set<Product>\ current;}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00150}00150\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::ifstream\ file(tempPath\ +\ \textcolor{stringliteral}{"{}/"{}}\ +\ std::to\_string(code)\ +\ \textcolor{stringliteral}{"{}.csv"{}});}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00151}00151\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (file.is\_open())\ \{}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00152}00152\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ linea;}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00153}00153\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (std::getline(file,\ linea))\ \{}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00154}00154\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<std::string>\ splited\ =\ \mbox{\hyperlink{namespaceutem_a06f1caef9d21771c6a4cbd3cfa9e805e}{split}}(linea,\ \textcolor{charliteral}{';'});}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00155}00155\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!splited.empty())\ \{}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00156}00156\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classProduct}{Product}}\ p(splited[0],\ std::stod(splited[1]));}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00157}00157\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ current.insert(p);}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00158}00158\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00159}00159\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00160}00160\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ file.close();}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00161}00161\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00162}00162\ }
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00163}00163\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Sección\ crítica\ para\ actualizar\ 'list'\ de\ manera\ segura}}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00164}00164\ \textcolor{preprocessor}{\#pragma\ omp\ critical}}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00165}00165\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00166}00166\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!current.empty())\ \{}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00167}00167\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::set<Product>\ repited;}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00168}00168\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::set\_intersection(list.begin(),\ list.end(),\ current.begin(),\ current.end(),}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00169}00169\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::inserter(repited,\ repited.begin()));}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00170}00170\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ list\ =\ std::move(repited);}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00171}00171\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00172}00172\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00173}00173\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00174}00174\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00175}00175\ }
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00176}00176\ \ \ \ \ \ \ \ \ \ \ \ \ basket\ =\ std::move(list);}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00177}00177\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00178}00178\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ base\ =\ codes[0];}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00179}00179\ \ \ \ \ \ \ \ \ \ \ \ \ std::ifstream\ file(tempPath\ +\ \textcolor{stringliteral}{"{}/"{}}\ +\ std::to\_string(base)\ +\ \textcolor{stringliteral}{"{}.csv"{}});}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00180}00180\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (file.is\_open())\ \{}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00181}00181\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ linea;}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00182}00182\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (std::getline(file,\ linea))\ \{}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00183}00183\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<std::string>\ splited\ =\ \mbox{\hyperlink{namespaceutem_a06f1caef9d21771c6a4cbd3cfa9e805e}{split}}(linea,\ \textcolor{charliteral}{';'});}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00184}00184\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!splited.empty())\ \{}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00185}00185\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classProduct}{Product}}\ p(splited[0],\ std::stod(splited[1]));}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00186}00186\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ basket.insert(p);}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00187}00187\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00188}00188\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00189}00189\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ file.close();}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00190}00190\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00191}00191\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00192}00192\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00193}00193\ \ \ \ \ \textcolor{keywordflow}{return}\ basket;}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00194}00194\ \}}
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00195}00195\ }
+\DoxyCodeLine{\Hypertarget{utem_8cpp_source_l00196}00196\ }
+
+\end{DoxyCode}

@@ -1,0 +1,57 @@
+\doxysection{year\+\_\+month.\+h}
+\hypertarget{year__month_8h_source}{}\label{year__month_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{year__month_8h_source_l00001}00001\ \textcolor{preprocessor}{\#ifndef\ YEAR\_MONTH\_H}}
+\DoxyCodeLine{\Hypertarget{year__month_8h_source_l00002}00002\ \textcolor{preprocessor}{\#define\ YEAR\_MONTH\_H}}
+\DoxyCodeLine{\Hypertarget{year__month_8h_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{year__month_8h_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\Hypertarget{year__month_8h_source_l00005}00005\ \textcolor{preprocessor}{\#include\ <iomanip>}}
+\DoxyCodeLine{\Hypertarget{year__month_8h_source_l00006}00006\ \textcolor{preprocessor}{\#include\ <stdexcept>}}
+\DoxyCodeLine{\Hypertarget{year__month_8h_source_l00007}00007\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{\Hypertarget{year__month_8h_source_l00008}00008\ \textcolor{preprocessor}{\#include\ <sstream>}}
+\DoxyCodeLine{\Hypertarget{year__month_8h_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{year__month_8h_source_l00017}\mbox{\hyperlink{classYearMonth}{00017}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classYearMonth}{YearMonth}}\ \{}
+\DoxyCodeLine{\Hypertarget{year__month_8h_source_l00018}00018\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{year__month_8h_source_l00024}00024\ \ \ \ \ \mbox{\hyperlink{classYearMonth_a47dbdadb9fa90a0293762568d90b3697}{YearMonth}}();}
+\DoxyCodeLine{\Hypertarget{year__month_8h_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{year__month_8h_source_l00031}00031\ \ \ \ \ \mbox{\hyperlink{classYearMonth_a47dbdadb9fa90a0293762568d90b3697}{YearMonth}}(\textcolor{keywordtype}{int}\ code);}
+\DoxyCodeLine{\Hypertarget{year__month_8h_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{year__month_8h_source_l00040}00040\ \ \ \ \ \mbox{\hyperlink{classYearMonth_a47dbdadb9fa90a0293762568d90b3697}{YearMonth}}(\textcolor{keywordtype}{int}\ year,\ \textcolor{keywordtype}{int}\ month);}
+\DoxyCodeLine{\Hypertarget{year__month_8h_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{year__month_8h_source_l00047}00047\ \ \ \ \ \mbox{\hyperlink{classYearMonth_a47dbdadb9fa90a0293762568d90b3697}{YearMonth}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classYearMonth}{YearMonth}}\&\ orig);}
+\DoxyCodeLine{\Hypertarget{year__month_8h_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{year__month_8h_source_l00052}00052\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classYearMonth_a5fc8eb0c9234d2fcdb92c6074d8f14c2}{\string~YearMonth}}();}
+\DoxyCodeLine{\Hypertarget{year__month_8h_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{year__month_8h_source_l00059}00059\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classYearMonth_a2fff82d4bb5abce01618fa3fd0380627}{GetMonth}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{year__month_8h_source_l00060}00060\ }
+\DoxyCodeLine{\Hypertarget{year__month_8h_source_l00066}00066\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classYearMonth_aeea1978dcb2b1032cf1cace284d968cc}{GetYear}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{year__month_8h_source_l00067}00067\ }
+\DoxyCodeLine{\Hypertarget{year__month_8h_source_l00073}00073\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classYearMonth_a116c142edab9a4144ecbd7e638d3a272}{GetYearMonth}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{year__month_8h_source_l00074}00074\ }
+\DoxyCodeLine{\Hypertarget{year__month_8h_source_l00080}00080\ \ \ \ \ std::string\ \mbox{\hyperlink{classYearMonth_a201d77ddd088adca5f0670a215fad215}{toString}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{year__month_8h_source_l00081}00081\ }
+\DoxyCodeLine{\Hypertarget{year__month_8h_source_l00088}00088\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classYearMonth_aa93a889dd0e4a46f4a635f3f374a59db}{operator==}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classYearMonth}{YearMonth}}\&\ other)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{year__month_8h_source_l00089}00089\ }
+\DoxyCodeLine{\Hypertarget{year__month_8h_source_l00096}00096\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classYearMonth_a7023ee2f076308db893e7cdd144c64be}{operator!=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classYearMonth}{YearMonth}}\&\ other)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{year__month_8h_source_l00097}00097\ }
+\DoxyCodeLine{\Hypertarget{year__month_8h_source_l00104}00104\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classYearMonth_af317334a4a05bd041c3702a89e7a1df7}{operator<}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classYearMonth}{YearMonth}}\&\ other)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{year__month_8h_source_l00105}00105\ }
+\DoxyCodeLine{\Hypertarget{year__month_8h_source_l00112}00112\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classYearMonth_a20f7e4a45cd6af0546b4fdf09174bb94}{operator<=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classYearMonth}{YearMonth}}\&\ other)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{year__month_8h_source_l00113}00113\ }
+\DoxyCodeLine{\Hypertarget{year__month_8h_source_l00120}00120\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classYearMonth_abb22ddd0e45f1e41272ec65e7d55e34e}{operator>}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classYearMonth}{YearMonth}}\&\ other)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{year__month_8h_source_l00121}00121\ }
+\DoxyCodeLine{\Hypertarget{year__month_8h_source_l00128}00128\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classYearMonth_a4607e72453406b452b2309b41afcf1fb}{operator>=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classYearMonth}{YearMonth}}\&\ other)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{year__month_8h_source_l00129}00129\ }
+\DoxyCodeLine{\Hypertarget{year__month_8h_source_l00136}00136\ \ \ \ \ \mbox{\hyperlink{classYearMonth}{YearMonth}}\&\ \mbox{\hyperlink{classYearMonth_aa5d7362bbb3649f60738c1952474d4c8}{operator=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classYearMonth}{YearMonth}}\&\ right);}
+\DoxyCodeLine{\Hypertarget{year__month_8h_source_l00137}00137\ }
+\DoxyCodeLine{\Hypertarget{year__month_8h_source_l00138}00138\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{year__month_8h_source_l00142}00142\ \ \ \ \ \textcolor{keywordtype}{int}\ month;}
+\DoxyCodeLine{\Hypertarget{year__month_8h_source_l00143}00143\ }
+\DoxyCodeLine{\Hypertarget{year__month_8h_source_l00147}00147\ \ \ \ \ \textcolor{keywordtype}{int}\ year;}
+\DoxyCodeLine{\Hypertarget{year__month_8h_source_l00148}00148\ }
+\DoxyCodeLine{\Hypertarget{year__month_8h_source_l00156}00156\ \ \ \ \ \textcolor{keywordtype}{void}\ validate(\textcolor{keywordtype}{int}\ year,\ \textcolor{keywordtype}{int}\ month);}
+\DoxyCodeLine{\Hypertarget{year__month_8h_source_l00157}00157\ \};}
+\DoxyCodeLine{\Hypertarget{year__month_8h_source_l00158}00158\ }
+\DoxyCodeLine{\Hypertarget{year__month_8h_source_l00159}00159\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ YEAR\_MONTH\_H\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

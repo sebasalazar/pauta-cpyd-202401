@@ -1,0 +1,273 @@
+\doxysection{Referencia de la clase Summary}
+\hypertarget{classSummary}{}\label{classSummary}\index{Summary@{Summary}}
+
+
+Clase para representar un resumen con valores de IPC y sumas en diferentes monedas.  
+
+
+
+
+{\ttfamily \#include $<$summary.\+h$>$}
+
+\doxysubsubsection*{Métodos públicos}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classSummary_a17f9efd857f5cd9af6babb3f6d801f19}{Summary}} ()
+\begin{DoxyCompactList}\small\item\em Constructor por defecto. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classSummary_ab00cc6d1e87fc181d33447eb9d123f1b}{Summary}} (double cpi\+Pen, double sum\+Pen, double cpi\+Clp, long sum\+Clp)
+\begin{DoxyCompactList}\small\item\em Constructor con parámetros. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classSummary_ad33fd8c7569b87b0b04424a6fc0e3cc7}{Summary}} (const \mbox{\hyperlink{classSummary}{Summary}} \&orig)
+\begin{DoxyCompactList}\small\item\em Constructor de copia. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classSummary_aebf355fd41ffd362cd26b51fdc661a91}{\texorpdfstring{$\sim$}{\string~}\+Summary}} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classSummary_ab238a34a48589abf6fcd6e9bc423a9bd}{Get\+Cpi\+Clp}} () const
+\begin{DoxyCompactList}\small\item\em Obtiene el IPC en CLP. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSummary_a832d83726d51747701e1cf24a2fbf2d0}{Set\+Cpi\+Clp}} (double cpi\+Clp)
+\begin{DoxyCompactList}\small\item\em Establece el IPC en CLP. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classSummary_ad848ea23488d05511ce87eed63f54ce6}{Get\+Cpi\+Pen}} () const
+\begin{DoxyCompactList}\small\item\em Obtiene el IPC en PEN. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSummary_a3fcc0cfd64b2cec77cf081e7043aa5ac}{Set\+Cpi\+Pen}} (double cpi\+Pen)
+\begin{DoxyCompactList}\small\item\em Establece el IPC en PEN. \end{DoxyCompactList}\item 
+long \mbox{\hyperlink{classSummary_ade295468b33e31cdea4e4a17eb8a49a1}{Get\+Sum\+Clp}} () const
+\begin{DoxyCompactList}\small\item\em Obtiene la suma en CLP. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSummary_a1ba5b7277e534d6d3ea304ee3aecd97e}{Set\+Sum\+Clp}} (long sum\+Clp)
+\begin{DoxyCompactList}\small\item\em Establece la suma en CLP. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classSummary_a995544fa9d502ad63510391491b3501f}{Get\+Sum\+Pen}} () const
+\begin{DoxyCompactList}\small\item\em Obtiene la suma en PEN. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSummary_ae9e64f092cb990e3298e233b6f76e7bd}{Set\+Sum\+Pen}} (double sum\+Pen)
+\begin{DoxyCompactList}\small\item\em Establece la suma en PEN. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+Clase para representar un resumen con valores de IPC y sumas en diferentes monedas. 
+
+Definición en la línea \mbox{\hyperlink{summary_8h_source_l00008}{8}} del archivo \mbox{\hyperlink{summary_8h_source}{summary.\+h}}.
+
+
+
+\doxysubsection{Documentación de constructores y destructores}
+\Hypertarget{classSummary_a17f9efd857f5cd9af6babb3f6d801f19}\label{classSummary_a17f9efd857f5cd9af6babb3f6d801f19} 
+\index{Summary@{Summary}!Summary@{Summary}}
+\index{Summary@{Summary}!Summary@{Summary}}
+\doxysubsubsection{\texorpdfstring{Summary()}{Summary()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily Summary\+::\+Summary (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Constructor por defecto. 
+
+Inicializa un objeto \doxylink{classSummary}{Summary} con valores predeterminados. 
+
+Definición en la línea \mbox{\hyperlink{summary_8cpp_source_l00003}{3}} del archivo \mbox{\hyperlink{summary_8cpp_source}{summary.\+cpp}}.
+
+\Hypertarget{classSummary_ab00cc6d1e87fc181d33447eb9d123f1b}\label{classSummary_ab00cc6d1e87fc181d33447eb9d123f1b} 
+\index{Summary@{Summary}!Summary@{Summary}}
+\index{Summary@{Summary}!Summary@{Summary}}
+\doxysubsubsection{\texorpdfstring{Summary()}{Summary()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily Summary\+::\+Summary (\begin{DoxyParamCaption}\item[{double}]{cpi\+Pen,  }\item[{double}]{sum\+Pen,  }\item[{double}]{cpi\+Clp,  }\item[{long}]{sum\+Clp }\end{DoxyParamCaption})}
+
+
+
+Constructor con parámetros. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em cpi\+Pen} & Índice de Precios al Consumidor (IPC) en PEN. \\
+\hline
+{\em sum\+Pen} & Suma en PEN. \\
+\hline
+{\em cpi\+Clp} & Índice de Precios al Consumidor (IPC) en CLP. \\
+\hline
+{\em sum\+Clp} & Suma en CLP. \\
+\hline
+\end{DoxyParams}
+
+
+Definición en la línea \mbox{\hyperlink{summary_8cpp_source_l00010}{10}} del archivo \mbox{\hyperlink{summary_8cpp_source}{summary.\+cpp}}.
+
+\Hypertarget{classSummary_ad33fd8c7569b87b0b04424a6fc0e3cc7}\label{classSummary_ad33fd8c7569b87b0b04424a6fc0e3cc7} 
+\index{Summary@{Summary}!Summary@{Summary}}
+\index{Summary@{Summary}!Summary@{Summary}}
+\doxysubsubsection{\texorpdfstring{Summary()}{Summary()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily Summary\+::\+Summary (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classSummary}{Summary}} \&}]{orig }\end{DoxyParamCaption})}
+
+
+
+Constructor de copia. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em orig} & Objeto \doxylink{classSummary}{Summary} a copiar. \\
+\hline
+\end{DoxyParams}
+
+
+Definición en la línea \mbox{\hyperlink{summary_8cpp_source_l00017}{17}} del archivo \mbox{\hyperlink{summary_8cpp_source}{summary.\+cpp}}.
+
+\Hypertarget{classSummary_aebf355fd41ffd362cd26b51fdc661a91}\label{classSummary_aebf355fd41ffd362cd26b51fdc661a91} 
+\index{Summary@{Summary}!````~Summary@{\texorpdfstring{$\sim$}{\string~}Summary}}
+\index{````~Summary@{\texorpdfstring{$\sim$}{\string~}Summary}!Summary@{Summary}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Summary()}{\string~Summary()}}
+{\footnotesize\ttfamily Summary\+::\texorpdfstring{$\sim$}{\string~}\+Summary (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Destructor. 
+
+
+
+Definición en la línea \mbox{\hyperlink{summary_8cpp_source_l00024}{24}} del archivo \mbox{\hyperlink{summary_8cpp_source}{summary.\+cpp}}.
+
+
+
+\doxysubsection{Documentación de funciones miembro}
+\Hypertarget{classSummary_ab238a34a48589abf6fcd6e9bc423a9bd}\label{classSummary_ab238a34a48589abf6fcd6e9bc423a9bd} 
+\index{Summary@{Summary}!GetCpiClp@{GetCpiClp}}
+\index{GetCpiClp@{GetCpiClp}!Summary@{Summary}}
+\doxysubsubsection{\texorpdfstring{GetCpiClp()}{GetCpiClp()}}
+{\footnotesize\ttfamily double Summary\+::\+Get\+Cpi\+Clp (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Obtiene el IPC en CLP. 
+
+\begin{DoxyReturn}{Devuelve}
+El IPC en CLP. 
+\end{DoxyReturn}
+
+
+Definición en la línea \mbox{\hyperlink{summary_8cpp_source_l00027}{27}} del archivo \mbox{\hyperlink{summary_8cpp_source}{summary.\+cpp}}.
+
+\Hypertarget{classSummary_ad848ea23488d05511ce87eed63f54ce6}\label{classSummary_ad848ea23488d05511ce87eed63f54ce6} 
+\index{Summary@{Summary}!GetCpiPen@{GetCpiPen}}
+\index{GetCpiPen@{GetCpiPen}!Summary@{Summary}}
+\doxysubsubsection{\texorpdfstring{GetCpiPen()}{GetCpiPen()}}
+{\footnotesize\ttfamily double Summary\+::\+Get\+Cpi\+Pen (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Obtiene el IPC en PEN. 
+
+\begin{DoxyReturn}{Devuelve}
+El IPC en PEN. 
+\end{DoxyReturn}
+
+
+Definición en la línea \mbox{\hyperlink{summary_8cpp_source_l00035}{35}} del archivo \mbox{\hyperlink{summary_8cpp_source}{summary.\+cpp}}.
+
+\Hypertarget{classSummary_ade295468b33e31cdea4e4a17eb8a49a1}\label{classSummary_ade295468b33e31cdea4e4a17eb8a49a1} 
+\index{Summary@{Summary}!GetSumClp@{GetSumClp}}
+\index{GetSumClp@{GetSumClp}!Summary@{Summary}}
+\doxysubsubsection{\texorpdfstring{GetSumClp()}{GetSumClp()}}
+{\footnotesize\ttfamily long Summary\+::\+Get\+Sum\+Clp (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Obtiene la suma en CLP. 
+
+\begin{DoxyReturn}{Devuelve}
+La suma en CLP. 
+\end{DoxyReturn}
+
+
+Definición en la línea \mbox{\hyperlink{summary_8cpp_source_l00043}{43}} del archivo \mbox{\hyperlink{summary_8cpp_source}{summary.\+cpp}}.
+
+\Hypertarget{classSummary_a995544fa9d502ad63510391491b3501f}\label{classSummary_a995544fa9d502ad63510391491b3501f} 
+\index{Summary@{Summary}!GetSumPen@{GetSumPen}}
+\index{GetSumPen@{GetSumPen}!Summary@{Summary}}
+\doxysubsubsection{\texorpdfstring{GetSumPen()}{GetSumPen()}}
+{\footnotesize\ttfamily double Summary\+::\+Get\+Sum\+Pen (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Obtiene la suma en PEN. 
+
+\begin{DoxyReturn}{Devuelve}
+La suma en PEN. 
+\end{DoxyReturn}
+
+
+Definición en la línea \mbox{\hyperlink{summary_8cpp_source_l00051}{51}} del archivo \mbox{\hyperlink{summary_8cpp_source}{summary.\+cpp}}.
+
+\Hypertarget{classSummary_a832d83726d51747701e1cf24a2fbf2d0}\label{classSummary_a832d83726d51747701e1cf24a2fbf2d0} 
+\index{Summary@{Summary}!SetCpiClp@{SetCpiClp}}
+\index{SetCpiClp@{SetCpiClp}!Summary@{Summary}}
+\doxysubsubsection{\texorpdfstring{SetCpiClp()}{SetCpiClp()}}
+{\footnotesize\ttfamily void Summary\+::\+Set\+Cpi\+Clp (\begin{DoxyParamCaption}\item[{double}]{cpi\+Clp }\end{DoxyParamCaption})}
+
+
+
+Establece el IPC en CLP. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em cpi\+Clp} & El nuevo valor del IPC en CLP. \\
+\hline
+\end{DoxyParams}
+
+
+Definición en la línea \mbox{\hyperlink{summary_8cpp_source_l00031}{31}} del archivo \mbox{\hyperlink{summary_8cpp_source}{summary.\+cpp}}.
+
+\Hypertarget{classSummary_a3fcc0cfd64b2cec77cf081e7043aa5ac}\label{classSummary_a3fcc0cfd64b2cec77cf081e7043aa5ac} 
+\index{Summary@{Summary}!SetCpiPen@{SetCpiPen}}
+\index{SetCpiPen@{SetCpiPen}!Summary@{Summary}}
+\doxysubsubsection{\texorpdfstring{SetCpiPen()}{SetCpiPen()}}
+{\footnotesize\ttfamily void Summary\+::\+Set\+Cpi\+Pen (\begin{DoxyParamCaption}\item[{double}]{cpi\+Pen }\end{DoxyParamCaption})}
+
+
+
+Establece el IPC en PEN. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em cpi\+Pen} & El nuevo valor del IPC en PEN. \\
+\hline
+\end{DoxyParams}
+
+
+Definición en la línea \mbox{\hyperlink{summary_8cpp_source_l00039}{39}} del archivo \mbox{\hyperlink{summary_8cpp_source}{summary.\+cpp}}.
+
+\Hypertarget{classSummary_a1ba5b7277e534d6d3ea304ee3aecd97e}\label{classSummary_a1ba5b7277e534d6d3ea304ee3aecd97e} 
+\index{Summary@{Summary}!SetSumClp@{SetSumClp}}
+\index{SetSumClp@{SetSumClp}!Summary@{Summary}}
+\doxysubsubsection{\texorpdfstring{SetSumClp()}{SetSumClp()}}
+{\footnotesize\ttfamily void Summary\+::\+Set\+Sum\+Clp (\begin{DoxyParamCaption}\item[{long}]{sum\+Clp }\end{DoxyParamCaption})}
+
+
+
+Establece la suma en CLP. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em sum\+Clp} & El nuevo valor de la suma en CLP. \\
+\hline
+\end{DoxyParams}
+
+
+Definición en la línea \mbox{\hyperlink{summary_8cpp_source_l00047}{47}} del archivo \mbox{\hyperlink{summary_8cpp_source}{summary.\+cpp}}.
+
+\Hypertarget{classSummary_ae9e64f092cb990e3298e233b6f76e7bd}\label{classSummary_ae9e64f092cb990e3298e233b6f76e7bd} 
+\index{Summary@{Summary}!SetSumPen@{SetSumPen}}
+\index{SetSumPen@{SetSumPen}!Summary@{Summary}}
+\doxysubsubsection{\texorpdfstring{SetSumPen()}{SetSumPen()}}
+{\footnotesize\ttfamily void Summary\+::\+Set\+Sum\+Pen (\begin{DoxyParamCaption}\item[{double}]{sum\+Pen }\end{DoxyParamCaption})}
+
+
+
+Establece la suma en PEN. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em sum\+Pen} & El nuevo valor de la suma en PEN. \\
+\hline
+\end{DoxyParams}
+
+
+Definición en la línea \mbox{\hyperlink{summary_8cpp_source_l00055}{55}} del archivo \mbox{\hyperlink{summary_8cpp_source}{summary.\+cpp}}.
+
+
+
+La documentación de esta clase está generada de los siguientes archivos\+:\begin{DoxyCompactItemize}
+\item 
+summary.\+h\item 
+summary.\+cpp\end{DoxyCompactItemize}
